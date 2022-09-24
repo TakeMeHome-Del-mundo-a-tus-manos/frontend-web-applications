@@ -1,35 +1,60 @@
 @import "./base.css";
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import "./base.css";
 
-  font-weight: normal;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.p-menubar{
+  color: white;
+  border: 0;
+  background-color: #264986;
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  display: block;
+  display: flex;
+  right: auto;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+.p-menubar .p-button{
+  color: white;
+  width: 150px;
+  background: none;
+  font-family: Roboto;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.p-menubar .p-button:hover{
+  color: white;
+  width: 150px;
+  background: none;
+  font-family: Roboto;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.p-menubar-start{
+  font-family: Poppins;
+  display: inline-flex;
+  align-items: center;
+  font-size: 20px;
+  position: relative;
+  width: 70%;
+  margin-left: 60px;
+  margin-right: 0;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.p-menubar-start span{
+  margin-left: 10px;
+}
+.login Button{
+  background-image: linear-gradient(to right, rgba(39, 70, 133, 0.8) 0%, rgba(61, 179, 197, 0.8) 100%);
+}
+.login Button:hover{
+  background-color: black;
+}
+
+Button{
+  transition: none;
 }
