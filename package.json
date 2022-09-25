@@ -1,5 +1,5 @@
 {
-  "name": "tmh-web-application",
+  "name": "vue-project",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "pinia": "^2.0.21",
     "primeflex": "^3.2.1",
     "primeicons": "^6.0.1",
     "primevue": "^3.17.0",
@@ -18,7 +17,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.3",
-    "sass-loader": "^13.0.2",
     "vite": "^3.0.9"
   }
 }
