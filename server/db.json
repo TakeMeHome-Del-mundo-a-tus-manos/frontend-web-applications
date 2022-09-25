@@ -1,0 +1,144 @@
+{
+    "people":[
+        {
+        "id": 1,
+        "name": "Jasmin",
+        "email": "jpile0@slate.com",
+        "password": 123
+        }, 
+        {
+        "id": 2,
+        "name": "Kali",
+        "email": "kphalp1@smugmug.com",
+        "password": 123
+    }, {
+        "id": 3,
+        "name": "Ivor",
+        "email": "ipopelay2@gnu.org",
+        "password": 123
+    }, {
+        "id": 4,
+        "name": "Catarina",
+        "email": "clittlechild3@ucla.edu",
+        "password": 123
+    }, {
+        "id": 5,
+        "name": "Deena",
+        "email": "dspence4@digg.com",
+        "password": 123
+    }, {
+        "id": 6,
+        "name": "Niki",
+        "email": "nagate5@cam.ac.uk",
+        "password": 123
+    }, {
+        "id": 7,
+        "name": "Martynne",
+        "email": "mamis6@nytimes.com",
+        "password": 123
+    }, {
+        "id": 8,
+        "name": "Cissy",
+        "email": "cmoxstead7@google.de",
+        "password": 123
+    }, {
+        "id": 9,
+        "name": "Brigg",
+        "email": "bogrogane8@jiathis.com",
+        "password": 123
+    }, {
+        "id": 10,
+        "name": "Wendy",
+        "email": "wtosh9@geocities.jp",
+        "password": 123
+    }, {
+        "id": 11,
+        "name": "Jeremie",
+        "email": "jdorrinsa@amazon.co.uk",
+        "password": 123
+    }, {
+        "id": 12,
+        "name": "Pall",
+        "email": "pwaitb@sitemeter.com",
+        "password": 123
+    }, {
+        "id": 13,
+        "name": "Kylie",
+        "email": "kdubosec@trellian.com",
+        "password": 123
+    }, {
+        "id": 14,
+        "name": "Shanon",
+        "email": "sgiocannonid@unc.edu",
+        "password": 123
+    }, {
+        "id": 15,
+        "name": "Gabbie",
+        "email": "gvallendere@csmonitor.com",
+        "password": 123
+    }
+    ],
+    "products":[
+      {
+        "id": 1,
+        "product_type": "Finance",
+        "product": "Major Banks"
+      }, {
+        "id": 2,
+        "product_type": "n/a",
+        "product": "n/a"
+      }, {
+        "id": 3,
+        "product_type": "Public Utilities",
+        "product": "Oil/Gas Transmission"
+      }, {
+        "id": 4,
+        "product_type": "n/a",
+        "product": "n/a"
+      }, {
+        "id": 5,
+        "product_type": "Miscellaneous",
+        "product": "Business Services"
+      }, {
+        "id": 6,
+        "product_type": "Capital Goods",
+        "product": "Auto Parts:O.E.M."
+      }, {
+        "id": 7,
+        "product_type": "Health Care",
+        "product": "Medical/Nursing Services"
+      }, {
+        "id": 8,
+        "product_type": "Consumer Services",
+        "product": "Real Estate Investment Trusts"
+      }, {
+        "id": 9,
+        "product_type": "Consumer Services",
+        "product": "Marine Transportation"
+      }, {
+        "id": 10,
+        "product_type": "Health Care",
+        "product": "Hospital/Nursing Management"
+      }, {
+        "id": 11,
+        "product_type": "Consumer Non-Durables",
+        "product": "Farming/Seeds/Milling"
+      }, {
+        "id": 12,
+        "product_type": "Capital Goods",
+        "product": "Homebuilding"
+      }, {
+        "id": 13,
+        "product_type": "n/a",
+        "product": "n/a"
+      }, {
+        "id": 14,
+        "product_type": "Consumer Services",
+        "product": "Building operators"
+      }, {
+        "id": 15,
+        "product_type": "Public Utilities",
+        "product": "Telecommunications Equipment"
+      }
+    ]
+}

@@ -12,8 +12,8 @@
             </template>
         </Menubar>
     </div>
+      
 </template>
-
 
 <script>
 export default {

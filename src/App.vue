@@ -21,6 +21,7 @@ import Navbar from './components/Navbar.vue';
     <Navbar class="navbar"/>
   </header>
 
+  <RouterView />
 
     <!-- <nav>
       <RouterLink to="/">Home</RouterLink>
@@ -39,7 +40,6 @@ import Navbar from './components/Navbar.vue';
     </div>
   </header> -->
 
-  <RouterView />
 </template>
 
 <style scoped>

@@ -28,7 +28,12 @@
                 <a class="font-medium no-underline ml-2 text-blue-500 text-center cursor-pointer">Forgot password?</a>
             </div>
 
-            <Button  label="Login" class="w-full" v-on:click="login" ></Button>
+            <Message v-if="error" severity="error" key="Dynamic Warning Message">{{error_msg}}</Message>
+
+            <RouterLink :to="link">
+                <Button  label="Login" class="w-full" v-on:click="login" >
+                </Button>
+            </RouterLink>
 
         </div>
     </div>
@@ -39,7 +44,7 @@
         font-family: Poppins;
     }
     
-    Button{
+    RouterLink Button{
         background-image: linear-gradient(to right, rgba(39, 70, 133, 0.8) 0%, rgba(61, 179, 197, 0.8) 100%);
     }
     .login input{
@@ -59,28 +64,42 @@
 </style>
 
 <script>
-import axios from 'axios'
-export default {
-     name: 'login',
-     components: {
-        
-     },
-     data: function() {
-         return {
-             user: "",
-             password: "",
-             error: false,
-             error_msg: ""
-         }
-     },
-     methods: {
-         login() {
-             let json = {
-                "user": this.user,
-                "password": this.password
-             };
+import { UserApiService } from "../services/user-api-service";
+import { StorageService } from "../services/http/storage-service"; 
 
-         }
-     }
+export default {
+    name: 'login',
+    components: {
+
+    },
+    data: function () {
+        this.usuarioApiService = new UserApiService()
+
+        return {
+            user: "",
+            password: "",
+            error: false,
+            error_msg: "",
+            link:""
+        }
+    },
+    methods: {
+        login() {
+            this.submittedLogin = true
+            this.usuarioApiService.getByEmailAndPassword(this.user, this.password).then(response => {
+
+                this.link = '/about'
+                console.log(response.data)
+                this.storage.set("usuario", response.data.id)
+                this.storage.set("nombre", response.data.name)
+
+            }).catch((e) => {
+                this.error = true
+                this.error_msg = e.message;
+                }
+            )
+        }
+    }
+
 }
 </script>

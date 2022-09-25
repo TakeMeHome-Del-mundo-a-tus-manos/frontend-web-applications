@@ -20,7 +20,7 @@ import SelectButton from "primevue/selectbutton";
 import Toolbar from "primevue/toolbar";
 import InputText from 'primevue/inputtext';
 import Badge from 'primevue/badge';
-
+import Message from 'primevue/message';
 
 
 import './assets/_theme.scss';
@@ -39,5 +39,6 @@ createApp(App)
  .component('Toolbar', Toolbar)
  .component('InputText', InputText)
  .component('badge', Badge)
+ .component('Message',Message)
  .mount('#app');
  
