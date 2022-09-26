@@ -21,7 +21,9 @@ import Toolbar from "primevue/toolbar";
 import InputText from 'primevue/inputtext';
 import Badge from 'primevue/badge';
 import Message from 'primevue/message';
-
+import Divider from 'primevue/divider';
+import Splitter from 'primevue/splitter';
+import SplitterPanel from 'primevue/splitterpanel';
 
 import './assets/_theme.scss';
 import './assets/main.css'
@@ -40,5 +42,9 @@ createApp(App)
  .component('InputText', InputText)
  .component('badge', Badge)
  .component('Message',Message)
+ .component('Divider',Divider)
+ .component('Splitter',Splitter)
+ .component('SplitterPanel',SplitterPanel)
+
  .mount('#app');
  

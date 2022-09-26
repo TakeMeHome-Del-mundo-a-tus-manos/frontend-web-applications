@@ -1,6 +1,10 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from './components/Navbar.vue';
+import Footer from './components/Footer.vue';
+import FooterLog from './components/FooterLog.vue';
+import NavbarHome from "./components/NavbarHome.vue";
+
 
 </script>
 
@@ -17,33 +21,37 @@ import Navbar from './components/Navbar.vue';
 </template> -->
 
 <template>
-  <header>
-    <Navbar class="navbar"/>
+  <header id="app">
+    <NavbarHome />
   </header>
-
   <RouterView />
-
-    <!-- <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav> -->
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-      <Navbar class="navbar"/>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header> -->
-
+  <footer>
+    <FooterLog class="FooterLog"></FooterLog>
+  </footer>
 </template>
 
 <style scoped>
   main{
     margin: 100px;
   }
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;500&display=swap');
+html,header{
+  height: 100%;
+  width:100%;
+
+}
+
+header, body{
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  width: 100%;
+
+  justify-content: center;
+  align-items: center;
+  
+}
+  
 </style>
