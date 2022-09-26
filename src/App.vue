@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from './components/Navbar.vue';
+import FooterLogin from './components/Footer-Login.vue';
 
 </script>
 
@@ -18,12 +19,12 @@ import Navbar from './components/Navbar.vue';
 
 <template>
   <header>
-    <Navbar class="navbar"/>
+    <Navbar class="navbar" />
   </header>
 
   <RouterView />
 
-    <!-- <nav>
+  <!-- <nav>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/about">About</RouterLink>
     </nav> -->
@@ -39,11 +40,11 @@ import Navbar from './components/Navbar.vue';
       </nav>
     </div>
   </header> -->
-
+  <FooterLogin></FooterLogin>
 </template>
 
 <style scoped>
-  main{
-    margin: 100px;
-  }
+main {
+  margin: 100px;
+}
 </style>

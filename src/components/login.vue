@@ -4,7 +4,7 @@
             <img src="./icons/TKM-favicon.png" alt="Image" height="50" class="mb-3">
             <div class="text-900 text-3xl font-medium mb-3">Welcome, let's get started!</div>
             <span class="text-600 font-medium line-height-3">Don't have an account?</span>
-            <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
+            <RouterLink to="/signup1"> <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a></RouterLink>
         </div>
 
         <div>
