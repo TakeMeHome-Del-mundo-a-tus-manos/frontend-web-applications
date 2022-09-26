@@ -22,7 +22,6 @@ import InputText from 'primevue/inputtext';
 import Badge from 'primevue/badge';
 import Message from 'primevue/message';
 
-
 import './assets/_theme.scss';
 import './assets/main.css'
 

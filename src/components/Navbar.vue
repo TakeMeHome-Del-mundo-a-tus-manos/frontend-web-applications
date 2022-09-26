@@ -31,7 +31,7 @@ export default {
                 },
                 {
                     label: 'Contact Us',
-                    link: '/home'
+                    link: '/'
 
                 },
 
