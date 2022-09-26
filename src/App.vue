@@ -4,7 +4,7 @@ import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
 import FooterLog from './components/FooterLog.vue';
 import NavbarHome from "./components/NavbarHome.vue";
-
+import FooterLogin from './components/Footer-Login.vue';
 
 </script>
 
@@ -54,4 +54,29 @@ header, body{
   
 }
   
+
+  <!-- <nav>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">About</RouterLink>
+    </nav> -->
+  <!-- <header>
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+
+    <div class="wrapper">
+      <HelloWorld msg="You did it!" />
+      <Navbar class="navbar"/>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </div>
+  </header> -->
+  <FooterLogin></FooterLogin>
+</template>
+
+<style scoped>
+main {
+  margin: 100px;
+}
+
 </style>
