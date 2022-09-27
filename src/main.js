@@ -21,7 +21,8 @@ import Toolbar from "primevue/toolbar";
 import InputText from 'primevue/inputtext';
 import Badge from 'primevue/badge';
 import Message from 'primevue/message';
-
+import Calendar from 'primevue/calendar';
+import Dropdown from 'primevue/dropdown';
 import Divider from 'primevue/divider';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
@@ -33,6 +34,10 @@ import FooterInit from './components/public/Footer-Login.vue'
 import Signup1 from './components/public/Signup1.vue'
 import Signup2 from './components/public/Signup2.vue'
 import Signup3 from './components/public/Signup3.vue'
+import TripSelectbar from './components/private/trip/TripSelectbar.vue'
+import Footer from './components/private/Footer.vue'
+import NavbarHome from './components/private/NavbarHome.vue'
+import MakeTripContent from './components/private/trip/MakeTripContent.vue'
 
 import './assets/_theme.scss';
 import './assets/main.css'
@@ -54,11 +59,16 @@ createApp(App)
  .component('Divider',Divider)
  .component('Splitter',Splitter)
  .component('SplitterPanel',SplitterPanel)
+ .component('pv-calendar',Calendar)
+ .component('pv-dropdown',Dropdown)
  .component('Login',Login)
  .component('NavbarInit',NavbarInit)
  .component('FooterInit',FooterInit)
  .component('Signup1',Signup1)
  .component('Signup2',Signup2)
  .component('Signup3',Signup3)
-
+ .component('TripSelectbar',TripSelectbar)
+ .component('Footer',Footer)
+ .component('NavbarHome',NavbarHome)
+ .component('MakeTripContent',MakeTripContent)
  .mount('#app');

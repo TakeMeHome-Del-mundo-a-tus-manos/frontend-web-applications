@@ -2,7 +2,7 @@
     <header>
         <div class="menu-top">
             <div class="prueba">
-            <img src="./icons/TKM-favicon.png" height="40" >
+            <img src="../icons/TKM-favicon.png" height="40" >
             <h2> Take Me Home</h2>
         </div>
         <nav class="menu-left">
@@ -20,12 +20,12 @@
         <ul class="menu">
             <div class="menu-indicator" :style="{left:positionToMove, width:sliderWidth}"></div>
             <li class="menu-item" v-for="link in links" :key="link.id" @click="sliderIndicator(link.id)" :ref="'menu-item_' + link.id">
-            <a href="#" class="menu-link" :class="link.id === selectedIndex ? 'active': null">
+                <RouterLink :to="link.path" class="no-underline" >
+                <a href="#" class="menu-link" :class="link.id === selectedIndex ? 'active': null">
                 <i class="menu-icon" :class="link.icon"></i>
                 <span>{{link.text }}</span>
-                    
-            </a>
-                
+                </a>
+                </RouterLink>
             </li>
         
         </ul>
@@ -47,30 +47,37 @@ export default {
                 id:1,
                 icon:"",
                 text: "Home",
+                path: '/',
             },
             {
                 id:2,
                 text: "My Messages",
+                path: '/',
             },
             {
                 id:3,
                 text: "My Orders",
+                path: '/',
             },
             {
                 id:4,
                 text: "Order Request",
+                path: '/order-request',
             },
             {
                 id:5,
                 text: "Resume",
+                path: '/',
             },
             {
                 id:6,
                 text: "Support",
+                path: '/',
             },
             {
                 id:7,
                 icon: "pi pi-bell",
+                path: '/',
             },
 
             ],
@@ -100,10 +107,7 @@ export default {
 </script>
 
 <style>
-body{
-    margin:0;
-    
-}
+
 :root{
   --activa-color:#ffffff;
   --link-text-color:#f1faee;
