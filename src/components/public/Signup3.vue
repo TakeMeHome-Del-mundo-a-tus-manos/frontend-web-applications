@@ -17,7 +17,7 @@
             <div class="input-div">
                 <label class="block text-900 font-medium mb-2"> <strong> Description about you </strong></label>
                 <span class="input-span">
-                    <Textarea :autoResize="true" class="p-inputtextarea" v-mode="description"/>
+                    <Textarea :autoResize="true" class="p-inputtextarea" v-model="description"/>
                 </span>
             </div>
 
@@ -73,15 +73,16 @@ button {
 </style>
 
 <script>
-
+import { UserApiServiceJSON } from "../../services/user-api-service-json";
 import Textarea from 'primevue/textarea';
 export default {
     components: {
         Textarea
     },
     data() {
+        this.userApiServiceJSON = new UserApiServiceJSON();
         return {
-            name: "",
+            username: "",
             description: "",
             link: ""        
         }
@@ -91,11 +92,11 @@ export default {
             if (this.name == "" || this.description == "") {
                 alert("Please fill in all the fields");
             } else {
-                this.link = "/home";
+                this.link = "/";
                 //Convertir a JSON
                 var user = {
-                    name: this.name,
-                    username: sessionStorage.getItem("username"),
+                    name: sessionStorage.getItem("name"),
+                    username: this.username,
                     password: sessionStorage.getItem("password"),
                     email: sessionStorage.getItem("email"),
                     country: sessionStorage.getItem("country"),
@@ -105,7 +106,9 @@ export default {
                     description: this.description
                 };
                 localStorage.setItem("user", JSON.stringify(user));
+                this.userApiServiceJSON.create(user);
                 console.log(user);
+                sessionStorage.clear();
                 alert("Success!")
             }
         }

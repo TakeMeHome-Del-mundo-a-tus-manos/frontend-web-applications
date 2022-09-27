@@ -34,6 +34,10 @@ import Signup1 from './components/public/Signup1.vue'
 import Signup2 from './components/public/Signup2.vue'
 import Signup3 from './components/public/Signup3.vue'
 
+
+import { useVuelidate } from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+
 import './assets/_theme.scss';
 import './assets/main.css'
 
@@ -60,5 +64,8 @@ createApp(App)
  .component('Signup1',Signup1)
  .component('Signup2',Signup2)
  .component('Signup3',Signup3)
+ .component('useVuelidate',useVuelidate)
+ .component('required',required)
+    .component('email',email)
 
  .mount('#app');
