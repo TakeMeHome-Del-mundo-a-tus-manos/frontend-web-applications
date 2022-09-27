@@ -34,6 +34,7 @@ import Signup1 from './components/public/Signup1.vue'
 import Signup2 from './components/public/Signup2.vue'
 import Signup3 from './components/public/Signup3.vue'
 
+
 import './assets/_theme.scss';
 import './assets/main.css'
 
