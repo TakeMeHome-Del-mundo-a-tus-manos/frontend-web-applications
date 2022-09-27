@@ -2,17 +2,17 @@
   <div class="surface-card p-4 shadow-0 border-round w-180 lg:w-7 SeeMessage">
     <aside class="subtitle">You have 0 new messages</aside>
     <div class="box20">
-      <img class="ContactPhoto" alt="ContactPhoto" src="./icons/img/ContactPhoto.png">
+      <img class="ContactPhoto" alt="ContactPhoto" src="src/components/img/ContactPhoto.png">
       <aside class="name">Lili Ramos</aside>
       <aside class="message">Write a message...</aside>
     </div>
     <div class="box30">
-      <img class="ContactPhoto" alt="ContactPhoto" src="./icons/img/Contact2Photo.png">
+      <img class="ContactPhoto" alt="ContactPhoto" src="src/components/img/Contact2Photo.png">
       <aside class="name">Jean Pearse</aside>
       <aside class="message">Write a message...</aside>
     </div>
     <div class="box40">
-      <img class="ContactPhoto" alt="ContactPhoto" src="./icons/img/Contact3Photo.png">
+      <img class="ContactPhoto" alt="ContactPhoto" src="src/components/img/Contact3Photo.png">
       <aside class="name">Emily Pinedo</aside>
       <aside class="message">Write a message...</aside>
     </div>

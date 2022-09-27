@@ -1,41 +1,41 @@
 <template>
   <div class="surface-card p-4 shadow-0 border-round w-100 lg:w-20 Home">
-    <img class="UserPhoto" alt="UserPhoto" src=".img/Oscar_User.jpg">
+    <img class="UserPhoto" alt="UserPhoto" src="src/components/img/Oscar_User.jpg">
     <aside class="text5">Hi, Oscar!.</aside>
     <div class="box_blank2 p-4 shadow-0 border-round w-auto lg:w-100 Home"> </div>
     <aside class="text3 font-medium line-height-3 ">Popular Stores</aside>
     <div class="box3 p-4 shadow-0 border-round w-auto lg:w-20">
-      <a href="https://www.walmart.com/" target="_blank"><img class="Walmart" alt="Walmart" src="./icons/img/Walmart.jpg"></a>
-      <a href="https://www.amazon.com/" target="_blank"><img class="Amazon" alt="Amazon" src="./icons/img/Amazon.png"></a>
+      <a href="https://www.walmart.com/" target="_blank"><img class="Walmart" alt="Walmart" src="src/components/img/Walmart.jpg"></a>
+      <a href="https://www.amazon.com/" target="_blank"><img class="Amazon" alt="Amazon" src="src/components/img/Amazon.png"></a>
     </div>
     <div class="box6 p-4 shadow-0 border-round w-full lg:w-20"></div>
     <div class="box4 p-4 shadow-0 border-round w-auto lg:w-20">
-      <a href="https://www.ebay.com/" target="_blank"><img class="Ebay" alt="Ebay" src="./icons/img/Ebay.png"></a>
-      <a href="https://www.apple.com/" target="_blank"><img class="Apple" alt="Apple" src="./icons/img/Apple.png"></a>
+      <a href="https://www.ebay.com/" target="_blank"><img class="Ebay" alt="Ebay" src="src/components/img/Ebay.png"></a>
+      <a href="https://www.apple.com/" target="_blank"><img class="Apple" alt="Apple" src="src/components/img/Apple.png"></a>
     </div>
   </div>
 
   <div class="surface-card2 p-4 shadow-0 border-round w-auto lg:w-20 Home">
-    <center><a href="" ><aside class="text2 font-medium line-height-3">My account</aside></a></center>
+    <div style="text-align: center;"><a href="" ><aside class="text2 font-medium line-height-3">My account</aside></a></div>
     <Button  label="Order Request" class="w-auto" v-on:click="" ></Button>
     <div class="box_blank p-4 shadow-0 border-round w-auto lg:w-20 Home"> </div>
     <aside class="text3 font-medium line-height-3">Recent Orders</aside>
     <div class="Boxes">
       <div class="box1 p-4 shadow-1 border-round w-full lg:w-20">
-        <img id="PhotoIphone" alt="PhotoIphone" src="./icons/img/Iphone.png">
+        <img id="PhotoIphone" alt="PhotoIphone" src="src/components/img/Iphone.png">
         <center>
           <aside class="Subtitle1">Iphone 13 PRO MAX</aside>
           <aside class="time1">3 months ago</aside>
-          <img class="Apple2" alt="Apple2" src="./icons/img/Apple.png">
+          <img class="Apple2" alt="Apple2" src="src/components/img/Apple.png">
         </center>
       </div>
       <div class="box7 p-4 shadow-0 border-round w-full lg:w-20"></div>
       <div class="box2 p-4 shadow-1 border-round w-full lg:w-20">
-        <img id="PhotoXbox" alt="PhotoXbox" src="./icons/img/Xbox.png">
+        <img id="PhotoXbox" alt="PhotoXbox" src="src/components/img/Xbox.png">
         <center>
           <aside class="Subtitle2">XBOX SERIES S 512GB</aside>
           <aside class="time2">5 months ago</aside>
-          <img class="Amazon2" alt="Amazon2" src="./icons/img/Amazon2.png">
+          <img class="Amazon2" alt="Amazon2" src="src/components/img/Amazon2.png">
         </center>
       </div>
     </div>
@@ -203,11 +203,11 @@ div.box7{
   height: 20px;
 }
 div.surface-card{
-  margin-top:-80px;
+  margin-top:60px;
   margin-bottom:-16px;
 }
 div.surface-card2{
-  margin-top:-80px;
+  margin-top:60px;
   margin-bottom:-16px;
 }
 </style>
