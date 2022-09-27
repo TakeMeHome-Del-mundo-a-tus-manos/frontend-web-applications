@@ -10,7 +10,7 @@
                 <label for="email" class="block text-900 font-medium mb-2"> <strong> Email/Username</strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-user" />
-                    <InputText type="email" class="p-inputtext-md" placeholder="Username" />
+                    <InputText type="email" class="p-inputtext-md" placeholder="Username" v-model="username"/>
                 </span>
             </div>
 
@@ -18,7 +18,7 @@
                 <label class="block text-900 font-medium mb-2"> <strong> Password</strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-lock" />
-                    <InputText type="password" class="p-inputtext-md" placeholder="************" />
+                    <InputText type="password" class="p-inputtext-md" placeholder="************" v-model="password" />
                 </span>
             </div>
 
@@ -27,13 +27,13 @@
                         Password</strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-lock" />
-                    <InputText type="password" class="p-inputtext-md" placeholder="************" />
+                    <InputText type="password" class="p-inputtext-md" placeholder="************" v-model="confirmPassword" />
                 </span>
             </div>
 
             <div class="input-div">
                 <RouterLink to="/signup2">
-                    <Button label="Continue" class="w-full">
+                    <Button label="Continue" class="w-full" v-on:click="validate()">
                     </Button>
                 </RouterLink>
             </div>
@@ -42,35 +42,35 @@
     </div>
 </template>
 
-<style>
-.login {
-    font-family: Poppins;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-}
-
-.login .input-span {
-    width: 100%;
-}
-
-.input-div {
-    margin: 30px;
-}
-
-.extra-form-div {
-    width: 100%;
-}
-
-@media only screen and (max-width: 750px) {
-    .login {
-        width: 100%;
-    }
-}
-</style>
-
 <script>
 
 </script>
+
+<style>
+    .login {
+        font-family: Poppins;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+    }
+    
+    .login .input-span {
+        width: 100%;
+    }
+    
+    .input-div {
+        margin: 30px;
+    }
+    
+    .extra-form-div {
+        width: 100%;
+    }
+    
+    @media only screen and (max-width: 750px) {
+        .login {
+            width: 100%;
+        }
+    }
+    </style>

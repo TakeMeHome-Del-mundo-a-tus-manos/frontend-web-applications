@@ -1,7 +1,7 @@
 <template>
     <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6 login">
         <div class="text-center mb-5">
-            <img src="./icons/TKM-favicon.png" alt="Image" height="50" class="mb-3">
+            <img src="../icons/TKM-favicon.png" alt="Image" height="50" class="mb-3">
             <div class="text-900 text-3xl font-medium mb-3">Welcome, let's get started!</div>
             <span class="text-600 font-medium line-height-3">Don't have an account?</span>
             <RouterLink to="/signup1"> <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a></RouterLink>
@@ -64,8 +64,8 @@
 </style>
 
 <script>
-import { UserApiService } from "../services/user-api-service";
-import { StorageService } from "../services/http/storage-service"; 
+import { UserApiService } from "../../services/user-api-service";
+import { StorageService } from "../../services/http/storage-service"; 
 
 export default {
     name: 'login',

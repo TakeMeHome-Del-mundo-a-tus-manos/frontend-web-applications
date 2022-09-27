@@ -31,7 +31,6 @@
     }
     p{
         
-        width: 150px;
         height: 24px;
         left: 1187px;
         top: 970px;
@@ -40,7 +39,6 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 24px;
-        display: flex;
         align-items: center;
         text-transform: capitalize;
         color: #FFFFFF;

@@ -2,7 +2,7 @@
     <div class="menubar" >
        <Menubar :model="items">
             <template #start>
-                <img alt="logo" src="./icons/TKM-favicon.png" height="40" class="mr-2">
+                <img alt="logo" src="../icons/TKM-favicon.png" height="40" class="mr-2">
                 <span> <strong>TakeMeHome</strong></span>
             </template>
             <template #item="{item}" class="nav-buttons">
@@ -21,20 +21,17 @@ export default {
         return {
             items: [
                 {
-                    label: 'Home',
+                    label: 'Login',
                     link: '/'
                 },
                 {
-                    label: 'Us',
-                    link: '/about'
-
+                    label: 'SignUp',
+                    link: '/signup1'
                 },
                 {
                     label: 'Contact Us',
                     link: '/'
-
-                },
-
+                }
             ]
         }
     }

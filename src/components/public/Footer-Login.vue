@@ -1,12 +1,12 @@
 <template>
     <div>
-        <footer color="primary">
+        <footer>
             <div class="footer">
                 <h2>About Take Me Home</h2>
-                <i class="pi pi-facebook" />
-                <i class="pi pi-instagram" />
-                <i class="pi pi-linkedin" />
-                <i class="pi pi-twitter" />
+                <Button icon="pi pi-twitter" class="p-button-raised p-button-rounded" />
+                <Button icon="pi pi-facebook" class="p-button-raised p-button-rounded" />
+                <Button icon="pi pi-instagram" class="p-button-raised p-button-rounded" />
+                <Button icon="pi pi-linkedin" class="p-button-raised p-button-rounded" />
                 <p>© TakeMeHome, 2022.</p>
             </div>
         </footer>
@@ -31,7 +31,10 @@ i {
 }
 
 p {
-    margin-top: 15px
+    margin-top: 15px;
+    width: auto;
+    display: block;
 }
+
 </style>
 

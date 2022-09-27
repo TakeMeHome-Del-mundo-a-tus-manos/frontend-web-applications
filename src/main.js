@@ -27,6 +27,13 @@ import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
 
 
+import Login from './components/public/Login.vue'
+import NavbarInit from './components/public/Navbar.vue'
+import FooterInit from './components/public/Footer-Login.vue'
+import Signup1 from './components/public/Signup1.vue'
+import Signup2 from './components/public/Signup2.vue'
+import Signup3 from './components/public/Signup3.vue'
+
 import './assets/_theme.scss';
 import './assets/main.css'
 
@@ -47,5 +54,11 @@ createApp(App)
  .component('Divider',Divider)
  .component('Splitter',Splitter)
  .component('SplitterPanel',SplitterPanel)
+ .component('Login',Login)
+ .component('NavbarInit',NavbarInit)
+ .component('FooterInit',FooterInit)
+ .component('Signup1',Signup1)
+ .component('Signup2',Signup2)
+ .component('Signup3',Signup3)
 
  .mount('#app');
