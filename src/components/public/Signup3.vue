@@ -10,20 +10,20 @@
                 <label for="email" class="block text-900 font-medium mb-2"> <strong> Username </strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-user" />
-                    <InputText type="email" class="p-inputtext-md" placeholder="Full name" />
+                    <InputText type="text" class="p-inputtext-md" placeholder="Username" v-model="username"/>
                 </span>
             </div>
 
             <div class="input-div">
                 <label class="block text-900 font-medium mb-2"> <strong> Description about you </strong></label>
                 <span class="input-span">
-                    <Textarea :autoResize="true" class="p-inputtextarea"/>
+                    <Textarea :autoResize="true" class="p-inputtextarea" v-mode="description"/>
                 </span>
             </div>
 
             <div class="input-div">
-                <RouterLink to="/signup3">
-                    <Button label="Create account" class="w-full">
+                <RouterLink :to="link">
+                    <Button label="Create account" class="w-full" v-on:click="validate()">
                     </Button>
                 </RouterLink>
             </div>
@@ -33,7 +33,6 @@
 </template>
 
 <style>
-
 .login {
     font-family: Poppins;
     width: 50%;
@@ -62,7 +61,7 @@
     width: 100%;
 }
 
-button{
+button {
     text-decoration: dotted;
 }
 
@@ -75,11 +74,42 @@ button{
 
 <script>
 
-    
 import Textarea from 'primevue/textarea';
 export default {
     components: {
         Textarea
+    },
+    data() {
+        return {
+            name: "",
+            description: "",
+            link: ""        
+        }
+    },
+    methods: {
+        validate() {
+            if (this.name == "" || this.description == "") {
+                alert("Please fill in all the fields");
+            } else {
+                this.link = "/home";
+                //Convertir a JSON
+                var user = {
+                    name: this.name,
+                    username: sessionStorage.getItem("username"),
+                    password: sessionStorage.getItem("password"),
+                    email: sessionStorage.getItem("email"),
+                    country: sessionStorage.getItem("country"),
+                    birthDate: sessionStorage.getItem("birthDate"),
+                    phone: sessionStorage.getItem("phone"),
+                    idCard: sessionStorage.getItem("idCard"),
+                    description: this.description
+                };
+                localStorage.setItem("user", JSON.stringify(user));
+                console.log(user);
+                alert("Success!")
+            }
+        }
+        
     }
 }
 

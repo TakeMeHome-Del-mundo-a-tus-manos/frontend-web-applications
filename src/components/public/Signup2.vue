@@ -7,10 +7,10 @@
 
         <div>
             <div class="input-div">
-                <label for="email" class="block text-900 font-medium mb-2"> <strong> Full Name </strong></label>
+                <label class="block text-900 font-medium mb-2"> <strong> Full Name </strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-user" />
-                    <InputText type="email" class="p-inputtext-md" placeholder="Full name" />
+                    <InputText type="text" class="p-inputtext-md" placeholder="Full name" v-model="name"/>
                 </span>
             </div>
 
@@ -18,7 +18,7 @@
                 <label class="block text-900 font-medium mb-2"> <strong> Country </strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-home" />
-                    <InputText type="text" class="p-inputtext-md" placeholder="Country" />
+                    <InputText type="text" class="p-inputtext-md" placeholder="Country" v-model="country" />
                 </span>
             </div>
         
@@ -26,7 +26,7 @@
                 <label class="block text-900 font-medium mb-2"> <strong> Birth Date</strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-calendar" />
-                    <InputText type="date" class="p-inputtext-md" />
+                    <InputText type="date" class="p-inputtext-md" v-model="birthDate" v-on:change="getstorage()"/>
 
                 </span>
             </div>
@@ -35,7 +35,7 @@
                 <label class="block text-900 font-medium mb-2"> <strong> Phone Number</strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-phone" />
-                    <InputText type="tel" class="p-inputtext-md" placeholder="Phone number" />
+                    <InputText type="tel" class="p-inputtext-md" placeholder="Phone number" v-model="phone" />
                 </span>
             </div>
 
@@ -43,13 +43,13 @@
                 <label class="block text-900 font-medium mb-2"> <strong> Identify card</strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-id-card" />
-                    <InputText type="tel" class="p-inputtext-md" placeholder="ID number" />
+                    <InputText type="tel" class="p-inputtext-md" placeholder="ID number" v-model="idCard"/>
                 </span>
             </div>
 
             <div class="input-div">
-                <RouterLink to="/signup3">
-                    <Button label="Continue" class="w-full">
+                <RouterLink :to="link">
+                    <Button label="Continue" class="w-full" v-on:click="validate()">
                     </Button>
                 </RouterLink>
             </div>
@@ -94,5 +94,36 @@
 
 <script>
 
+export default{
+    name: "Signup2",
+    components: {
+        
+    },
+    data: function () {
+        return {
+            name: "",
+            country: "",
+            birthDate: "",
+            phone: "",
+            idCard: "",
+            link: ""         
+        }
+    },
+    methods: {
+        validate: function () {
+            if (this.email == "" || this.country == "" || this.birthDate == "" || this.phone == "" || this.idCard == "") {
+                alert("Please fill in all the fields");
+            } else {
+                this.link = "/signup3";
+                sessionStorage.setItem("name", this.name);
+                sessionStorage.setItem("country", this.country);
+                sessionStorage.setItem("birthDate", this.birthDate);
+                sessionStorage.setItem("phone", this.phone);
+                sessionStorage.setItem("idCard", this.idCard);
+            }
+        }
+    }
+
+}
 
 </script>
