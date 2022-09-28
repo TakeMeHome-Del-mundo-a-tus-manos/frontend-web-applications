@@ -1,31 +1,37 @@
-import htttpJson from './http/http-common-json'
+import axios from 'axios';
+import httpJson from      './http/http-common-json'
 
 export class UserApiServiceJSON {
   getAll() {
-    return htttpJson.get("/people");
+    return httpJson.get("/people");
   }
 
   getById(id) {
-    return htttpJson.get(`/people/${id}`);
+    return httpJson.get(`/people/${id}`);
   }
 
   create(data) {
-    return htttpJson.post("/people", data);
+    return httpJson.post("/people", data);
   }
 
   update(id, data) {
-    return htttpJson.put(`/people/${id}`, data);
+    return httpJson.put(`/people/${id}`, data);
   }
 
   delete(id) {
-    return htttpJson.delete(`/people/${id}`);
+    return httpJson.delete(`/people/${id}`);
   }
 
   getByEmailAndPassword(email, password){
-    return htttpJson.post(`/people`,JSON.stringify({email,password}));
+    return httpJson.post(`/people`,JSON.stringify({email,password}));
   }
 
   findByName(name) {
-    return htttpJson.get(`/people?name=${name}`);
+    return httpJson.get(`/people?name=${name}`);
+  }
+  usernameExists(username){
+    
+    return httpJson.get(`/people?username=${username}`)
+    
   }
 }

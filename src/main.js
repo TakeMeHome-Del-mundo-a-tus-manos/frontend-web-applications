@@ -25,6 +25,7 @@ import Message from 'primevue/message';
 import Divider from 'primevue/divider';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
+import Dropdown from 'primevue/dropdown';
 
 
 import Login from './components/public/Login.vue'
@@ -67,5 +68,6 @@ createApp(App)
  .component('useVuelidate',useVuelidate)
  .component('required',required)
     .component('email',email)
+   .component('Dropdown',Dropdown)
 
  .mount('#app');

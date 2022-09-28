@@ -7,17 +7,24 @@
 
         <div>
             <div class="input-div">
-                <label for="email" class="block text-900 font-medium mb-2"> <strong> Username </strong></label>
+                <label class="block text-900 font-medium mb-2"> <strong> Username </strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-user" />
-                    <InputText type="text" class="p-inputtext-md" placeholder="Username" v-model="username"/>
+                    <InputText type="text" class="p-inputtext-md" placeholder="Username" v-model="username"
+                        v-on:change="validateUsername()" />
                 </span>
+                <Message v-if=usernameError v-on:close="usernameError=false" severity="error">Name is <strong>
+                        empty</strong>
+                </Message>
+                <Message v-if=sameUsernameError v-on:close="sameUsernameError=false" severity="warn">This username <strong>
+                    already exists</strong>
+                </Message>
             </div>
 
             <div class="input-div">
                 <label class="block text-900 font-medium mb-2"> <strong> Description about you </strong></label>
                 <span class="input-span">
-                    <Textarea :autoResize="true" class="p-inputtextarea" v-model="description"/>
+                    <Textarea :autoResize="true" class="p-inputtextarea" v-model="description" />
                 </span>
             </div>
 
@@ -84,7 +91,23 @@ export default {
         return {
             username: "",
             description: "",
-            link: ""        
+            link: "",
+
+            usernameError: false,
+            sameUsernameError: false,
+
+            user: {
+                name: "",
+                username: "",
+                password: "",
+                email: "",
+                country: "",
+                birthDate: "",
+                phone: "",
+                idCard: "",
+                description: ""
+
+            }
         }
     },
     methods: {
@@ -92,27 +115,47 @@ export default {
             if (this.name == "" || this.description == "") {
                 alert("Please fill in all the fields");
             } else {
-                this.link = "/";
+                this.link = "/"
                 //Convertir a JSON
-                var user = {
-                    name: sessionStorage.getItem("name"),
-                    username: this.username,
-                    password: sessionStorage.getItem("password"),
-                    email: sessionStorage.getItem("email"),
-                    country: sessionStorage.getItem("country"),
-                    birthDate: sessionStorage.getItem("birthDate"),
-                    phone: sessionStorage.getItem("phone"),
-                    idCard: sessionStorage.getItem("idCard"),
-                    description: this.description
-                };
-                localStorage.setItem("user", JSON.stringify(user));
+                this.user.name = sessionStorage.getItem("name");
+                this.user.username = this.username;
+                this.user.password = sessionStorage.getItem("password");
+                this.user.email = sessionStorage.getItem("email");
+                this.user.country = sessionStorage.getItem("country");
+                this.user.birthDate = sessionStorage.getItem("birthDate");
+                this.user.phone = sessionStorage.getItem("phone");
+                this.user.idCard = sessionStorage.getItem("idCard");
+                this.user.description = this.description
+
+                // sessionStorage.setItem("user", JSON.stringify(user));
                 this.userApiServiceJSON.create(user);
                 console.log(user);
                 sessionStorage.clear();
                 alert("Success!")
             }
+        },
+        validateUsername() {
+            this.usernameExists();
+            if (this.username == "") {
+                this.usernameError = true;
+            }
+            else {
+                this.usernameError = false;
+            }
+        },
+        usernameExists() {
+            this.userApiServiceJSON.usernameExists(this.username).then(response => {
+                console.log(response.data[0].username);
+                if (response.data[0].username == this.username) {
+                    this.sameUsernameError = true;
+                }
+            }).catch(error => {
+                console.log(error);
+                this.sameUsernameError = false;
+            });
+
         }
-        
+
     }
 }
 

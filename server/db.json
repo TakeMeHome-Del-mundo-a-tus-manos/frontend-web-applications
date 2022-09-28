@@ -115,16 +115,16 @@
       "id": 17
     },
     {
-      "name": null,
-      "username": "a",
-      "password": null,
-      "email": null,
-      "country": null,
-      "birthDate": null,
-      "phone": null,
-      "idCard": null,
-      "description": "12",
-      "id": 18
+      "name": "Juana Ter",
+      "username": "asd",
+      "password": "12312312",
+      "email": "a@m.v",
+      "country": "[object Object]",
+      "birthDate": "2022-08-31",
+      "phone": "123",
+      "idCard": "0003",
+      "description": "asds",
+      "id": 22
     }
   ],
   "products": [
