@@ -26,7 +26,11 @@ import Dropdown from 'primevue/dropdown';
 import Divider from 'primevue/divider';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
+ 
 import Carousel from 'primevue/carousel';
+ 
+import Dropdown from 'primevue/dropdown';
+ 
 
 
 import Login from './components/public/Login.vue'
@@ -40,6 +44,10 @@ import Footer from './components/private/Footer.vue'
 import NavbarHome from './components/private/NavbarHome.vue'
 import MakeTripContent from './components/private/trip/MakeTripContent.vue'
 import OrderTripSelectBar from  './components/private/trip/OrderTripSelectbar.vue'
+
+
+import { useVuelidate } from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
 
 import './assets/_theme.scss';
 import './assets/main.css'
@@ -70,9 +78,16 @@ createApp(App)
  .component('Signup1',Signup1)
  .component('Signup2',Signup2)
  .component('Signup3',Signup3)
+ 
  .component('Footer',Footer)
  .component('NavbarHome',NavbarHome)
  .component('MakeTripContent',MakeTripContent)
  .component('TripSelectBar', TripSelectBar)
  .component('OrderTripSelectBar', OrderTripSelectBar)
+ 
+ .component('useVuelidate',useVuelidate)
+ .component('required',required)
+    .component('email',email)
+   .component('Dropdown',Dropdown)
+ 
  .mount('#app');
