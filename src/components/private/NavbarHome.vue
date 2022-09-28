@@ -31,6 +31,7 @@
         </ul>
         
     </header>
+  <RouterView />
     
 </template>
 
@@ -45,19 +46,18 @@ export default {
             links:[
             {
                 id:1,
-                icon:"",
                 text: "Home",
-                path: '/',
+                path: '/home',
             },
             {
                 id:2,
                 text: "My Messages",
-                path: '/',
+                path: '/messages',
             },
             {
                 id:3,
                 text: "My Orders",
-                path: '/',
+                path: '/my-orders',
             },
             {
                 id:4,
@@ -67,17 +67,17 @@ export default {
             {
                 id:5,
                 text: "Resume",
-                path: '/',
+                path: '/resume',
             },
             {
                 id:6,
                 text: "Support",
-                path: '/',
+                path: '/support',
             },
             {
                 id:7,
                 icon: "pi pi-bell",
-                path: '/',
+                path: '/notifications',
             },
 
             ],
