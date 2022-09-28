@@ -87,16 +87,18 @@ export default {
         login() {
             this.submittedLogin = true
             this.usuarioApiService.getByEmailAndPassword(this.user, this.password).then(response => {
-
-                this.link = '/about'
-                console.log(response.data)
-                this.storage.set("usuario", response.data.id)
-                this.storage.set("nombre", response.data.name)
-
-            }).catch((e) => {
-                this.error = true
-                this.error_msg = e.message;
+                if (response.data.length != 0) {
+                    console.log(response.data.length)
+                    this.link = '/about'
+                    console.log(response.data)
+                    this.storage.set("usuario", response.data.id)
+                    this.storage.set("nombre", response.data.name)
+                } else {
+                    this.error = true
+                    this.error_msg = "Login Error";
                 }
+
+            }
             )
         }
     }

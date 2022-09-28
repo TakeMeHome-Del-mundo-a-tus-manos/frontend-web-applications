@@ -21,8 +21,8 @@ export class UserApiService {
     return http.delete(`/login/${id}`);
   }
 
-  getByEmailAndPassword(email, password){
-    return http.post(`/login`,JSON.stringify({email,password}));
+  getByEmailAndPassword(email, password) {
+    return http.get(`/users?email=${email}&&password=${password}`);
   }
 
   findByName(name) {
