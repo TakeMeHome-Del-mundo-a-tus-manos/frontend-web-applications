@@ -31,7 +31,7 @@
             <Message v-if="error" severity="error" key="Dynamic Warning Message">{{error_msg}}</Message>
 
             <RouterLink :to="link">
-                <Button  label="Login" class="w-full" v-on:click="login" >
+                <Button  label="Login" class="w-full" v-on:click="login()">
                 </Button>
             </RouterLink>
 

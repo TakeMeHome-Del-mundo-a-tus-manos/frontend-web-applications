@@ -1,11 +1,13 @@
 <script>
-
 </script>
 
+
 <template>
-  <NavbarHome/>
-  
+  <div>
+    <OrderSelectBar/>
+  </div>
 </template>
+
 
 <style>
 </style>

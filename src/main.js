@@ -41,7 +41,13 @@ import TripSelectBar from './components/private/trip/TripSelectbar.vue'
 import Footer from './components/private/Footer.vue'
 import NavbarHome from './components/private/NavbarHome.vue'
 import MakeTripContent from './components/private/trip/MakeTripContent.vue'
-import OrderTripSelectBar from  './components/private/trip/OrderTripSelectbar.vue'
+import OrderTripSelectBar from './components/private/trip/OrderTripSelectbar.vue'
+import Home from './components/public/Home.vue'
+import MakeOrderContent from './components/private/order/MakeOrderContent.vue'
+import PublishOrderContent from './components/private/order/PublishOrderContent.vue'
+import OrderSelectBar from './components/private/order/OrderSelectBar.vue'
+
+
 
 
 import { useVuelidate } from '@vuelidate/core'
@@ -51,41 +57,45 @@ import './assets/_theme.scss';
 import './assets/main.css'
 
 createApp(App)
- .use(PrimeVue, { ripple: true })
- .use(router)
- .component('Card', Card)
- .component('Button', Button)
- .component('SelectButton', SelectButton)
- .component('Sidebar', Sidebar)
- .component('Avatar', Avatar)
- .component('Menu', Menu)
- .component('Menubar', Menubar)
- .component('Toolbar', Toolbar)
- .component('InputText', InputText)
- .component('badge', Badge)
- .component('Message',Message)
- .component('Divider',Divider)
- .component('Splitter',Splitter)
- .component('SplitterPanel',SplitterPanel)
- .component('pv-calendar',Calendar)
- .component('pv-dropdown',Dropdown)
- .component('pv-carousel', Carousel)
- .component('Login',Login)
- .component('NavbarInit',NavbarInit)
- .component('FooterInit',FooterInit)
- .component('Signup1',Signup1)
- .component('Signup2',Signup2)
-  .component('Signup3', Signup3)
- 
- .component('Footer',Footer)
- .component('NavbarHome',NavbarHome)
- .component('MakeTripContent',MakeTripContent)
- .component('TripSelectBar', TripSelectBar)
- .component('OrderTripSelectBar', OrderTripSelectBar)
- 
- .component('useVuelidate',useVuelidate)
- .component('required',required)
-    .component('email',email)
-   .component('Dropdown',Dropdown)
- 
- .mount('#app');
+.use(PrimeVue, { ripple: true })
+.use(router)
+.component('Card', Card)
+.component('Button', Button)
+.component('SelectButton', SelectButton)
+.component('Sidebar', Sidebar)
+.component('Avatar', Avatar)
+.component('Menu', Menu)
+.component('Menubar', Menubar)
+.component('Toolbar', Toolbar)
+.component('InputText', InputText)
+.component('badge', Badge)
+.component('Message',Message)
+.component('Divider',Divider)
+.component('Splitter',Splitter)
+.component('SplitterPanel',SplitterPanel)
+.component('pv-calendar',Calendar)
+.component('pv-dropdown',Dropdown)
+.component('pv-carousel', Carousel)
+.component('Login',Login)
+.component('NavbarInit',NavbarInit)
+.component('FooterInit',FooterInit)
+.component('Signup1',Signup1)
+.component('Signup2',Signup2)
+.component('Signup3', Signup3)
+
+.component('Footer',Footer)
+.component('NavbarHome',NavbarHome)
+.component('MakeTripContent',MakeTripContent)
+.component('TripSelectBar', TripSelectBar)
+.component('OrderTripSelectBar', OrderTripSelectBar)
+.component('MakeOrderContent', MakeOrderContent)
+.component('PublishOrderContent', PublishOrderContent)
+.component('OrderSelectBar', OrderSelectBar)
+
+.component('useVuelidate',useVuelidate)
+.component('required',required)
+.component('email',email)
+.component('Dropdown', Dropdown)
+  .component('Home', Home)
+.mount('#app');
+
