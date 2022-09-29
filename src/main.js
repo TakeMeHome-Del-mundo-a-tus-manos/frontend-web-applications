@@ -47,7 +47,6 @@ import OrderTripSelectBar from  './components/private/trip/OrderTripSelectbar.vu
 import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 
-
 import './assets/_theme.scss';
 import './assets/main.css'
 
