@@ -65,7 +65,6 @@
 
 <script>
 import { UserApiService } from "../../services/user-api-service";
-import { StorageService } from "../../services/http/storage-service"; 
 
 export default {
     name: 'login',
@@ -87,16 +86,17 @@ export default {
         login() {
             this.submittedLogin = true
             this.usuarioApiService.getByEmailAndPassword(this.user, this.password).then(response => {
-
-                this.link = '/about'
-                console.log(response.data)
-                this.storage.set("usuario", response.data.id)
-                this.storage.set("nombre", response.data.name)
-
-            }).catch((e) => {
-                this.error = true
-                this.error_msg = e.message;
+                if (response.data.length != 0) {
+                    console.log(response.data.length)
+                    this.link = '/home'
+                    console.log(response.data[0].name)
+                    localStorage.setItem("nombre", response.data[0].name)
+                } else {
+                    this.error = true
+                    this.error_msg = "Login Error";
                 }
+
+            }
             )
         }
     }

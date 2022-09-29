@@ -10,7 +10,7 @@
             
             <button class="button-user">
                 <i class="pi pi-user"></i>
-                <a id="name-user"> Oscar </a>
+                <a id="name-user"> {{name}} </a>
                 <i id="angle-icon" class="pi pi-angle-down"></i>
             </button>
     
@@ -40,6 +40,7 @@
 export default {
     data () {
         return {
+            name: "",
             sliderPosition:0,
             selectedElementWidth:0,
             selectedIndex:0,
@@ -85,13 +86,17 @@ export default {
         };
         
     },
-    methods:{
+    created() {
+        console.log(localStorage.getItem("nombre"));
+        this.name = localStorage.getItem("nombre");
+    },
+    methods: {
+
         sliderIndicator(id){
             let el = this.$refs[`menu-item_${id}`][0];
             this.sliderPosition = el.offsetLeft;
             this.selectedElementWidth = el.offsetWidth;
             this.selectedIndex = id;
-
         },
     },
     computed:{

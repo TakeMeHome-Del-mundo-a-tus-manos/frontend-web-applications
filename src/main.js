@@ -29,8 +29,6 @@ import SplitterPanel from 'primevue/splitterpanel';
  
 import Carousel from 'primevue/carousel';
  
-import Dropdown from 'primevue/dropdown';
- 
 
 
 import Login from './components/public/Login.vue'
@@ -77,7 +75,7 @@ createApp(App)
  .component('FooterInit',FooterInit)
  .component('Signup1',Signup1)
  .component('Signup2',Signup2)
- .component('Signup3',Signup3)
+  .component('Signup3', Signup3)
  
  .component('Footer',Footer)
  .component('NavbarHome',NavbarHome)

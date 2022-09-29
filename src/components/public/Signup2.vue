@@ -115,7 +115,7 @@ export default {
             } else {
                 this.link = "/signup3";
                 sessionStorage.setItem("name", this.name);
-                sessionStorage.setItem("country", this.country);
+                sessionStorage.setItem("country", this.country)
                 sessionStorage.setItem("birthDate", this.birthDate);
                 sessionStorage.setItem("phone", this.phone);
                 sessionStorage.setItem("idCard", this.idCard);
