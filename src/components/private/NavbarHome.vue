@@ -16,7 +16,7 @@
     
         </nav>
         </div>
-        
+        <router-view>
         <ul class="menu">
             <div class="menu-indicator" :style="{left:positionToMove, width:sliderWidth}"></div>
             <li class="menu-item" v-for="link in links" :key="link.id" @click="sliderIndicator(link.id)" :ref="'menu-item_' + link.id">
@@ -29,7 +29,7 @@
             </li>
         
         </ul>
-        
+    </router-view>
     </header>
   <RouterView />
     

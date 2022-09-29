@@ -4,6 +4,7 @@
 
 <template>
   <NavbarHome/>
+  
 </template>
 
 <style>
