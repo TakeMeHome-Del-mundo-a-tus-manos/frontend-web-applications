@@ -16,8 +16,9 @@
                 <Message v-if=usernameError v-on:close="usernameError=false" severity="error">Name is <strong>
                         empty</strong>
                 </Message>
-                <Message v-if=sameUsernameError v-on:close="sameUsernameError=false" severity="warn">This username <strong>
-                    already exists</strong>
+                <Message v-if=sameUsernameError v-on:close="sameUsernameError=false" severity="warn">This username
+                    <strong>
+                        already exists</strong>
                 </Message>
             </div>
 
@@ -116,7 +117,7 @@ export default {
                 alert("Please fill in all the fields");
             } else {
                 this.link = "/"
-                //Convertir a JSON
+
                 this.user.name = sessionStorage.getItem("name");
                 this.user.username = this.username;
                 this.user.password = sessionStorage.getItem("password");
@@ -127,9 +128,9 @@ export default {
                 this.user.idCard = sessionStorage.getItem("idCard");
                 this.user.description = this.description
 
-                // sessionStorage.setItem("user", JSON.stringify(user));
-                this.userApiServiceJSON.create(user);
-                console.log(user);
+                sessionStorage.setItem("user", JSON.stringify(this.user));
+                this.userApiServiceJSON.create(this.user);
+
                 sessionStorage.clear();
                 alert("Success!")
             }
