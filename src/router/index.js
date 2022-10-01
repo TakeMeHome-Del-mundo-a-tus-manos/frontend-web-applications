@@ -13,6 +13,12 @@ import Home from '../components/public/Home.vue'
 import SeeMessage from '../components/public/SeeMessage.vue'
 
 
+import MakeOrderContent from '../components/private/order/MakeOrderContent.vue'
+import PublishOrderContent from '../components/private/order/PublishOrderContent.vue'
+import OrderPublishView from '../views/private/order/OrderPublishView.vue'
+
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,6 +64,7 @@ const router = createRouter({
           name: 'my-orders',
           component: null,
         },
+        
         {
           path: '/order-request',
           name: 'order-request',
@@ -68,6 +75,26 @@ const router = createRouter({
               name: 'make-trip',
               component: MakeTripContent,
             },
+            {
+              path: '/make-order',
+              name: 'make-order',
+              component: MakeOrderContent,
+
+            }, 
+          ]
+        },
+        {
+          path: '/order-publish',
+          name: 'order-publish',
+          component: ()=>import('../views/private/order/OrderPublishView.vue'),
+          children: [
+            {
+              path: '/order-publish-complete',
+              name: 'order-publish-complete',
+              component: PublishOrderContent,
+              
+            },
+            
           ]
         },
         {
