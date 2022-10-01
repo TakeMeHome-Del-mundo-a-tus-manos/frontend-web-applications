@@ -5,7 +5,7 @@
   <div>
     <div class="grid pt-8">
       <div class="col-4 font-semibold text-center col-offset-2 ">
-        <router-link to="/make-order" class="no-underline">Make an Order</router-link>
+        <router-link to="/order-publish-complete" class="no-underline">Make an Order</router-link>
       </div>
       <div class=" col-4 font-semibold text-center hover hover:bg-blue-50">
         <router-link to="/make-trip" class="no-underline">Make Money Traveling</router-link>

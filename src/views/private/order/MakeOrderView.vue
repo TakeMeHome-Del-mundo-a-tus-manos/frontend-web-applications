@@ -1,11 +1,13 @@
 <script>
-
 </script>
 
+
 <template>
-  <NavbarHome/>
-  
+  <div>
+    <TripSelectBar/>
+  </div>
 </template>
+
 
 <style>
 </style>
