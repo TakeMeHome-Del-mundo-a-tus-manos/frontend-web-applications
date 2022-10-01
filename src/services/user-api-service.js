@@ -1,5 +1,6 @@
 import http from './http/http-common';
 
+
 export class UserApiService {
   getAll() {
     return http.get("/login");
@@ -23,6 +24,15 @@ export class UserApiService {
 
   getByEmailAndPassword(email, password) {
     return http.get(`/people?email=${email}&&password=${password}`);
+  }
+
+  getPopularStores(){
+    return http.get(`/popular_stores`)
+  }
+
+  getRecentOrders(id){
+    return http.get(`/completed_orders?client_id=${id}`)
+
   }
 
   findByName(name) {
