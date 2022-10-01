@@ -320,5 +320,32 @@
       "orderMaxDate": "Sep 17",
       "booked": false
     }
+
+
+  ],
+
+  "popular_stores": [
+    {
+      "id": 1,
+      "name": "Walmart",
+      "link": "https://www.walmart.com/"
+    },
+    {
+      "id": 12,
+      "name": "Amazon",
+      "link": "https://www.amazon.com/"
+    },
+    {
+      "id": 3,
+      "name": "Apple Store",
+      "link": "https://www.apple.com/"
+    },
+    {
+      "id": 4,
+      "name": "Best Buy",
+      "link": "https://www.bestbuy.com/"
+    }
   ]
+
+
 }
