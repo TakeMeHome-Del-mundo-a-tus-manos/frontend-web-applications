@@ -59,13 +59,10 @@
             </div>
         </span>
     </div>
-    
-
-
   
 
   <!--Continue Button-->
-  <RouterLink to="/order-publish">
+  <RouterLink to="">
     <div class=" flex mt-6 trip login">
       <Button label="Publish" class="w-18rem h-3rem text-white text-lg font-bold justify-content-center">
         PUBLISH

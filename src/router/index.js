@@ -76,8 +76,8 @@ const router = createRouter({
               path: '/make-order',
               name: 'make-order',
               component: MakeOrderContent,
-
             }, 
+            
           ]
         },
         {

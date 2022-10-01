@@ -63,7 +63,7 @@ export default {
             {
                 id:4,
                 text: "Order Request",
-                path: '/order-request',
+                path: '/make-order',
             },
             {
                 id:5,

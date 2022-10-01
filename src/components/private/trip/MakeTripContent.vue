@@ -100,7 +100,7 @@ export default {
   </div>
 
   <!--Continue Button-->
-  <RouterLink to="/order-trip">
+  <RouterLink to="/order-available">
     <div class=" flex mt-6 trip login">
       <Button label="Continue" class="w-18rem h-3rem text-white text-lg font-bold justify-content-center">Continue
       </Button>
