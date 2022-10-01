@@ -11,9 +11,12 @@ import AvailableOderContent from '../components/private/trip/AvailableOrderConte
 import BookedOderContent from '../components/private/trip/BookedOrderContent.vue'
 import Home from '../components/public/Home.vue'
 import SeeMessage from '../components/public/SeeMessage.vue'
+
+
 import MakeOrderContent from '../components/private/order/MakeOrderContent.vue'
 import PublishOrderContent from '../components/private/order/PublishOrderContent.vue'
 import OrderPublishView from '../views/private/order/OrderPublishView.vue'
+
 
 
 
