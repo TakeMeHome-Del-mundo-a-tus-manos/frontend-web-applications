@@ -31,7 +31,7 @@
             <Message v-if="error" severity="error" key="Dynamic Warning Message">{{error_msg}}</Message>
 
             <RouterLink :to="link">
-                <Button  label="Login" class="w-full" v-on:click="login" >
+                <Button  label="Login" class="w-full" v-on:click="login()">
                 </Button>
             </RouterLink>
 
@@ -64,42 +64,46 @@
 </style>
 
 <script>
-import { UserApiService } from "../../services/user-api-service";
-import { StorageService } from "../../services/http/storage-service"; 
-
-export default {
-    name: 'login',
-    components: {
-
-    },
-    data: function () {
+    import { UserApiService } from "../../services/user-api-service";
+    
+    export default {
+      name: 'login',
+      components: {
+    
+      },
+      data: function () {
         this.usuarioApiService = new UserApiService()
-
+    
         return {
-            user: "",
-            password: "",
-            error: false,
-            error_msg: "",
-            link:""
+          user: "",
+          password: "",
+          error: false,
+          error_msg: "",
+          link:""
         }
-    },
-    methods: {
+      },
+      methods: {
         login() {
-            this.submittedLogin = true
-            this.usuarioApiService.getByEmailAndPassword(this.user, this.password).then(response => {
-
-                this.link = '/about'
-                console.log(response.data)
-                this.storage.set("usuario", response.data.id)
-                this.storage.set("nombre", response.data.name)
-
-            }).catch((e) => {
-                this.error = true
-                this.error_msg = e.message;
+          this.submittedLogin = true
+          this.usuarioApiService.getByEmailAndPassword(this.user, this.password).then(response => {
+                if (response.data.length != 0) {
+                  console.log(response.data.length)
+                  this.link = '/home';
+                   console.log(response.data[0])
+                  localStorage.setItem("nombre", response.data[0].name)
+                  localStorage.setItem("id", response.data[0].id)
+                  localStorage.setItem("photo_url", response.data[0].photo_url)
+                   
+    
+                } else {
+                  this.error = true
+                  this.error_msg = "Login Error";
                 }
-            )
+    
+              }
+          )
         }
+      }
+    
     }
-
-}
-</script>
+    </script>

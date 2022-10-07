@@ -10,13 +10,13 @@
             
             <button class="button-user">
                 <i class="pi pi-user"></i>
-                <a id="name-user"> Oscar </a>
+                <a id="name-user"> {{name}} </a>
                 <i id="angle-icon" class="pi pi-angle-down"></i>
             </button>
     
         </nav>
         </div>
-        
+        <router-view>
         <ul class="menu">
             <div class="menu-indicator" :style="{left:positionToMove, width:sliderWidth}"></div>
             <li class="menu-item" v-for="link in links" :key="link.id" @click="sliderIndicator(link.id)" :ref="'menu-item_' + link.id">
@@ -29,7 +29,7 @@
             </li>
         
         </ul>
-        
+    </router-view>
     </header>
   <RouterView />
     
@@ -40,6 +40,7 @@
 export default {
     data () {
         return {
+            name: "",
             sliderPosition:0,
             selectedElementWidth:0,
             selectedIndex:0,
@@ -62,7 +63,7 @@ export default {
             {
                 id:4,
                 text: "Order Request",
-                path: '/order-request',
+                path: '/make-order',
             },
             {
                 id:5,
@@ -85,13 +86,17 @@ export default {
         };
         
     },
-    methods:{
+    created() {
+        console.log(localStorage.getItem("nombre"));
+        this.name = localStorage.getItem("nombre");
+    },
+    methods: {
+
         sliderIndicator(id){
             let el = this.$refs[`menu-item_${id}`][0];
             this.sliderPosition = el.offsetLeft;
             this.selectedElementWidth = el.offsetWidth;
             this.selectedIndex = id;
-
         },
     },
     computed:{

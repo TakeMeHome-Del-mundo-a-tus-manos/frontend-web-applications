@@ -120,17 +120,18 @@ export default {
                 this.user.name = sessionStorage.getItem("name");
                 this.user.username = this.username;
                 this.user.password = sessionStorage.getItem("password");
+                
                 this.user.email = sessionStorage.getItem("email");
                 this.user.country = sessionStorage.getItem("country");
                 this.user.birthDate = sessionStorage.getItem("birthDate");
                 this.user.phone = sessionStorage.getItem("phone");
                 this.user.idCard = sessionStorage.getItem("idCard");
                 this.user.description = this.description
-
-                // sessionStorage.setItem("user", JSON.stringify(user));
-                this.userApiServiceJSON.create(user);
+                console.log(this.user)
+                //sessionStorage.setItem("user", JSON.stringify(user));
+                this.userApiServiceJSON.create(this.user);
                 console.log(user);
-                sessionStorage.clear();
+                //sessionStorage.clear();
                 alert("Success!")
             }
         },
