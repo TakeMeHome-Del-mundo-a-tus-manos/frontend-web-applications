@@ -1,7 +1,5 @@
 @import "./base.css";
 
-@import "./base.css";
-
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
@@ -11,6 +9,14 @@
 body{
   margin: 0;
   font-family: Poppins;
+}
+p{
+  color: black;
+}
+
+b{
+  font-family: Poppins;
+
 }
 
 .p-menubar{

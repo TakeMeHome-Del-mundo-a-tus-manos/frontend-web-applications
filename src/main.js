@@ -28,6 +28,9 @@ import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
  
 import Carousel from 'primevue/carousel';
+
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
  
 
 
@@ -49,6 +52,12 @@ import MakeOrderContent from './components/private/order/MakeOrderContent.vue'
 import PublishOrderContent from './components/private/order/PublishOrderContent.vue'
 import OrderSelectBar from './components/private/order/OrderSelectBar.vue'
 
+//My orders
+import MyOrdersSelectBar from './components/private/my-orders/Selectbar-my-orders.vue'
+import PayInit from './components/private/my-orders/PayInit.vue'
+import PaymentDetails from './components/private/my-orders/PaymentDetails.vue'
+
+import Checkbox from 'primevue/checkbox';
 
 
 
@@ -101,6 +110,16 @@ createApp(App)
 .component('required',required)
 .component('email',email)
 .component('Dropdown', Dropdown)
-  .component('Home', Home)
+.component('Home', Home)
+
+.component('TabView', TabView)
+.component('TabPanel', TabPanel)
+.component('Checkbox', Checkbox)
+
+//My orders
+.component('MyOrdersSelectBar', MyOrdersSelectBar)
+.component('PayInit', PayInit)
+.component('PaymentDetails', PaymentDetails)
+
 .mount('#app');
 
