@@ -33,18 +33,18 @@ export default {
 
 
 <template>
-  <div class="ml-6 mb-5">
-        <label class="text-4xl font-bold">Delivery History</label>
+  <div class="ml-6 md:ml-6 mb-5">
+        <label class="text-3xl ml-3 md:text-4xl font-bold">Travel In Progress</label>
     </div>
   <div class="card">
     <DataView :value="ordersInProgress" layout="list" :paginator="true" :rows="2" class="flex justify-content-center align-items-center align-content-center flex-column ">
       <template #list="slotProps">
-        <div class="col-12">
-          <div class="product-list-item">
+        <div class="col-8 col-offset-2  md:col-12 md:col-offset-0 ">
+          <div class="product-list-item ">
              <div class="col-6 flex justify-content-center">
                <img :src="slotProps.data.productImage" :alt="slotProps.data.orderName" />
              </div>
-              <div class="product-list-detail col-6">
+              <div class="product-list-detail col-6 text-xs md:text-base ">
                 <div class="col-10 col-offset-2 flex justify-content-center">
                    <b>{{ slotProps.data.orderName }}</b>
                 </div>
