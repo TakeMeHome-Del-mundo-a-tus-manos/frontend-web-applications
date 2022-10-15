@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <h1>Hola</h1>
+  <div class="box">
+
   </div>
 </template>
 
 <style scoped>
-h1{
-  font-size: 500px;
+.box{
+  background: #1B5E20;
 }
 </style>
