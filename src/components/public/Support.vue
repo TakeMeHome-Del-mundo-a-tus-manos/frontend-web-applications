@@ -1,6 +1,6 @@
 <template>
-  <div class="box">
-
+  <div>
+    <h1>lalalalla</h1>
   </div>
 </template>
 
