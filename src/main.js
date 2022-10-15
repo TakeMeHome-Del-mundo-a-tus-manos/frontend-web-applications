@@ -92,7 +92,7 @@ createApp(App)
 .component('MakeTripContent',MakeTripContent)
 .component('TripSelectBar', TripSelectBar)
 .component('OrderTripSelectBar', OrderTripSelectBar)
-.component('Support',Support)
+    .component('Support', Support)
 
 .component('MakeOrderContent', MakeOrderContent)
 .component('PublishOrderContent', PublishOrderContent)
