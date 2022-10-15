@@ -43,6 +43,7 @@ import NavbarHome from './components/private/NavbarHome.vue'
 import MakeTripContent from './components/private/trip/MakeTripContent.vue'
 import OrderTripSelectBar from './components/private/trip/OrderTripSelectbar.vue'
 import Home from './components/public/Home.vue'
+import Support from './components/public/Support.vue'
 
 
 import MakeOrderContent from './components/private/order/MakeOrderContent.vue'
@@ -91,7 +92,7 @@ createApp(App)
 .component('MakeTripContent',MakeTripContent)
 .component('TripSelectBar', TripSelectBar)
 .component('OrderTripSelectBar', OrderTripSelectBar)
-
+.component('Support',Support)
 
 .component('MakeOrderContent', MakeOrderContent)
 .component('PublishOrderContent', PublishOrderContent)

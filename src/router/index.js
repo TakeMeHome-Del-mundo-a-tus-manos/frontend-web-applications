@@ -11,7 +11,7 @@ import AvailableOderContent from '../components/private/trip/AvailableOrderConte
 import BookedOderContent from '../components/private/trip/BookedOrderContent.vue'
 import Home from '../components/public/Home.vue'
 import SeeMessage from '../components/public/SeeMessage.vue'
-
+import Support from "../components/public/Support.vue";
 
 import MakeOrderContent from '../components/private/order/MakeOrderContent.vue'
 import PublishOrderContent from '../components/private/order/PublishOrderContent.vue'
@@ -64,7 +64,7 @@ const router = createRouter({
           name: 'my-orders',
           component: null,
         },
-        
+
         {
           path: '/order-request',
           name: 'order-request',
@@ -122,7 +122,7 @@ const router = createRouter({
         {
           path: '/support',
           name: 'support',
-          component: null,
+          component: Support,
         },
         {
           path: '/notifications',
