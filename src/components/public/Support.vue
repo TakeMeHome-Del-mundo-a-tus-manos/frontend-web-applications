@@ -130,5 +130,17 @@ InputText{
   height:260px;
   width: 260px;
 }
-
+@media only screen and (max-width: 1440px) {
+  .box-right {
+    margin-left:800px;
+  }
+}
+@media only screen and (max-width: 1180px) {
+  .box-right {
+    margin-left:700px;
+  }
+  .c-supp{
+    margin-left:-120px;
+  }
+}
 </style>

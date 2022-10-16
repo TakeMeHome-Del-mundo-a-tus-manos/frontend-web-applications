@@ -175,13 +175,17 @@ img:hover{
   height:120px;
 }
 .card-2{
-  margin-top:60px;
+  margin-top:0px;
   float: right;
   width: 500px;
   height:400px;
 }
 .Walmart1{
   float:left;
+}
+
+.home_account{
+  margin-top:20px;
 }
 
 </style>

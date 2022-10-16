@@ -44,7 +44,7 @@ import MakeTripContent from './components/private/trip/MakeTripContent.vue'
 import OrderTripSelectBar from './components/private/trip/OrderTripSelectbar.vue'
 import Home from './components/public/Home.vue'
 import Support from './components/public/Support.vue'
-
+import Notification from './components/public/Notification.vue'
 
 import MakeOrderContent from './components/private/order/MakeOrderContent.vue'
 import PublishOrderContent from './components/private/order/PublishOrderContent.vue'
@@ -93,6 +93,7 @@ createApp(App)
 .component('TripSelectBar', TripSelectBar)
 .component('OrderTripSelectBar', OrderTripSelectBar)
     .component('Support', Support)
+    .component('Notification',Notification)
 
 .component('MakeOrderContent', MakeOrderContent)
 .component('PublishOrderContent', PublishOrderContent)
