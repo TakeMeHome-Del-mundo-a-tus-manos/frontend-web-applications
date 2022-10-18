@@ -26,9 +26,9 @@
           <aside class="text3 font-medium line-height-3">Recent Orders</aside>
           <div class="Boxes" v-for="product in recent_orders.slice(0,2)" :key="product.id"> 
             <div class="box1 p-4 shadow-1 border-round w-full lg:w-20">
-              <img id="PhotoIphone" alt="PhotoIphone" :src="product.product_url">
+              <img id="Iphone" alt="Iphone" :src="product.product_url">
               <center>
-                <aside class="Subtitle1">{{product.name}}</aside>
+                <aside class="Subtitle1">{{product.product_name}}</aside>
                 <aside class="time1">{{product.time_before}}</aside>
                 <img class="Apple2" alt="Apple2" :src="product.store_url">
               </center>
@@ -133,7 +133,7 @@ img:hover{
   margin: 10px auto;
 
 }
-#PhotoIphone{
+#Iphone{
   top:-10px;
   width: 100px;
   height: 100px;
