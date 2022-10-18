@@ -28,7 +28,7 @@ import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
 import DataView from 'primevue/dataview';
 import Paginator from 'primevue/paginator';
-
+import Galleria from 'primevue/galleria';
 import Carousel from 'primevue/carousel';
  
 import Login from './components/public/Login.vue'
@@ -73,6 +73,7 @@ createApp(App)
 .component('Divider',Divider)
 .component('Splitter',Splitter)
 .component('SplitterPanel',SplitterPanel)
+.component('Galleria',Galleria)
 .component('pv-calendar',Calendar)
 .component('pv-dropdown',Dropdown)
 .component('pv-carousel', Carousel)
@@ -83,7 +84,6 @@ createApp(App)
 .component('Signup1',Signup1)
 .component('Signup2',Signup2)
 .component('Signup3', Signup3)
-
 .component('Footer',Footer)
 .component('NavbarHome',NavbarHome)
 .component('MakeTripContent',MakeTripContent)

@@ -20,7 +20,7 @@
 
     <!-- este estilo de grid tendra el componente que se abrira por las rutas  -->
     <div class="grid">
-      <div class="col-12 md:col-offset-2 md:col-8">
+      <div class="col-12 pl-4 md:col-offset-2 md:col-8">
         <router-view></router-view>
       </div>
     </div>
