@@ -95,13 +95,13 @@
                       <div class="modal3" ref="modal3">
                         <center><aside class="txt-accept-contract">You have accepted the contract</aside></center>
                         <center><aside class="txt-accept-contract-add">The item will be added to your account</aside></center>
-                        <Button @click="OpenModal3 = false" class="close-btn3">Close</Button>
+                        <Button @click="OpenModal3 = false" class="close-btn3"><div class="txt-close">Close</div></Button>
                       </div>
                     </div>
                     <div v-if="OpenModal4" class="modal4-bg">
                       <div class="modal4" ref="modal4">
                         <center><aside class="txt-decline-contract">You have rejected the contract</aside></center>
-                        <Button @click="OpenModal4 = false" class="close-btn4">Close</Button>
+                        <Button @click="OpenModal4 = false" class="close-btn4"><div class="txt-close">Close</div></Button>
                       </div>
                     </div>
                   </div>
@@ -461,7 +461,7 @@ i{
   border-radius: 7px;
   box-shadow: 0 10px 5px 2px rgba(0,0,0,0.1);
   width: 580px;
-  margin-top: -550px;
+  margin-top: -530px;
   margin-right: -670px;
   color:black;
   font-weight:normal;
@@ -726,10 +726,10 @@ i{
   margin-top:27px ;
 }
 .txt-acc{
-  margin-left: 35px;;
+  margin-left: 35px;
 }
 .txt-dec{
-  margin-left: 35px;;
+  margin-left: 35px;
 }
 .txt-accept-contract{
   font-weight: bold;
@@ -753,4 +753,8 @@ i{
 .box-bottom-contract-information{
   margin-top: -15px;
 }
+.txt-close{
+  margin-left: 35px;
+}
+
 </style>
