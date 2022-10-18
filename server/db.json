@@ -407,6 +407,11 @@
           "message": "this is a test",
           "date": "17:4:41",
           "type": "sent"
+        },
+        {
+          "message": "hi",
+          "date": "21:7:16",
+          "type": "sent"
         }
       ]
     },
@@ -451,6 +456,11 @@
         {
           "message": "GG?",
           "date": "17:4:58",
+          "type": "sent"
+        },
+        {
+          "message": "this is a test",
+          "date": "17:12:6",
           "type": "sent"
         }
       ]

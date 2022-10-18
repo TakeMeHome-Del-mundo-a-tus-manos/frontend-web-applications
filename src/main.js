@@ -1,7 +1,7 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 import PrimeVue from 'primevue/config';
-import router from './router'
+import router from './router';
 
 // App Theme
 import 'primevue/resources/primevue.min.css';
@@ -43,6 +43,7 @@ import NavbarHome from './components/private/NavbarHome.vue'
 import MakeTripContent from './components/private/trip/MakeTripContent.vue'
 import OrderTripSelectBar from './components/private/trip/OrderTripSelectbar.vue'
 import Home from './components/public/Home.vue'
+import ScrollPanel from 'primevue/scrollpanel';
 
 
 import MakeOrderContent from './components/private/order/MakeOrderContent.vue'
@@ -61,7 +62,8 @@ import './assets/main.css'
 
 createApp(App)
 .use(PrimeVue, { ripple: true })
-.use(router)
+  .use(router)
+  .component('ScrollPanel', ScrollPanel)
 .component('Card', Card)
 .component('Button', Button)
 .component('SelectButton', SelectButton)

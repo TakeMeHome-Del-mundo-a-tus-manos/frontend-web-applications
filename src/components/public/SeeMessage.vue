@@ -1,49 +1,49 @@
 <template>
-  <div class="p-4 shadow-0 border-round ">
-    <aside v-if="messages.length == 0" class="subtitle">You have 0 new messages</aside>
-    <div class="box20" v-for="message in messages">
-      <img class="ContactPhoto" alt="ContactPhoto" :src="message.receiver.photo_url">
-      <aside class="name">{{message.receiver.name}}</aside>
-      <div>
-        <aside class="message inline">Write a message...</aside>
-        <Button v-on:click="selectChat(message.id, message.receiver.name)" icon="pi pi-angle-right" class="p-button-rounded p-button-second inline"></Button>
+  <div class="chat-container">
+    <div class="p-4 shadow-0 border-round ">
+      <aside v-if="messages.length == 0" class="subtitle">You have 0 new messages</aside>
+      <div class="box20" v-for="message in messages">
+        <img class="ContactPhoto" alt="ContactPhoto" :src="message.receiver.photo_url">
+        <aside class="name">{{message.receiver.name}}</aside>
+        <div>
+          <aside class="message inline">Write a message...</aside>
+          <Button v-on:click="selectChat(message.id, message.receiver.name)" icon="pi pi-angle-right" class="p-button-rounded p-button-second inline"></Button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="container chat inline" v-if="actualChat!=-1">
-    <h2 class="text-primary text-center">Chat</h2>
-    <div class="card">
-        <div class="card-body">
-            <p class="text-secondary nomessages" v-if="messages.length == 0">
-                {{messages.list_message.length}}
-            </p>
-            <div class="messages">
-                <div class="single-message" v-for="message in actualListMessage" :key="message.id">
-                    <span v-if="message.type=='sent'" class="text-info">[Me]: </span>
-                    <span v-if="message.type=='received'" class="text-info">[{{ actualChatName }}]: </span>
-                    <span>{{message.message}}</span>
-                    <span class="text-secondary time">{{message.date}}</span>
-                </div> 
-            </div>
-        </div>
-        <div class="card-action">
-          <div class="container" style="margin-bottom: 30px">
-            <div class="row">  
-                <InputText type="text" name="message" placeholder="Enter message ..." v-model="newMessage"></InputText>
-                </div>
-                <Button class="btn btn-primary" v-on:click="sendMessage" label="Submit" type="submit" name="action"></Button>
-            
+    <div class="container chat inline" v-if="actualChat!=-1">
+      <h2 class="text-primary text-center">Chat</h2>
+      <div class="card">
+          <div class="card-body">
+              <div ref="scrollPanel" class="messages">
+                  <div class="single-message" v-for="message in actualListMessage" :key="message.id">
+                      <span v-if="message.type=='sent'" class="text-info">[Me]: </span>
+                      <span v-if="message.type=='received'" class="text-info">[{{ actualChatName }}]: </span>
+                      <span>{{message.message}}</span>
+                      <span class="text-secondary time">{{message.date}}</span>
+                  </div> 
+                </div >
           </div>
-        </div>
-    </div>
+          <div class="card-action">
+            <div class="" style="margin-bottom: 30px">
+              <div class="row">  
+                <InputText type="text" name="message" placeholder="Enter message ..." v-model="newMessage"></InputText>
+
+              </div>
+                <Button class="btn btn-primary" v-on:click="sendMessage()" label="Submit" type="submit" name="action"></Button>
+              
+            </div>
+          </div>
+      </div>
+  </div>
 </div>
 </template>
 
 
-<script>
+<script >
 import { UserApiServiceJSON } from "../../services/user-api-service-json";
-    
+
     export default {
       name: 'messages',
       components: {
@@ -59,36 +59,57 @@ import { UserApiServiceJSON } from "../../services/user-api-service-json";
           newMessage:'',
           messages: []
         }
-    },
-    created: function () {
+  },
+  
+       
+
+      
+  created: function () {
         this.usuarioApiService.getMessages(localStorage.getItem("id")).then(response => {
             this.messages=response.data
         })
-      },
-      methods: {
-        selectChat: function (id, name) {
-          this.actualChat = id;
-          this.actualChatName = name;
-          this.actualListMessage=this.messages.find(message => message.id == id).list_message
-        },
-        sendMessage: function () {
-          const today= new Date();
-          const message = {
-            message: this.newMessage,
-            date: today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(),
-            type: 'sent'
-          }
-          this.actualListMessage.push(message)
-          this.usuarioApiService.sendMessage(this.actualChat, this.actualListMessage)
-          console.log("GG")
-          this.newMessage=''
-        }
+  },
+  updated: function () {
+  this.$nextTick(function () {
+    this.scroll();
+    
+  })
+},
+  methods: {
+    selectChat: function (id, name) {
+      this.actualChat = id;
+      this.actualChatName = name;
+      this.actualListMessage = this.messages.find(message => message.id == id).list_message
+    },
+
+    sendMessage: function () {
+      const today= new Date();
+      const message = {
+        message: this.newMessage,
+        date: today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(),
+        type: 'sent'
+      }
+      this.actualListMessage.push(message)
+      this.usuarioApiService.sendMessage(this.actualChat, this.actualListMessage)
+      this.newMessage = '';
+    },
+    scroll() {
+      const container = this.$refs.scrollPanel;
+      container.scrollTop = container.scrollHeight;
+      }
       }
     
     }
     </script>
 
-<style>
+<style scoped>
+.chat-container{
+  display: flex;
+  justify-content: space-evenly;
+}
+.chat{
+  width: 40vw;
+}
 .chat h2{
   font-size: 2.6em;
   margin-bottom: 0px;
