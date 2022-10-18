@@ -6,15 +6,11 @@
             <h2> Take Me Home</h2>
         </div>
         <nav class="menu-left">
-
-            
             <button class="button-user">
                 <i class="pi pi-user"></i>
                 <a id="name-user"> {{name}} </a>
                 <i id="angle-icon" class="pi pi-angle-down"></i>
             </button>
-
-
         </nav>
         </div>
         <router-view>
@@ -28,7 +24,9 @@
                 </a>
                 </RouterLink>
             </li>
+
             <button class="btn-notification" @click="OpenModalMain = true"><i class="pi pi-bell"></i></button>
+
         </ul>
     </router-view>
     </header>
@@ -263,6 +261,7 @@ header{
   display: inline-flex;
   justify-items: center;
   font-size:15px;
+  cursor:pointer;
 }
 
 #name-user{
@@ -467,6 +466,11 @@ i{
   color:black;
   font-weight:normal;
 }
+@media (max-width: 1860px) {
+  .modal {
+    margin-right: -400px;
+  }
+}
 .modal2{
   position:relative;
   background: rgba(255, 255, 255, 0.92);
@@ -504,11 +508,13 @@ i{
   position:relative;
   bottom: 50px;
   left:525px;
+  cursor:pointer;
 }
 .close-btn2{
   position:relative;
   bottom: 50px;
   left:460px;
+  cursor:pointer;
 }
 .close-btn3{
   margin-top: 70px;
@@ -517,6 +523,7 @@ i{
   bottom: 50px;
   left:485px;
   width:140px;
+  cursor:pointer;
 }
 .close-btn4{
   margin-top: 80px;
@@ -525,12 +532,13 @@ i{
   bottom: 50px;
   left:485px;
   width:140px;
+  cursor:pointer;
 }
 .not1-box{
   width: 500px;
   height: 100px;
   top:100px;
-  margin-top: -60px;
+  margin-top: -40px;
   margin-left: -60px;
   background: white;
   border-radius: 7px;

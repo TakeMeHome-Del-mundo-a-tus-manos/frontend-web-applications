@@ -87,7 +87,6 @@
   box-shadow: 0px 0px 3px #999
 }
 #img_home img{
-  height: 100px;
   width: 120px;
   box-shadow: 0px 0px 1px #999;
   transition:all 300ms;
@@ -129,7 +128,6 @@ img:hover{
 }
 .Subtitle1{
   font-weight: bold;
-  font-family: Poppins;
   margin: 10px auto;
 
 }
@@ -181,6 +179,11 @@ img:hover{
   height:400px;
 }
 .Walmart1{
+  height: 100px;
+  float:left;
+}
+.Walmart{
+  height: 100px;
   float:left;
 }
 
