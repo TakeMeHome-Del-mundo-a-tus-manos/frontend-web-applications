@@ -632,6 +632,7 @@ i{
 .box-courier-data{
   margin-top: -180px;
   margin-left: 360px;
+  box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.1);
   width: 135px;
   height: 80px;
 }
