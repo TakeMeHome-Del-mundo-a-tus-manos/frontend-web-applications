@@ -461,8 +461,8 @@ i{
   border-radius: 7px;
   box-shadow: 0 10px 5px 2px rgba(0,0,0,0.1);
   width: 580px;
-  margin-top: -450px;
-  margin-right: -520px;
+  margin-top: -550px;
+  margin-right: -670px;
   color:black;
   font-weight:normal;
 }
