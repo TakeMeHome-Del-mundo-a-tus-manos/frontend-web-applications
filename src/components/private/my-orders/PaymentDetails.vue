@@ -7,28 +7,26 @@
             <div class="card-pd card-pdd">
                 <div class="card-header">
                     <div class="card-image">
-                        <img alt="user header"
-                            src="https://droidsans.com/wp-content/uploads/2020/08/galaxy-tab-s7-cov-1280x720.jpg">
+                        <img alt="product image" :src="orderData.productImage">
                     </div>
                     <div class="card-content">
                         <div class="card-title">
-                            <h3>GALAXY TAB S7 PLUS 12.4'' 128GB PEN INCLUDED</h3>
+                            <h3>{{orderData.productName}}</h3>
                         </div>
                         <div class="card-store">
                             <div class="row">
                                 <p>Sold by </p>
-                                <img src="https://cdn.corporate.walmart.com/dims4/WMT/71169a3/2147483647/strip/true/crop/2389x930+0+0/resize/980x381!/quality/90/?url=https%3A%2F%2Fcdn.corporate.walmart.com%2Fd6%2Fe7%2F48e91bac4a8ca8f22985b3682370%2Fwalmart-logos-lockupwtag-horiz-blu-rgb.png"
-                                    alt="">
+                                <img :src="orderData.productStore" alt="">
 
                             </div>
                             <div class="card-details">
                                 <div class="row">
                                     <p><b>Order ID:</b></p>
-                                    <p class="accent-info"><b>123456789</b></p>
+                                    <p class="accent-info"><b>{{orderData.orderCode}}</b></p>
                                 </div>
                                 <div class="row">
                                     <p><b>Origin country:</b></p>
-                                    <p class="accent-info"><b>United States</b></p>
+                                    <p class="accent-info"><b>{{orderData.originCountry}}</b></p>
                                     <img class="country-icon"
                                         src="https://cdn-icons-png.flaticon.com/512/323/323310.png" alt="">
                                 </div>
@@ -61,11 +59,11 @@
             <div class="card-details">
                 <div class="row">
                     <p><b>ORDER ID:</b></p>
-                    <p class="accent-info"><b>123456789</b></p>
+                    <p class="accent-info"><b>{{orderData.orderCode}}</b></p>
                 </div>
                 <div class="row">
                     <p><b>TOTAL: </b></p>
-                    <p class="accent-info"> <b>560 USD</b></p>
+                    <p class="accent-info"> <b>{{orderData.amount}}</b></p>
 
                 </div>
                 <div class="label-cf">
@@ -74,8 +72,8 @@
                 </div>
 
             </div>
-            <Button label="Confirm" class="w-full confirm"></Button>
-            <Button label="Cancel" class="w-full cancel"></Button>
+            <Button :disabled="!checked" label="Confirm" class="w-full confirm" v-on:click="goConfirm()"></Button>
+            <Button label="Cancel" class="w-full cancel" v-on:click="goPay()"></Button>
         </div>
     </div>
 
@@ -84,13 +82,54 @@
 
 <script>
 
+import { MyOrdersApiService } from "../../../services/my-orders/myOrders-api-service";
+
 export default {
     name: "PaymentDetails",
+    orderData: {},
     data() {
         return {
-            checked: false
+            myOrdersApiService: new MyOrdersApiService(),
+            checked: false,
+            orderData: {
+
+            }
         }
+    },
+    created() {
+        /*this.emitter.on("orderCodeEmit", (data) => {
+            this.orderData = data;
+        });*/
+    },
+    mounted() {
+        this.orderData = localStorage.getItem("orderData");
+        this.orderData = JSON.parse(this.orderData);
+        console.log(this.orderData)
+    },
+    methods: {
+        goPay() {
+            this.$router.push("/pay");
+        },
+        goConfirm() {
+
+            this.myOrdersApiService.deleteOrder('booked', this.orderData.id).then((response) => {
+                console.log(response);
+
+                this.orderData.id = null;
+                this.orderData.currentProcess = parseInt(Math.random()*101);
+                this.myOrdersApiService.addOrder('pending', this.orderData).then((response) => {
+                    console.log(response);
+                    this.$router.push("/payment-completed");
+                });
+
+            }).catch((error) => {
+                console.log(error);
+            });
+
+        }
+
     }
+
 }
 </script>
 
@@ -248,13 +287,13 @@ export default {
     border: 2px solid #1589a2;
 }
 
-.card-cf .cancel:hover {
+.cancel:hover {
     background-color: #c8c8c8;
     color: white;
     /* border: 2px solid #1589a2; */
 }
 
-.card-cf .confirm:hover {
+.confirm:hover {
     background-color: #1ba8c8;
     color: white;
     /* border: 2px solid #1589a2; */

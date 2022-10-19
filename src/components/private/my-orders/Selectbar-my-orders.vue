@@ -32,7 +32,7 @@
             </TabPanel>
             <TabPanel>
                 <template #header>
-                    <RouterLink to="/orders-in-progress" class="no-underline">
+                    <RouterLink to="/current-process" class="no-underline">
                         <span>Orders in Progress</span>
                     </RouterLink>
                 </template>
