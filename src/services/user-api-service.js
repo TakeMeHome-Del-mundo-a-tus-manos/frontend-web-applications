@@ -38,4 +38,17 @@ export class UserApiService {
   findByName(name) {
     return http.get(`/login?name=${name}`);
   }
+
+
+  getAvailable_Orders(){
+    return http.get(`/availableOrders`)
+  }
+
+  getPeople(){
+    return http.get(`/people`)
+  }
+
+  getNotifications(id){
+    return http.get(`/notifications?id=${id}`)
+  }
 }

@@ -37,14 +37,14 @@
   <div v-if="OpenModalMain" class="modal-bg">
     <div class="modal" ref="modal">
       <button @click="OpenModalMain = false" class="close-btn2">x</button>
-      <div class="not1-box">
+      <div class="not-newOrder" v-for="notification in notifications" :key="notification.id" v-if="notifications.type===newOrder">
         <img class="not-message" src="src/components/img/not-message.png" alt="message">
         <div class="not-resume">
           <h3 class="not-resume-txt">You have a new order.</h3>
           <h3 class="not-resume-txt">Click to read the contract</h3>
 
-
           <Button @click="OpenModal2 = true" class="OpenNewModal">See</Button>
+
           <div v-if="OpenModal2" class="modal2-bg">
             <div class="modal2" ref="modal2">
               <div class="not3-box">
@@ -53,30 +53,34 @@
                 <aside class="sub-contract-resume">Contract Resume</aside>
                 <div class="Boxes" v-for="product in recent_orders.slice(1,2)" :key="product.id">
                   <div class="box_container_contract p-4 shadow-0 border-round w-full lg:w-20">
-                    <img id="Xbox" alt="PhotoXbox" :src="product.product_url">
-                    <aside class="Subtitle-Xbox">{{product.product_name}}</aside>
-                    <div class="date-container">
-                      <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">Lima, Peru</b></aside>
-                      <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">EE.UU</b></aside>
-                      <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">13/09/2022</b></aside>
-                      <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">17/09/2022</b></aside>
+
+                    <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
+                      <img id="Play5" alt="Play5" :src="order.productImage">
+                      <aside class="Subtitle-Play5">{{order.orderName}}</aside>
+                      <div class="date-container">
+                        <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{order.orderDestination}}</b></aside>
+                        <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{order.orderOrigin}}</b></aside>
+                        <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{order.orderDate}}</b></aside>
+                        <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{order.orderMaxDate}}</b></aside>
+                        <div class="box-bottom-contract">
+                          <aside class="sub-sold-by">Sold by</aside>
+                          <img class="Amazon" alt="Amazon" :src="order.storeImage">
+                        </div>
+                      </div>
                     </div>
+
                   </div>
                   <div class="box-courier-data">
                     <aside class="subtitle-courier-data">Courier data</aside>
                     <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
                     <aside class="name-courier-data">{{ this.name }}</aside>
-                    <aside class="name-courier-data2">doc.B9237237</aside>
                   </div>
-                  <div class="box-client-data">
-                    <aside class="subtitle-client-data">Client data</aside>
-                    <img class="client-data-Photo" alt="ClientPhoto" src="src/components/img/ContactPhoto.png">
-                    <aside class="name-client-data">Lili Ramos</aside>
-                    <aside class="name-client-data2">doc.78256234</aside>
-                  </div>
-                  <div class="box-bottom-contract">
-                    <aside class="sub-sold-by">Sold by</aside>
-                    <img class="Amazon" alt="Amazon" :src="product.store_url">
+                  <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
+                    <div class="box-client-data">
+                      <aside class="subtitle-client-data">Client data</aside>
+                      <img class="client-data-Photo" alt="ClientPhoto" :src="order.iconImage">
+                      <aside class="name-client-data">{{ order.name }}</aside>
+                    </div>
                   </div>
                   <div class="box-bottom-contract-information">
                     <div class="box-bottom-left-contract-information">
@@ -85,7 +89,9 @@
                     </div>
                     <div class="box-bottom-right-contract-information">
                       <aside class="txt-order-id">GRGATSA</aside>
-                      <aside class="txt-amount-usd">560 USD</aside>
+                      <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
+                        <aside class="txt-amount-usd">{{order.amount}}</aside>
+                      </div>
                     </div>
                   </div>
                   <div class="btns">
@@ -107,18 +113,143 @@
                   </div>
                 </div>
 
+
+
               </div>
             </div>
           </div>
 
         </div>
       </div>
-      <div class="not2-box">
+      <div class="not-orderArrived" v-for="notification in notifications" :key="notification.id" v-if="notifications.type===orderArrived">
         <img class="not-message" src="src/components/img/not-box.png" alt="box">
         <div class="not-resume">
           <h3 class="not-resume-txt">Your order has arrived!.</h3>
         </div>
       </div>
+
+      <div class="not-contractAccepted" v-for="notification in notifications" :key="notification.id" v-if="notifications.type===contractAccepted">
+        <img class="not-message" src="src/components/img/not-contact-accepted.png" alt="box">
+        <div class="not-resume">
+          <h3 class="not-resume-txt">Contract accepted!</h3>
+        </div>
+
+        <Button @click="OpenModalContractAccepted = true" class="btn-OpenNewModalContractAccepted">See</Button>
+        <div v-if="OpenModalContractAccepted" class="modalContractAccepted-bg">
+          <div class="modalContractAccepted" ref="modalContractAccepted">
+            <div class="title-m-c-a"><center>Your order has been accepted</center></div>
+
+
+            <div class="box-complete-contract-accepted">
+              <div class="not3-box">
+                <aside class="sub-contract-resume">Contract Resume</aside>
+                <div class="Boxes" v-for="product in recent_orders.slice(1,2)" :key="product.id">
+                  <div class="box_container_contract p-4 shadow-0 border-round w-full lg:w-20">
+
+                    <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
+                      <img id="Play5" alt="Play5" :src="order.productImage">
+                      <aside class="Subtitle-Play5">{{order.orderName}}</aside>
+                      <div class="date-container">
+                        <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{order.orderDestination}}</b></aside>
+                        <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{order.orderOrigin}}</b></aside>
+                        <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{order.orderDate}}</b></aside>
+                        <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{order.orderMaxDate}}</b></aside>
+                        <div class="box-bottom-contract">
+                          <aside class="sub-sold-by">Sold by</aside>
+                          <img class="Amazon" alt="Amazon" :src="order.storeImage">
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="box-courier-data">
+                    <aside class="subtitle-courier-data">Courier data</aside>
+                    <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
+                    <aside class="name-courier-data">{{ this.name }}</aside>
+                  </div>
+                  <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
+                    <div class="box-client-data">
+                      <aside class="subtitle-client-data">Client data</aside>
+                      <img class="client-data-Photo" alt="ClientPhoto" :src="order.iconImage">
+                      <aside class="name-client-data">{{ order.name }}</aside>
+                    </div>
+                  </div>
+                  <div class="box-bottom-contract-information">
+                    <div class="box-bottom-left-contract-information">
+                      <aside class="txt-order">Order ID:</aside>
+                      <aside class="txt-amount">Amount:</aside>
+                    </div>
+                    <div class="box-bottom-right-contract-information">
+                      <aside class="txt-order-id">GRGATSA</aside>
+                      <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
+                        <aside class="txt-amount-usd">{{order.amount}}</aside>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="btns">
+                    <Button class="btn-accept2" @click="OpenModalContractAccepted = false" ><div class="txt-acc">Accept</div></Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="not-contractRejected" v-for="notification in notifications" :key="notification.id" v-if="notifications.type===contractRejected">
+        <img class="not-message" src="src/components/img/not-contact-rejected.png" alt="box">
+        <div class="not-resume">
+          <h3 class="not-resume-txt">Contract rejected!</h3>
+          <Button @click="OpenModalContractRejected = true" class="btn-OpenNewModalContractRejected">See</Button>
+          <div v-if="OpenModalContractRejected" class="modalContractRejected-bg">
+            <div class="modalContractRejected" ref="modalContractRejected">
+              <div class="title-m-c-r"><center>Your order has been rejected by</center></div>
+
+
+              <div class="box-complete-rejected">
+                <div class="box-courier-data-by">
+                  <aside class="subtitle-courier-data">Courier data</aside>
+                  <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
+                  <aside class="name-courier-data">{{ this.name }}</aside>
+                </div>
+
+                <div class="box-contract-resume-rejected">
+                  <aside class="sub-contract-resume">Contract Resume</aside>
+                  <div class="Boxes" v-for="product in recent_orders.slice(1,2)" :key="product.id">
+                    <div class="box_container_contract p-4 shadow-0 border-round w-full lg:w-20">
+
+                      <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
+                        <img id="Play5" alt="Play5" :src="order.productImage">
+                        <aside class="Subtitle-Play5">{{order.orderName}}</aside>
+                        <div class="date-container">
+                          <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{order.orderDestination}}</b></aside>
+                          <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{order.orderOrigin}}</b></aside>
+                          <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{order.orderDate}}</b></aside>
+                          <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{order.orderMaxDate}}</b></aside>
+                          <div class="box-bottom-contract">
+                            <aside class="sub-sold-by">Sold by</aside>
+                            <img class="Amazon" alt="Amazon" :src="order.storeImage">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Button class="btn-accept-rejected" @click="OpenModalContractRejected = false" ><div class="txt-acc">Accept</div></Button>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
     </div>
   </div>
 
@@ -144,10 +275,20 @@ export default {
             modal3:null,
             OpenModal4: false,
             modal4:null,
+
+            OpenModalContractAccepted: false,
+            modalContractAccepted:null,
+            OpenModalContractRejected: false,
+            modalContractRejected:null,
+
             homeUserApiService: null,
             photo_src:"",
             popular_stores:[],
             recent_orders:[],
+
+            availableOrders:[],
+
+            notifications:[],
 
             links:[
             {
@@ -203,7 +344,15 @@ export default {
           console.log(this.recent_orders)
         });
 
+        this.homeUserApiService.getAvailable_Orders().then((response) => {
+          this.availableOrders = response.data;
+          console.log(this.availableOrders)
+        });
 
+      this.homeUserApiService.getNotifications(localStorage.getItem("id")).then((response) => {
+        this.notifications = response.data;
+        console.log(this.notifications)
+      });
 
     },
     methods: {
@@ -240,7 +389,6 @@ header{
     margin:0;
 }
 .button-user{
-    
     background-color: var(--menu-background-color);
     margin:0;
     padding:0;
@@ -249,8 +397,6 @@ header{
     display: inline-flex;
     justify-items: center;
     font-size:15px;
-    
-
 }
 .btn-notification{
   background-color: var(--menu-background-color);
@@ -401,7 +547,7 @@ i{
   padding:0;
 }
 .modal-bg{
-  position:fixed;
+  position:absolute;
   top:0;
   left:0;
   width: 100vw;
@@ -454,15 +600,41 @@ i{
   justify-content:center;
   align-items: center;
 }
+.modalContractAccepted-bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+
+  background-color:rgba(0,0,0,0.5);
+
+  display :flex;
+  justify-content:center;
+  align-items: center;
+}
+.modalContractRejected-bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+
+  background-color:rgba(0,0,0,0.5);
+
+  display :flex;
+  justify-content:center;
+  align-items: center;
+}
 .modal{
-  position:relative;
+  position:absolute;
   background: rgba(255, 255, 255, 0.92);
   padding:50px 100px;
   border-radius: 7px;
   box-shadow: 0 10px 5px 2px rgba(0,0,0,0.1);
   width: 580px;
-  margin-top: -530px;
-  margin-right: -670px;
+  margin-top: -210px;
+  margin-right: -500px;
   color:black;
   font-weight:normal;
 }
@@ -504,10 +676,32 @@ i{
   margin-top:-20px;
   margin-right: 120px;
 }
+.modalContractAccepted{
+  position:relative;
+  background: rgba(255, 255, 255, 0.92);
+  padding:50px 100px;
+  border-radius: 7px;
+  box-shadow: 0 10px 5px 2px rgba(0,0,0,0.1);
+  width: 600px;
+  height: 500px;
+  margin-top:-250px;
+  margin-right: 120px;
+}
+.modalContractRejected{
+  position:relative;
+  background: rgba(255, 255, 255, 0.92);
+  padding:50px 100px;
+  border-radius: 7px;
+  box-shadow: 0 10px 5px 2px rgba(0,0,0,0.1);
+  width: 600px;
+  height: 500px;
+  margin-top:-250px;
+  margin-right: 120px;
+}
 .close-btn{
   position:relative;
-  bottom: 50px;
-  left:525px;
+  bottom: 85px;
+  left:545px;
   cursor:pointer;
 }
 .close-btn2{
@@ -534,9 +728,10 @@ i{
   width:140px;
   cursor:pointer;
 }
-.not1-box{
+.not-newOrder{
+  margin-bottom: 50px;
   width: 500px;
-  height: 100px;
+  height: 97px;
   top:100px;
   margin-top: -40px;
   margin-left: -60px;
@@ -544,17 +739,29 @@ i{
   border-radius: 7px;
   font-weight:normal;
 }
+.not3-box{
+  width: 500px;
+  height: 290px;
+  margin-top: 35px;
+  margin-left: -60px;
+  border-radius: 7px;
+  background: white;
+  font-weight:normal;
+}
 .not-resume{
   width:280px;
 }
 .sub-contract-information{
-  margin-top:-40px;
+  margin-top:-70px;
   margin-left: 60px;
   font-weight: bold;
   font-size: 25px;
+  margin-bottom:35px;
 }
 .sub-contract-resume{
-  margin-top:40px;
+  margin-left: 22px;
+  margin-top:-20px;
+  margin-bottom:20px;
   font-weight: bold;
   font-size: 15px;
 }
@@ -571,7 +778,16 @@ i{
   width:400px;
   font-weight:normal;
 }
-.not2-box{
+.not-orderArrived{
+  width: 500px;
+  height: 100px;
+  top:100px;
+  margin-top: -35px;
+  margin-left: -60px;
+  background: white;
+  border-radius: 7px;
+}
+.not-contractAccepted{
   width: 500px;
   height: 100px;
   top:100px;
@@ -580,11 +796,18 @@ i{
   background: white;
   border-radius: 7px;
 }
-.not3-box{
-  margin-left: -40px;
+.not-contractRejected{
+  width: 500px;
+  height: 100px;
+  top:100px;
+  margin-top: 15px;
+  margin-left: -60px;
+  background: white;
+  border-radius: 7px;
 }
-#Xbox{
-  margin-top:-15px;
+#Play5{
+  margin-top:0;
+  margin-bottom:10px;
   width: 100px;
   height: 100px;
   float:left;
@@ -601,9 +824,8 @@ i{
   font-size: 9px;
 }
 .box-bottom-contract{
-  margin-top:-20px;
-  margin-left:27px;
-
+  margin-top:-10px;
+  margin-left:18px;
   width: 100px;
   height: 40px;
 }
@@ -611,8 +833,7 @@ i{
   margin-top:0px;
   height: 165px;
 }
-
-.Subtitle-Xbox{
+.Subtitle-Play5{
   margin-top: -20px;
   margin-left: 110px;
   font-weight: bold;
@@ -651,12 +872,6 @@ i{
   margin-top:-50px ;
   font-weight: bold;
 }
-.name-courier-data2{
-  font-size: 10px;
-  margin-left:60px ;
-}
-
-
 
 .box-client-data{
   margin-top: 0;
@@ -678,10 +893,6 @@ i{
   margin-left:60px ;
   margin-top:-50px ;
   font-weight: bold;
-}
-.name-client-data2{
-  font-size: 10px;
-  margin-left:60px ;
 }
 .box-bottom-left-contract-information{
   margin-left:150px ;
@@ -723,7 +934,7 @@ i{
   left:10px;
 }
 .btns{
-  margin-top:27px ;
+  margin-top:25px ;
 }
 .txt-acc{
   margin-left: 35px;
@@ -751,10 +962,63 @@ i{
   margin-top: 15px;
 }
 .box-bottom-contract-information{
-  margin-top: -15px;
+  margin-top: 30px;
 }
 .txt-close{
   margin-left: 35px;
 }
-
+.btn-OpenNewModalContractAccepted{
+  width: 40px;
+  height: 20px;
+  margin-left: 430px;
+  margin-top: 0px;
+  top:-5px;
+}
+.title-m-c-a{
+  font-weight: bold;
+  font-size: 28px;
+  margin-top: -30px;
+}
+.box-complete-contract-accepted{
+  margin-top: 40px;
+  margin-left: 10px;
+}
+.btn-accept2{
+  margin-top: 20px;
+  margin-left: 180px;
+  width: 160px;
+}
+.btn-OpenNewModalContractRejected{
+  width: 40px;
+  height: 20px;
+  margin-left: 430px;
+  margin-top: 0px;
+  top:-5px;
+}
+.title-m-c-r{
+  font-weight: bold;
+  font-size: 28px;
+  margin-top: -30px;
+}
+.box-courier-data-by{
+  height: 90px;
+  margin-top: 40px;
+  padding-left: 150px;
+  box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.1);
+}
+.box-contract-resume-rejected{
+  margin-top: 35px;
+  padding-left: 40px;
+}
+.box-complete-rejected{
+  background: white;
+  height: 300px;
+  margin-top:-25px;
+  border-radius: 5%;
+}
+.btn-accept-rejected{
+  margin-top: 20px;
+  margin-left: 120px;
+  width: 160px;
+}
 </style>
