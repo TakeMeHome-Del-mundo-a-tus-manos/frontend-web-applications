@@ -17,12 +17,9 @@ export default {
     this.orderService = new OrderApiService();
   },
 
-  mounted() {
-    this.orderService.getAll().then((response) => {
-      const orders = response.data;
-      this.ordersInProgress = orders.filter(
-        (order) => order.status === "In progress"
-      );
+  mounted() { 
+    this.orderService.getPendingOrdersByTouristId(localStorage.getItem("id")).then((response) => {
+      this.ordersInProgress = response.data;
       this.totalRecords2 = this.ordersInProgress.length;
     });
   },
@@ -59,11 +56,11 @@ export default {
               </div>
               <div class="col-7">
                 <div class="inner-card-text">
-                  <h3 class="text-center">{{ order.orderName }}</h3>
-                  <label>{{ order.orderMaxDate }} ago</label>
-                  <label>To: {{ order.orderDestination }}</label>
+                  <h3 class="text-center">{{ order.productName }}</h3>
+                  <label>{{ order.requestDate.slice(0,10)}}</label>
+                  <label class="mt-2">To: {{ order.orderDestination }}</label>
                   <div class="store-card-content">
-                    <img :src="order.storeImage" alt="" class="img-card" />
+                    <img :src="order.productStore" alt="" class="img-card" />
                   </div>
                 </div>
               </div>

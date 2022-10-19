@@ -4,7 +4,7 @@ import { OrderApiService } from "@/services/order/order-api-service";
 export default {
   data() {
     return {
-      ordersInProgress: [],
+      deliveredOrders: [],
       first: 0,
       totalRecords: 120,
       totalRecords2: 12,
@@ -17,13 +17,10 @@ export default {
     this.orderService = new OrderApiService();
   },
 
-  mounted() {
-    this.orderService.getAll().then((response) => {
-      const orders = response.data;
-      this.ordersInProgress = orders.filter(
-        (order) => order.status === "Delivered"
-      );
-      this.totalRecords2 = this.ordersInProgress.length;
+  mounted() { 
+    this.orderService.getCompletedOrdersByTouristId(localStorage.getItem("id")).then((response) => {
+      this.deliveredOrders = response.data;
+      this.totalRecords2 = this.deliveredOrders.length;
     });
   },
 };
@@ -45,7 +42,7 @@ export default {
       </Paginator>
 
       <div
-        v-for="order in ordersInProgress.slice(first, first + 1)"
+        v-for="order in deliveredOrders.slice(first, first + 1)"
         :key="order.id"
         class="card-container"
       >
@@ -59,11 +56,11 @@ export default {
               </div>
               <div class="col-7">
                 <div class="inner-card-text">
-                  <h3 class="text-center">{{ order.orderName }}</h3>
-                  <label>{{ order.orderMaxDate }} ago</label>
-                  <label>To: {{ order.orderDestination }}</label>
+                  <h3 class="text-center">{{ order.productName }}</h3>
+                  <label>{{ order.requestDate.slice(0,10)}}</label>
+                  <label class="mt-2">To: {{ order.orderDestination }}</label>
                   <div class="store-card-content">
-                    <img :src="order.storeImage" alt="" class="img-card" />
+                    <img :src="order.productStore" alt="" class="img-card" />
                   </div>
                 </div>
               </div>
@@ -85,6 +82,14 @@ export default {
   align-content: center;
 }
 
+.custom-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+}
+
 .paginator {
   background-color: rgba(238, 238, 238, 0.489);
   width: 100%;
@@ -93,14 +98,6 @@ export default {
   align-items: center;
   justify-content: center;
   color-scheme: dark;
-}
-
-.custom-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  margin: auto;
 }
 
 // ::v-deep(.p-paginator.p-component.paginator){
