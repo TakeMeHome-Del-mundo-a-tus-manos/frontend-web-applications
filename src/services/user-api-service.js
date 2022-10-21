@@ -23,7 +23,7 @@ export class UserApiService {
   }
 
   getByEmailAndPassword(email, password) {
-    return http.get(`/people?email=${email}&&password=${password}`);
+    return http.get(`/users?email=${email}&&password=${password}`);
   }
 
   getPopularStores(){
@@ -45,7 +45,7 @@ export class UserApiService {
   }
 
   getPeople(){
-    return http.get(`/people`)
+    return http.get(`/users`)
   }
 
   getNotifications(id){

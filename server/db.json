@@ -1,5 +1,5 @@
 {
-  "people": [
+  "users": [
     {
       "id": 1,
       "name": "Jasmin",
@@ -150,9 +150,9 @@
       "currentProcess": 84
     }
   ],
-  "bookedOrders":[
+  "bookedOrders": [
     {
-
+      "id": 1
     }
   ],
   "completed_orders": [

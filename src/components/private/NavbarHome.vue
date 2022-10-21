@@ -24,9 +24,7 @@
                 </a>
                 </RouterLink>
             </li>
-
             <button class="btn-notification" @click="OpenModalMain = true"><i class="pi pi-bell"></i></button>
-
         </ul>
     </router-view>
     </header>
@@ -95,7 +93,7 @@
                     </div>
                   </div>
                   <div class="btns">
-                    <Button class="btn-accept" @click="OpenModal3 = true" ><div class="txt-acc">Accept</div></Button>
+                    <Button class="btn-accept" @click="OpenModal3 = true " ><div class="txt-acc">Accept</div></Button>
                     <Button class="btn-decline" @click="OpenModal4 = true" ><div class="txt-dec">Decline</div></Button>
                     <div v-if="OpenModal3" class="modal3-bg">
                       <div class="modal3" ref="modal3">
@@ -259,8 +257,9 @@
 <script>
 
 import { UserApiService } from "../../services/user-api-service";
+
 export default {
-    data () {
+  data () {
         return {
             name: "",
             sliderPosition:0,
@@ -356,6 +355,19 @@ export default {
 
     },
     methods: {
+      Add_code_to_dbJson(add_code){
+        // Requiring fs module
+        const fs = require("fs");
+        // Storing the JSON format data in myObject
+        const data = fs.readFileSync("db.json");
+        const myObject = JSON.parse(data);
+        // Defining new data to be added
+        let newData = {
+          code: add_code,
+        };
+        // Adding the new data to our object
+        myObject.push(newData);
+      },
 
         sliderIndicator(id){
             let el = this.$refs[`menu-item_${id}`][0];
@@ -817,7 +829,7 @@ i{
   margin-top:-25px;
   height: 30px;
   width: 43px;
-  box-shadow: 0px 0px 0px #999;
+  box-shadow: 0 0 0 #999;
 }
 .sub-sold-by{
   padding-top:-30px;
@@ -830,7 +842,7 @@ i{
   height: 40px;
 }
 .box_container_contract{
-  margin-top:0px;
+  margin-top:0;
   height: 165px;
 }
 .Subtitle-Play5{
@@ -853,7 +865,7 @@ i{
 .box-courier-data{
   margin-top: -180px;
   margin-left: 360px;
-  box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
   width: 135px;
   height: 80px;
 }
@@ -971,7 +983,7 @@ i{
   width: 40px;
   height: 20px;
   margin-left: 430px;
-  margin-top: 0px;
+  margin-top: 0;
   top:-5px;
 }
 .title-m-c-a{
@@ -992,7 +1004,7 @@ i{
   width: 40px;
   height: 20px;
   margin-left: 430px;
-  margin-top: 0px;
+  margin-top: 0;
   top:-5px;
 }
 .title-m-c-r{
@@ -1004,7 +1016,7 @@ i{
   height: 90px;
   margin-top: 40px;
   padding-left: 150px;
-  box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.1);
 }
 .box-contract-resume-rejected{
   margin-top: 35px;
