@@ -1,36 +1,37 @@
-import axios from 'axios';
-import httpJson from      './http/http-common-json'
+ 
+import httpJson from './http/http-common';
+ 
 
 export class UserApiServiceJSON {
   getAll() {
-    return httpJson.get("/people");
+    return httpJson.get("/users");
   }
 
   getById(id) {
-    return httpJson.get(`/people/${id}`);
+    return httpJson.get(`/users/${id}`);
   }
 
   create(data) {
-    return httpJson.post("/people", data);
+    return httpJson.post("/users", data);
   }
 
   update(id, data) {
-    return httpJson.put(`/people/${id}`, data);
+    return httpJson.put(`/users/${id}`, data);
   }
 
   delete(id) {
-    return httpJson.delete(`/people/${id}`);
+    return httpJson.delete(`/users/${id}`);
   }
 
   getByEmailAndPassword(email, password){
-    return httpJson.post(`/people`,JSON.stringify({email,password}));
+    return httpJson.post(`/users`,JSON.stringify({email,password}));
   }
 
   findByName(name) {
-    return httpJson.get(`/people?name=${name}`);
+    return httpJson.get(`/users?name=${name}`);
   }
   usernameExists(username){
-    return httpJson.get(`/people?username=${username}`)
+    return httpJson.get(`/users?username=${username}`)
   }
   getMessages(id) {
     return httpJson.get(`/messages?peopleId=${id}`);

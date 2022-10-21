@@ -24,7 +24,7 @@ export class UserApiService {
   }
 
   getByEmailAndPassword(email, password) {
-    return http.get(`/people?email=${email}&&password=${password}`);
+    return http.get(`/users?email=${email}&&password=${password}`);
   }
 
   getPopularStores(){
