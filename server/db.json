@@ -448,6 +448,20 @@
       "productName": "GALAXY TAB S7 PLUS 12.4'' 128GB PEN INCLUDED",
       "productStore": "https://cdn.corporate.walmart.com/dims4/WMT/71169a3/2147483647/strip/true/crop/2389x930+0+0/resize/980x381!/quality/90/?url=https%3A%2F%2Fcdn.corporate.walmart.com%2Fd6%2Fe7%2F48e91bac4a8ca8f22985b3682370%2Fwalmart-logos-lockupwtag-horiz-blu-rgb.png",
       "currentProcess": 0
+      "orderOrigin": "Japan",
+      "orderMaxDate": "Oct 23"
+    },
+    {
+      "id": 6,
+      "name": "Milagros Nuñez",
+      "orderDate": "1m",
+      "iconImage": "https://blogmujeres.com//wp-content/uploads/2022/04/cortes-de-pelo-media-melena-bob-instyle.jpg",
+      "productImage": "https://media.vogue.es/photos/5f634ada536440b8ec13b489/master/w_320%2Cc_limit/Large_JPG-No.3HairPerfector-2_1440x.jpg",
+      "storeImage": "https://www.pngmart.com/files/8/Amazon-PNG-Pic.png",
+      "orderName": "Moroccanoil Intense Hydrating",
+      "orderDestination": "Santiago, Chile",
+      "orderOrigin": "Japan",
+      "orderMaxDate": "Nob 05"
     },
     {
       "id": 15,
@@ -490,6 +504,7 @@
     {},
     {}
   ],
+
   "popular_stores": [
     {
       "id": 1,
@@ -626,6 +641,24 @@
           "type": "sent"
         }
       ]
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "type": "newOrder"
+    },
+    {
+      "id": 2,
+      "type": "orderArrived"
+    },
+    {
+      "id": 3,
+      "type": "contractAccepted"
+    },
+    {
+      "id": 4,
+      "type": "contractRejected"
     }
   ]
 }

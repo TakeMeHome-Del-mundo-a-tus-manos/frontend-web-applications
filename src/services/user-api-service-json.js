@@ -34,9 +34,10 @@ export class UserApiServiceJSON {
     return httpJson.get(`/users?username=${username}`)
   }
   getMessages(id) {
-    return httpJson.get(`/messages?peopleId=${id}`);
+    return httpJson.get(`/messages?usersId=${id}`);
   }
   sendMessage(id, newData) {
     return httpJson.patch(`/messages/${id}`, { list_message: newData });
+
   }
 }

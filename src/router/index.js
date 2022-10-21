@@ -1,3 +1,4 @@
+
 import { createRouter, createWebHistory } from "vue-router";
 import Signup1View from "../views/public/Signup1View.vue";
 import Signup2View from "../views/public/Signup2View.vue";
@@ -16,6 +17,7 @@ import ResumeTripsNavbar from "../components/private/resume/resume-my-trips/Resu
 import TravelInProgress from "../components/private/resume/resume-my-trips/TravelInProgress.vue"
 import DeliveryHistory from "../components/private/resume/resume-my-trips/DeliveryHistory.vue"
 import ReservedOrders from "../components/private/resume/resume-my-trips/ReserveOrders.vue"
+import Support from '@/components/public/Support.vue'
  
 import MyPurchases from "../components/private/resume/resume-my-purchases/MyPurchases.vue"
 
@@ -108,7 +110,6 @@ const router = createRouter({
  
  
         },
-
         {
           path: "/order-request",
           name: "order-request",
@@ -193,18 +194,15 @@ const router = createRouter({
           ],
         },
         {
-          path: "/support",
-          name: "support",
-          component: null,
-        },
-        {
-          path: "/notifications",
-          name: "notifications",
-          component: null,
-        },
-      ],
-    },
-  ],
-});
+
+          path: '/support',
+          name: 'support',
+          component: Support,
+        }
+      ]
+     },
+
+  ]
+})
 
 export default router;

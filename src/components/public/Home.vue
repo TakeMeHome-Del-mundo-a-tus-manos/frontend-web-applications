@@ -26,9 +26,9 @@
           <aside class="text3 font-medium line-height-3">Recent Orders</aside>
           <div class="Boxes" v-for="product in recent_orders.slice(0,2)" :key="product.id"> 
             <div class="box1 p-4 shadow-1 border-round w-full lg:w-20">
-              <img class="home-img" id="PhotoIphone" alt="PhotoIphone" :src="product.product_url">
+              <img id="Iphone" alt="Iphone" :src="product.product_url">
               <center>
-                <aside class="Subtitle1">{{product.name}}</aside>
+                <aside class="Subtitle1">{{product.product_name}}</aside>
                 <aside class="time1">{{product.time_before}}</aside>
                 <img class="Apple2 home-img" alt="Apple2" :src="product.store_url">
               </center>
@@ -87,7 +87,6 @@
   box-shadow: 0px 0px 3px #999
 }
 #img_home img{
-  height: 100px;
   width: 120px;
   box-shadow: 0px 0px 1px #999;
   transition:all 300ms;
@@ -129,11 +128,10 @@
 }
 .Subtitle1{
   font-weight: bold;
-  font-family: Poppins;
   margin: 10px auto;
 
 }
-#PhotoIphone{
+#Iphone{
   top:-10px;
   width: 100px;
   height: 100px;
@@ -175,13 +173,22 @@
   height:120px;
 }
 .card-2{
-  margin-top:60px;
+  margin-top:0px;
   float: right;
   width: 500px;
   height:400px;
 }
 .Walmart1{
+  height: 100px;
   float:left;
+}
+.Walmart{
+  height: 100px;
+  float:left;
+}
+
+.home_account{
+  margin-top:20px;
 }
 
 </style>

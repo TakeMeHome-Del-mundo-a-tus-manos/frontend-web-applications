@@ -47,6 +47,7 @@ import Home from './components/public/Home.vue'
 import ScrollPanel from 'primevue/scrollpanel';
 import Dialog from 'primevue/dialog';
 import ResumeNavbar from './components/private/resume/ResumeNavbar.vue'
+import Support from './components/public/Support.vue'
 import MakeOrderContent from './components/private/order/MakeOrderContent.vue'
 import PublishOrderContent from './components/private/order/PublishOrderContent.vue'
 import OrderSelectBar from './components/private/order/OrderSelectBar.vue'
@@ -122,7 +123,7 @@ app.use(PrimeVue, { ripple: true })
     .component('email', email)
     .component('Dropdown', Dropdown)
     .component('Home', Home)
-
+    .component('Support', Support)
     .component('TabView', TabView)
     .component('TabPanel', TabPanel)
     .component('Checkbox', Checkbox)
@@ -138,3 +139,4 @@ app.use(PrimeVue, { ripple: true })
     .component('CurrentProcess', CurrentProcess)
     
     .mount('#app');
+

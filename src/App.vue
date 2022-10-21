@@ -7,7 +7,6 @@ import FooterLog from './components/FooterLog.vue';
 import NavbarHome from "./components/NavbarHome.vue";
 import FooterLogin from './components/Footer-Login.vue';
 */
-
 </script>
 
 <template>
@@ -19,9 +18,11 @@ import FooterLogin from './components/Footer-Login.vue';
     <FooterLog class="FooterLog"></FooterLog>
   </footer>-->
 
+
 </template>
 
 <style scoped>
+
 /*
 main {
   margin: 100px;
