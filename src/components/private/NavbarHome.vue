@@ -312,7 +312,7 @@ export default {
                 {
                     id: 5,
                     text: "Resume",
-                    path: '/resume',
+                    path: '/resume/my-purchases',
                 },
                 {
                     id: 6,

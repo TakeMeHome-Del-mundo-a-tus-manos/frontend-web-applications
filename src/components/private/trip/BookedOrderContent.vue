@@ -41,7 +41,7 @@ export default {
 
        //getting users id
        for (let i = 0; i < this.bookedOrders.length; i++) {
-         this.users.push(this.bookedOrders[i].userId);
+         this.users.push(this.bookedOrders[i].clientId);
       }
       //getting users name by id
       for (let i = 0; i < this.users.length; i++) {
@@ -65,10 +65,10 @@ export default {
             <div class="product-item-content ">
               <div class="grid flex align-content-between align-items-center">
                 <div>
-                  <img :src="myHash.get(slotProps.data.userId).picture" class="person-icon"/>
+                  <img :src="myHash.get(slotProps.data.clientId).picture" class="person-icon"/>
                 </div>
                 <div class="ml-4">
-                  <div class="font-bold">{{ myHash.get(slotProps.data.userId).name}}</div>
+                  <div class="font-bold">{{ myHash.get(slotProps.data.clientId).name}}</div>
                   <div class="text-sm text-left">Requested 1h ago</div>
                 </div>
               </div>

@@ -33,15 +33,17 @@ export default {
 
     this.orderService.getAvailableOrders().then((response) => {
       this.availableOrders = response.data;
-
-       //getting users id
+      //getting users id
        for (let i = 0; i < this.availableOrders.length; i++) {
-         this.users.push(this.availableOrders[i].userId);
-      }
-      //getting users name by id
-      for (let i = 0; i < this.users.length; i++) {
-        this.userService.getById(this.users[i]).then((response) => {
-          this.myHash.set(this.users[i], response.data);
+         this.users.push(this.availableOrders[i].clientId);
+        }
+          console.log(" I WAS HERE  ");
+
+        //getting users name by id
+        for (let i = 0; i < this.users.length; i++) {
+          this.userService.getById(this.users[i]).then((response) => {
+            console.log("aaaaaaaaaaaaaaa", response.data);
+            this.myHash.set(this.users[i], response.data);
         }
       );
       }
@@ -60,10 +62,10 @@ export default {
             <div class="product-item-content ">
               <div class="grid flex align-content-between align-items-center">
                 <div>
-                  <img :src="myHash.get(slotProps.data.userId).picture" class="person-icon"/>
+                  <img :src="myHash.get(slotProps.data.clientId).picture" class="person-icon"/>
                 </div>
                 <div class="ml-4">
-                  <div class="font-bold">{{ myHash.get(slotProps.data.userId).name}}</div>
+                  <div class="font-bold">{{ myHash.get(slotProps.data.clientId).name}}</div>
                   <div class="text-sm text-left">Requested 1h ago</div>
                 </div>
               </div>
