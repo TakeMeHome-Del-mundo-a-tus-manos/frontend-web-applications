@@ -1,5 +1,6 @@
-import axios from 'axios';
-import httpJson from      './http/http-common-json'
+ 
+import httpJson from './http/http-common';
+ 
 
 export class UserApiServiceJSON {
   getAll() {
@@ -30,8 +31,13 @@ export class UserApiServiceJSON {
     return httpJson.get(`/users?name=${name}`);
   }
   usernameExists(username){
-    
     return httpJson.get(`/users?username=${username}`)
-    
+  }
+  getMessages(id) {
+    return httpJson.get(`/messages?usersId=${id}`);
+  }
+  sendMessage(id, newData) {
+    return httpJson.patch(`/messages/${id}`, { list_message: newData });
+
   }
 }

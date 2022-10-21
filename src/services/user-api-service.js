@@ -17,6 +17,7 @@ export class UserApiService {
   update(id, data) {
     return http.put(`/login/${id}`, data);
   }
+  
 
   delete(id) {
     return http.delete(`/login/${id}`);

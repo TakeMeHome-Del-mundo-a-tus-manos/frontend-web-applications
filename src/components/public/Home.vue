@@ -3,16 +3,16 @@
   <center>
     <div  id="img_home" class="home_account">
       <div class="card-1 p-4 shadow-0 border-round w-100 lg:w-20 Home inline-block">
-        <img class="UserPhoto" alt="UserPhoto" :src="this.photo_src">
+        <img class="UserPhoto home-img" alt="UserPhoto" :src="this.photo_src">
         <aside class="text5">Hi, {{ this.name }}!.</aside>
 
         <div class="popular_stores p-4 shadow-0 border-round w-auto lg:w-40 Home ">
           <aside class="text3 font-medium line-height-3 ">Popular Stores</aside>
           <div class="box3 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores.slice(0,2)" :key="store.id" >
-            <a :href="store.link" target="_blank"><img class="Walmart" alt="Walmart" :src="store.image_url"></a>
+            <a :href="store.link" target="_blank"><img class="Walmart home-img" alt="Walmart" :src="store.image_url"></a>
           </div>
           <div class="box4 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores.slice(2,5)" :key="store.id" >
-            <a :href="store.link" target="_blank"><img class="Walmart1" alt="Walmart" :src="store.image_url"></a>
+            <a :href="store.link" target="_blank"><img class="Walmart1 home-img" alt="Walmart" :src="store.image_url"></a>
           </div>
         </div>
 
@@ -30,7 +30,7 @@
               <center>
                 <aside class="Subtitle1">{{product.product_name}}</aside>
                 <aside class="time1">{{product.time_before}}</aside>
-                <img class="Apple2" alt="Apple2" :src="product.store_url">
+                <img class="Apple2 home-img" alt="Apple2" :src="product.store_url">
               </center>
             </div>
           </div>
@@ -91,7 +91,7 @@
   box-shadow: 0px 0px 1px #999;
   transition:all 300ms;
 }
-img:hover{
+.home-img:hover{
   transform: scale(1.2,1.2);
 }
 .text2 {

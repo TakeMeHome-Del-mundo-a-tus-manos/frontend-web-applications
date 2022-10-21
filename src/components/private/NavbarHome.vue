@@ -259,7 +259,7 @@
 import { UserApiService } from "../../services/user-api-service";
 
 export default {
-  data () {
+    data() {
         return {
             name: "",
             sliderPosition:0,
@@ -288,43 +288,43 @@ export default {
             availableOrders:[],
 
             notifications:[],
-
-            links:[
-            {
-                id:1,
-                text: "Home",
-                path: '/home',
-            },
-            {
-                id:2,
-                text: "My Messages",
-                path: '/messages',
-            },
-            {
-                id:3,
-                text: "My Orders",
-                path: '/my-orders',
-            },
-            {
-                id:4,
-                text: "Order Request",
-                path: '/make-order',
-            },
-            {
-                id:5,
-                text: "Resume",
-                path: '/resume',
-            },
-            {
-                id:6,
-                text: "Support",
-                path: '/support',
-            },
+            links: [
+                {
+                    id: 1,
+                    text: "Home",
+                    path: '/home',
+                },
+                {
+                    id: 2,
+                    text: "My Messages",
+                    path: '/messages',
+                },
+                {
+                    id: 3,
+                    text: "My Orders",
+                    path: '/pay',
+                },
+                {
+                    id: 4,
+                    text: "Order Request",
+                    path: '/make-order',
+                },
+                {
+                    id: 5,
+                    text: "Resume",
+                    path: '/resume',
+                },
+                {
+                    id: 6,
+                    text: "Support",
+                    path: '/support',
+                }
+           
 
             ],
 
         };
-        
+
     },
     created() {
         console.log(localStorage.getItem("nombre"));
@@ -369,18 +369,18 @@ export default {
         myObject.push(newData);
       },
 
-        sliderIndicator(id){
+        sliderIndicator(id) {
             let el = this.$refs[`menu-item_${id}`][0];
             this.sliderPosition = el.offsetLeft;
             this.selectedElementWidth = el.offsetWidth;
             this.selectedIndex = id;
         },
     },
-    computed:{
-        positionToMove(){
-            return this.sliderPosition+"px";
+    computed: {
+        positionToMove() {
+            return this.sliderPosition + "px";
         },
-        sliderWidth(){
+        sliderWidth() {
             return this.selectedElementWidth + "px";
 
         },
@@ -389,23 +389,28 @@ export default {
 </script>
 
 <style>
-
-:root{
-  --activa-color:#ffffff;
-  --link-text-color:#f1faee;
-  --menu-background-color:#264986;
-  --active-background-color:#264986;
+:root {
+    --activa-color: #ffffff;
+    --link-text-color: #f1faee;
+    --menu-background-color: #264986;
+    --active-background-color: #264986;
 
 }
-header{
-    margin:0;
+
+
+header {
+    margin: 0;
+
+
 }
-.button-user{
+
+.button-user {
+
     background-color: var(--menu-background-color);
-    margin:0;
-    padding:0;
-    color:white;
-    border:none;
+    margin: 0;
+    padding: 0;
+    color: white;
+    border: none;
     display: inline-flex;
     justify-items: center;
     font-size:15px;
@@ -427,109 +432,118 @@ header{
     width: 150px;
     margin-inline: 2px;
 }
-#angle-icon{
+
+#angle-icon {
     font-size: 15px;
-    
-    
+
+
 }
-i{
+
+i {
     margin-top: 15px;
     ;
     font-size: 20px;
-    
+
 }
-.prueba{
+
+.prueba {
     font-family: "Poppins";
     width: 1440px;
     height: 49px;
-    background-color:var(--menu-background-color);
+    background-color: var(--menu-background-color);
     align-items: center;
     display: flex;
-    margin-inline-start:71px;
-    color:white;
+    margin-inline-start: 71px;
+    color: white;
     font-size: 20px;
     width: 70%;
     margin-left: 60px;
     margin-right: 0;
-    
+
 }
-.prueba img{
+
+.prueba img {
     height: 40px;
     width: 40px;
     display: flex;
-    
-}
-.menu-left{
-    display: flex;
-    margin-inline-end:150px;
 
 }
-.menu-top{
+
+.menu-left {
+    display: flex;
+    margin-inline-end:150px;
+}
+
+.menu-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    
-    
+
+
 }
+
 /* ul */
-.menu{
+.menu {
     /*
     top:49.68px;
     top:7.52%;*/
-    margin:0;
+    margin: 0;
     left: 12%;
-    bottom:86%;
+    bottom: 86%;
     width: 75%;
     height: 80.32px;
     position: relative;
     background-color: var(--menu-background-color);
     display: inline-flex;
-    
+
     list-style: none;
-    
+
 }
+
 /* li */
 
-.menu-item{
+.menu-item {
     display: inline-flex;
     align-items: center;
     width: 100%;
     white-space: nowrap;
-    
+
 }
+
 /* a */
 
-.menu-link{
-    
-   
+.menu-link {
+
+
     /*margin-left: 10px;
     margin-right: 0;*/
-    
-    padding:21px;
+
+    padding: 21px;
     width: 142px;
-    
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: var(--link-text-color);
     text-decoration: none;
-    
+
 
 
 }
 
-.menu-link:hover, .menu-link.active{
+.menu-link:hover,
+.menu-link.active {
     color: var(--activa-color);
     background-color: var(--active-background-color);
 }
 
 /* icon */
-.menu-icon{
-    
-   /* height: 1.5rem;
+.menu-icon {
+
+    /* height: 1.5rem;
     width: 1.5rem;*/
-   
+
     justify-content: center;
     align-items: center;
     display: inline-flex;
@@ -538,18 +552,17 @@ i{
 }
 
 /* slider */
-.menu-indicator{
+.menu-indicator {
     position: absolute;
     height: 0.25rem;
     background-color: var(--activa-color);
-    bottom:0;
+    bottom: 0;
     left: 0;
     margin: auto;
     width: 3rem;
     transition: all ease 0.5s;
 
 }
-
 
 
 
