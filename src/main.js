@@ -75,33 +75,17 @@ import Dialog from 'primevue/dialog';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 
-
-import mitt from 'mitt';
-
-// import {VueGoogleMaps} from '@fawmi/vue-google-maps'
-
- 
- 
  
 import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 
 import './assets/_theme.scss';
-import './assets/main.css'
+import './assets/main.css';
 
- 
-const emitter = mitt()
-
-const app = createApp(App)
-app.config.globalProperties.emitter = emitter;
+const app = createApp(App);
 app.use(ToastService);
 app.use(PrimeVue, { ripple: true })
     .use(router)
-    // .use(VueGoogleMaps, {
-    //     load: {
-    //         key: '',
-    //         language: 'es',
-    //     },})
     .component('Card', Card)
     .component('Button', Button)
     .component('SelectButton', SelectButton)
@@ -116,9 +100,11 @@ app.use(PrimeVue, { ripple: true })
     .component('Divider', Divider)
     .component('Splitter', Splitter)
     .component('SplitterPanel', SplitterPanel)
+    .component('Galleria',Galleria)
     .component('pv-calendar', Calendar)
     .component('pv-dropdown', Dropdown)
     .component('pv-carousel', Carousel)
+    .component('DataView', DataView)
     .component('Login', Login)
     .component('NavbarInit', NavbarInit)
     .component('FooterInit', FooterInit)
@@ -136,6 +122,8 @@ app.use(PrimeVue, { ripple: true })
     .component('MakeOrderContent', MakeOrderContent)
     .component('PublishOrderContent', PublishOrderContent)
     .component('OrderSelectBar', OrderSelectBar)
+    .component('ResumeNavbar', ResumeNavbar)
+    .component('Paginator', Paginator)
 
     .component('useVuelidate', useVuelidate)
     .component('required', required)
@@ -158,50 +146,6 @@ app.use(PrimeVue, { ripple: true })
     .component('CurrentProcess', CurrentProcess)
     
     .mount('#app');
- 
-createApp(App)
-.use(PrimeVue, { ripple: true })
-.use(router)
-.component('Card', Card)
-.component('Button', Button)
-.component('SelectButton', SelectButton)
-.component('Sidebar', Sidebar)
-.component('Avatar', Avatar)
-.component('Menu', Menu)
-.component('Menubar', Menubar)
-.component('Toolbar', Toolbar)
-.component('InputText', InputText)
-.component('badge', Badge)
-.component('Message',Message)
-.component('Divider',Divider)
-.component('Splitter',Splitter)
-.component('SplitterPanel',SplitterPanel)
-.component('Galleria',Galleria)
-.component('pv-calendar',Calendar)
-.component('pv-dropdown',Dropdown)
-.component('pv-carousel', Carousel)
-.component('DataView', DataView)
-.component('Login',Login)
-.component('NavbarInit',NavbarInit)
-.component('FooterInit',FooterInit)
-.component('Signup1',Signup1)
-.component('Signup2',Signup2)
-.component('Signup3', Signup3)
-.component('Footer',Footer)
-.component('NavbarHome',NavbarHome)
-.component('MakeTripContent',MakeTripContent)
-.component('TripSelectBar', TripSelectBar)
-.component('OrderTripSelectBar', OrderTripSelectBar)
-.component('MakeOrderContent', MakeOrderContent)
-.component('PublishOrderContent', PublishOrderContent)
-.component('OrderSelectBar', OrderSelectBar)
-.component('ResumeNavbar', ResumeNavbar)
-.component('Paginator', Paginator)
-.component('useVuelidate',useVuelidate)
-.component('required',required)
-.component('email',email)
-.component('Dropdown', Dropdown)
-  .component('Home', Home)
-.mount('#app');
+
  
 

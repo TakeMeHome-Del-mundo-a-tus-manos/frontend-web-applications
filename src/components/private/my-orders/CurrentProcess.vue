@@ -4,7 +4,7 @@
             <h2>Current Process</h2>
         </div>
 
-        <div class="card-pd row card-cp" v-for="process in processes">
+        <div class="card-pd row card-cp" v-for="process in processes" :key="process.id">
             <div>
                 <Knob v-model="process.currentProcess" 
                 :size="200" 
