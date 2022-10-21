@@ -1,3 +1,31 @@
+ 
+import { createRouter, createWebHistory } from 'vue-router'
+import Signup1View from '../views/public/Signup1View.vue'
+import Signup2View from '../views/public/Signup2View.vue'
+import Signup3View from '../views/public/Signup3View.vue'
+import LoginView from '../views/public/LoginView.vue'
+import MakeTripView from '../views/private/trip/MakeTripView.vue'
+import MakeTripContent from '../components/private/trip/MakeTripContent.vue'
+import MainView from '../views/private/MainView.vue'
+import OrderTripView from '../views/private/trip/OrderTripView.vue'
+import AvailableOderContent from '../components/private/trip/AvailableOrderContent.vue'
+import BookedOderContent from '../components/private/trip/BookedOrderContent.vue'
+import Home from '../components/public/Home.vue'
+import SeeMessage from '../components/public/SeeMessage.vue'
+
+
+import MakeOrderContent from '../components/private/order/MakeOrderContent.vue'
+import PublishOrderContent from '../components/private/order/PublishOrderContent.vue'
+import OrderPublishView from '../views/private/order/OrderPublishView.vue'
+
+//My orders
+import MyOrdersSelectBar from '../components/private/my-orders/Selectbar-my-orders.vue'
+import PayInit from '../components/private/my-orders/PayInit.vue'
+import PaymentDetails from '../components/private/my-orders/PaymentDetails.vue'
+import PaymentCompleted from '../components/private/my-orders/PaymentCompleted.vue'
+import CurrentProcess from '../components/private/my-orders/CurrentProcess.vue'
+import CurrentProcessMap from '../components/private/my-orders/CurrentProcessMap.vue'
+ 
 import { createRouter, createWebHistory } from "vue-router";
 import Signup1View from "../views/public/Signup1View.vue";
 import Signup2View from "../views/public/Signup2View.vue";
@@ -16,6 +44,7 @@ import ResumeTripsNavbar from "../components/private/resume/resume-my-trips/Resu
 import TravelInProgress from "../components/private/resume/resume-my-trips/TravelInProgress.vue"
 import DeliveryHistory from "../components/private/resume/resume-my-trips/DeliveryHistory.vue"
 import ReservedOrders from "../components/private/resume/resume-my-trips/ReserveOrders.vue"
+ 
 
 import MakeOrderContent from "../components/private/order/MakeOrderContent.vue";
 import PublishOrderContent from "../components/private/order/PublishOrderContent.vue";
@@ -61,9 +90,40 @@ const router = createRouter({
           component: SeeMessage,
         },
         {
-          path: "/my-orders",
-          name: "my-orders",
-          component: null,
+ 
+          path: '/my-orders',
+          name: 'my-orders',
+          component: MyOrdersSelectBar,
+          children: [
+            { 
+              path: '/pay',
+              name: 'pay',
+              component: PayInit,
+            },
+            {
+              path: '/payment-details/:orderCode',
+              name: 'payment-details',
+              component: PaymentDetails,
+            },
+            {
+              path: '/payment-completed',
+              name: 'payment-completed',
+              component: PaymentCompleted,
+            },
+            {
+              path: '/current-process',
+              name: 'current-process',
+              component: CurrentProcess,
+            },
+            {
+              path: '/current-process-map/:orderCode',
+              name: 'current-process-map',
+              component: CurrentProcessMap,
+            }
+          ]
+ 
+          
+ 
         },
 
         {
