@@ -1,15 +1,20 @@
 <template>
+
   <div class="chat-container">
     <div class="p-4 shadow-0 border-round ">
       <aside v-if="messages.length == 0" class="subtitle">You have 0 new messages</aside>
       <div class="box20" v-for="message in messages">
         <img class="ContactPhoto" alt="ContactPhoto" :src="message.receiver.photo_url">
+        <RouterLink to="/profile-travel">  
         <aside class="name">{{message.receiver.name}}</aside>
+        </RouterLink>
         <div>
           <aside class="message inline">Write a message...</aside>
           <Button v-on:click="selectChat(message.id, message.receiver.name)" icon="pi pi-angle-right" class="p-button-rounded p-button-second inline"></Button>
         </div>
       </div>
+
+
     </div>
 
     <div class="container chat m-7 border-round shadow-0" v-if="actualChat!=-1">
@@ -245,6 +250,7 @@ border-radius: 10px;
 }
 .SeeMessage{
   font-family: Poppins;
+  margin-bottom: 3vw;
 }
 img.ContactPhoto{
   bottom:50px;

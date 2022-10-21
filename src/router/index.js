@@ -1,4 +1,5 @@
 
+
 import { createRouter, createWebHistory } from "vue-router";
 import Signup1View from "../views/public/Signup1View.vue";
 import Signup2View from "../views/public/Signup2View.vue";
@@ -19,6 +20,9 @@ import DeliveryHistory from "../components/private/resume/resume-my-trips/Delive
 import ReservedOrders from "../components/private/resume/resume-my-trips/ReserveOrders.vue"
 import Support from '@/components/public/Support.vue'
  
+import MyProfile from '../components/private/profile/MyProfile.vue'
+import ProfileTravel from '../components/private/profile/ProfileTravel.vue'
+
 import MyPurchases from "../components/private/resume/resume-my-purchases/MyPurchases.vue"
 
 import MakeOrderContent from "../components/private/order/MakeOrderContent.vue";
@@ -69,9 +73,21 @@ const router = createRouter({
           component: Home,
         },
         {
-          path: "/messages",
-          name: "messages",
+          path: '/my-profile',
+          name: 'my-profile',
+          component: MyProfile,
+        },
+        {
+          path: '/messages',
+          name: 'messages',
           component: SeeMessage,
+          
+        },
+        {
+          path: '/profile-travel',
+          name: 'profile-travel',
+          component: ProfileTravel,
+      
         },
         {
  

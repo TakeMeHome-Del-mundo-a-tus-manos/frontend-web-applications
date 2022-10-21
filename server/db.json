@@ -1,6 +1,7 @@
 {
   "users": [
     {
+
       "name": "Jasmin Aleda",
       "username": "Jamin02",
       "password": "123123123",
@@ -9,9 +10,10 @@
       "birthDate": "2022-09-07",
       "phone": "987654321",
       "idCard": "0001",
-      "description": "This is the second commit",
+      "description": "What’s up? My name is Jasmin, but you can call me Mixwell. I use to travel around the world and I can help you bringing some articles",
       "picture": "https://thumbs.dreamstime.com/b/nice-positive-woman-yellow-background-portrait-emotion-163675981.jpg",
       "id": 1
+
     },
     {
       "name": "Emily Aria",
@@ -79,6 +81,7 @@
       "id": 24
     },
     {
+
       "name": "Juan Perez",
       "username": "PepitoJuan",
       "password": "1234567",
@@ -90,6 +93,19 @@
       "description": "a",
       "picture": "https://thumbs.dreamstime.com/b/nice-positive-woman-yellow-background-portrait-emotion-163675981.jpg",
       "id": 25
+    },
+    {
+      "id": 26,
+      "name": "Lili Ramos",
+      "age":25,
+      "email": "liliramos@gmail.com",
+      "phone": "987654321",
+      "photo_url": "https://i.postimg.cc/X7tMTxy2/image-9.png",
+      "description": "Hi, I’m Lili and I live in Peru. I would like to bring articles from other countries and I want you to help me with that. ",
+      "rating": 4.5,
+      "country": "Peru",
+      "password": 123,
+      "value":92
     }
   ],
   "inchatOrders": [
@@ -659,6 +675,54 @@
     {
       "id": 4,
       "type": "contractRejected"
+    }
+  ],
+  "comments": [
+    {
+      "id":1,
+      "id_to": 1,
+      "id_from": 12,
+      "name": "Alejandra Mesa",
+      "comment": "Good Service",
+      "photo_com": "https://i.postimg.cc/cHp2Q8zq/comment-1.png",
+      "stars": 5
+    },
+    {
+      "id":2,
+      "id_to": 1,
+      "id_from": 13,
+      "name": "Carlos Morales",
+      "comment": "Highly recommended, on time.",
+      "photo_com": "https://i.postimg.cc/5tkZ2rq2/comment-2.png",
+      "stars": 5
+    },
+    {
+      "id":3,
+      "id_to": 2,
+      "id_from": 14,
+      "name": "Cristiano Ramirez",
+      "comment": "The best transport service ever.",
+      "photo_com": "https://i.postimg.cc/1tnbnKJc/comment-3.png",
+      "stars": 4
+    },
+    {
+      "id":4,
+      "id_to": 1,
+      "id_from": 12,
+      "name": "Violet Myers",
+      "comment": "They took a long time to deliver my product",
+      "photo_com": "https://i.postimg.cc/cHp2Q8zq/comment-1.png",
+      "stars": 1
+      
+    },
+    {
+      "id":4,
+      "id_to": 25,
+      "id_from": 13,
+      "name": "Miles Morales",
+      "comment": "The product arrived damaged.",
+      "photo_com": "https://i.postimg.cc/5tkZ2rq2/comment-2.png",
+      "stars": 1
     }
   ]
 }

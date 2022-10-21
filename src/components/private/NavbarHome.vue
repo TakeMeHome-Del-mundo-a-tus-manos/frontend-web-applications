@@ -518,8 +518,6 @@ i {
 
     /*margin-left: 10px;
     margin-right: 0;*/
-
-    padding: 21px;
     width: 142px;
 
     display: inline-flex;

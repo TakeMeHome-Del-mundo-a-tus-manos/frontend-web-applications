@@ -158,7 +158,9 @@ export default {
 
 <style>
 .make-order{
-    display: flex
+    display: flex;
+    margin-bottom: 5vw;
+    overflow: hidden
 }
 .pv-dropdown {
     width: 14rem;

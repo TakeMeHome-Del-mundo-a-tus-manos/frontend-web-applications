@@ -31,6 +31,7 @@ export class UserApiServiceJSON {
     return httpJson.get(`/users?name=${name}`);
   }
   usernameExists(username){
+
     return httpJson.get(`/users?username=${username}`)
   }
   getMessages(id) {
@@ -39,5 +40,14 @@ export class UserApiServiceJSON {
   sendMessage(id, newData) {
     return httpJson.patch(`/messages/${id}`, { list_message: newData });
 
+
+  }
+  getCommentsById(id){
+    //return httpJson.get(`/comments?id_to_like=${id}`)
+    return axios.get("http://localhost:3000/api/v1/comments?id_to_like="+id)
+  }
+  getClaimsById(id){
+    //return httpJson.get(`/comments?id_to_like=${id}`)
+    return axios.get("http://localhost:3000/api/v1/claims?id_to_like="+id)
   }
 }

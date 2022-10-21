@@ -35,7 +35,10 @@ export class UserApiService {
     return http.get(`/completed_orders?client_id=${id}`)
 
   }
+  getPeople(id){
+    return http.get(`/users=${id}`)
 
+  }
   findByName(name) {
     return http.get(`/login?name=${name}`);
   }
