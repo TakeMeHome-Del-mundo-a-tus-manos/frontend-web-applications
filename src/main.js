@@ -26,7 +26,6 @@ import Dropdown from 'primevue/dropdown';
 import Divider from 'primevue/divider';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
- 
 import Carousel from 'primevue/carousel';
  
 
@@ -44,7 +43,7 @@ import MakeTripContent from './components/private/trip/MakeTripContent.vue'
 import OrderTripSelectBar from './components/private/trip/OrderTripSelectbar.vue'
 import Home from './components/public/Home.vue'
 import ScrollPanel from 'primevue/scrollpanel';
-
+import Dialog from 'primevue/dialog';
 
 import MakeOrderContent from './components/private/order/MakeOrderContent.vue'
 import PublishOrderContent from './components/private/order/PublishOrderContent.vue'
@@ -64,7 +63,8 @@ createApp(App)
 .use(PrimeVue, { ripple: true })
   .use(router)
   .component('ScrollPanel', ScrollPanel)
-.component('Card', Card)
+  .component('Card', Card)
+  .component('pv-dialog', Dialog)
 .component('Button', Button)
 .component('SelectButton', SelectButton)
 .component('Sidebar', Sidebar)
