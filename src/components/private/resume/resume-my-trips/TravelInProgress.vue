@@ -1,120 +1,188 @@
-
 <script>
-
-import {OrderApiService} from "@/services/order/order-api-service";
+import { OrderApiService } from "@/services/order/order-api-service";
 
 export default {
-
   data() {
     return {
       ordersInProgress: [],
-      
+      first: 0,
+      totalRecords: 120,
+      totalRecords2: 12,
     };
   },
 
   orderService: null,
-  
+
   created() {
     this.orderService = new OrderApiService();
   },
 
-   mounted() {
-    this.orderService.getAll().then((response) => {
-      const orders = response.data;
-      this.ordersInProgress = orders.filter(order => order.status === 'In progress');
-      console.log(this.ordersInProgress);
+  mounted() { 
+    this.orderService.getPendingOrdersByTouristId(localStorage.getItem("id")).then((response) => {
+      this.ordersInProgress = response.data;
+      this.totalRecords2 = this.ordersInProgress.length;
     });
-
-
   },
-}
-
+};
 </script>
 
-
 <template>
-  <div class="ml-6 md:ml-6 mb-5">
-        <label class="text-3xl ml-3 md:text-4xl font-bold">Travel In Progress</label>
+  <div class="ml-5 md:ml-6 mb-4">
+    <label class="text-3xl md:text-4xl font-bold">Travel In Progress</label>
+  </div>
+  <div class="grid">
+    <div class="paginator-container col-5 md:col-12 md:ml-0">
+      <Paginator
+        v-model:first="first"
+        :rows="1"
+        :totalRecords="totalRecords2"
+        template=" PrevPageLink CurrentPageReport NextPageLink "
+        class="paginator"
+      >
+      </Paginator>
+
+      <div
+        v-for="order in ordersInProgress.slice(first, first + 1)"
+        :key="order.id"
+        class="card-container"
+      >
+        <Card class="card">
+          <template #content>
+            <div class="grid">
+              <div class="col-5 custom-grid">
+                <div class="inner-card-content">
+                  <img :src="order.productImage" alt="" class="img-card" />
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="inner-card-text">
+                  <h3 class="text-center">{{ order.productName }}</h3>
+                  <label>{{ order.requestDate.slice(0,10)}}</label>
+                  <label class="mt-2">To: {{ order.orderDestination }}</label>
+                  <div class="store-card-content">
+                    <img :src="order.productStore" alt="" class="img-card" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </Card>
+      </div>
     </div>
-  <div class="card">
-    <DataView :value="ordersInProgress" layout="list" :paginator="true" :rows="2" class="flex justify-content-center align-items-center align-content-center flex-column ">
-      <template #list="slotProps">
-        <div class="col-8 col-offset-2  md:col-12 md:col-offset-0 ">
-          <div class="product-list-item ">
-             <div class="col-6 flex justify-content-center">
-               <img :src="slotProps.data.productImage" :alt="slotProps.data.orderName" />
-             </div>
-              <div class="product-list-detail col-6 text-xs md:text-base ">
-                <div class="col-10 col-offset-2 flex justify-content-center">
-                   <b>{{ slotProps.data.orderName }}</b>
-                </div>
-                <div class="col-10 col-offset-2 flex justify-content-center">
-                    <b>{{ slotProps.data.orderDate }}  ago</b>
-                </div>
-                <div class="col-10 col-offset-2 flex justify-content-center">
-                    To: <b>{{ slotProps.data.name }}</b>
-                </div>
-                <div class="col-10 col-offset-2 flex justify-content-center pl-6 ">
-                  <img :src="slotProps.data.storeImage" style="width: 3rem" />
-                </div>
-              </div>   
-          </div>
-        </div>
-      </template>
-      
-    </DataView>
   </div>
 </template>
 
-
 <style lang="scss" scoped>
-
-
-.card {
-    background: #ffffff;
-    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
-    border-radius: 4px;
-    margin-bottom: 2rem;
+.paginator-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 
-::v-deep(.product-list-item) {
-	display: flex;
-	align-items: center;
-	padding: 1rem;
-	width: 100%;
+.custom-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+}
 
-	img {
-		width: 150px;
-		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-		margin-right: 2rem;
-	}
+.paginator {
+  background-color: rgba(238, 238, 238, 0.489);
+  width: 100%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  color-scheme: dark;
+}
 
-	.product-list-detail {
-		flex: 1 1 0;
-     
-	}
+// ::v-deep(.p-paginator.p-component.paginator){
+//   width: 100%;
+// }
 
-	.p-rating {
-		margin: 0 0 .5rem 0;
-	}
-
-	.product-price {
-		font-size: 0.5rem;
-		font-weight: 600;
-		margin-bottom: .5rem;
-		align-self: flex-end;
-	}
-
-	.product-list-action {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.p-button {
-		margin-bottom: .5rem;
-	}
+::v-deep(.p-paginator-icon.pi){
+  color: #264986;
+}
  
-
+  
+.card {
+  background: #fdfdfd;
 }
 
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  margin: 0.5rem 1rem;
+}
+
+.inner-card-content {
+  width: 60%;
+  margin: auto;
+}
+
+.p-card .p-card-body {
+  padding: 0 !important;
+}
+
+.store-card-content {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  margin: 1rem;
+}
+
+.inner-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.img-card {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+
+.inner-card-text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0.2rem 0.3rem;
+  }
+
+  .store-card-content {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 1rem;
+  }
+
+  .inner-card-content {
+    width: 90%;
+    margin: auto;
+  }
+
+  ::v-deep(.p-paginator.p-component.paginator) {
+  width: 90% !important;
+  padding: 0.5rem 0;
+}
+
+::v-deep(.paginator-container){
+  width: 99% !important;
+}
+
+}
 </style>
