@@ -33,7 +33,6 @@ import DataView from 'primevue/dataview';
 import Paginator from 'primevue/paginator';
 import Galleria from 'primevue/galleria';
  
-
 import TabView from 'primevue/tabview';
 import TabPanel from 'primevue/tabpanel';
 

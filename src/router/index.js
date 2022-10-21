@@ -1,5 +1,4 @@
 
-
 import { createRouter, createWebHistory } from "vue-router";
 import Signup1View from "../views/public/Signup1View.vue";
 import Signup2View from "../views/public/Signup2View.vue";
@@ -14,29 +13,29 @@ import BookedOderContent from "../components/private/trip/BookedOrderContent.vue
 import Home from "../components/public/Home.vue";
 import SeeMessage from "../components/public/SeeMessage.vue";
 import ResumeView from "../views/private/resume/ResumeView.vue";
-import ResumeTripsNavbar from "../components/private/resume/resume-my-trips/ResumeTripsNabvar.vue"
-import TravelInProgress from "../components/private/resume/resume-my-trips/TravelInProgress.vue"
-import DeliveryHistory from "../components/private/resume/resume-my-trips/DeliveryHistory.vue"
-import ReservedOrders from "../components/private/resume/resume-my-trips/ReserveOrders.vue"
-import Support from '@/components/public/Support.vue'
  
-import MyProfile from '../components/private/profile/MyProfile.vue'
-import ProfileTravel from '../components/private/profile/ProfileTravel.vue'
+import ResumeTripsNavbar from "../components/private/resume/resume-my-trips/ResumeTripsNabvar.vue";
+import TravelInProgress from "../components/private/resume/resume-my-trips/TravelInProgress.vue";
+import DeliveryHistory from "../components/private/resume/resume-my-trips/DeliveryHistory.vue";
+import ReservedOrders from "../components/private/resume/resume-my-trips/ReserveOrders.vue";
+import Support from "@/components/public/Support.vue";
 
-import MyPurchases from "../components/private/resume/resume-my-purchases/MyPurchases.vue"
+import MyPurchases from "../components/private/resume/resume-my-purchases/MyPurchases.vue";
 
 import MakeOrderContent from "../components/private/order/MakeOrderContent.vue";
 import PublishOrderContent from "../components/private/order/PublishOrderContent.vue";
 import OrderPublishView from "../views/private/order/OrderPublishView.vue";
- 
+
+import MyProfile from '../components/private/profile/MyProfile.vue'
+import ProfileTravel from '../components/private/profile/ProfileTravel.vue'
+
 //My orders
-import MyOrdersSelectBar from '../components/private/my-orders/Selectbar-my-orders.vue'
-import PayInit from '../components/private/my-orders/PayInit.vue'
-import PaymentDetails from '../components/private/my-orders/PaymentDetails.vue'
-import PaymentCompleted from '../components/private/my-orders/PaymentCompleted.vue'
-import CurrentProcess from '../components/private/my-orders/CurrentProcess.vue'
-import CurrentProcessMap from '../components/private/my-orders/CurrentProcessMap.vue'
- 
+import MyOrdersSelectBar from "../components/private/my-orders/Selectbar-my-orders.vue";
+import PayInit from "../components/private/my-orders/PayInit.vue";
+import PaymentDetails from "../components/private/my-orders/PaymentDetails.vue";
+import PaymentCompleted from "../components/private/my-orders/PaymentCompleted.vue";
+import CurrentProcess from "../components/private/my-orders/CurrentProcess.vue";
+import CurrentProcessMap from "../components/private/my-orders/CurrentProcessMap.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -90,41 +89,36 @@ const router = createRouter({
       
         },
         {
- 
-          path: '/my-orders',
-          name: 'my-orders',
+          path: "/my-orders",
+          name: "my-orders",
           component: MyOrdersSelectBar,
           children: [
-            { 
-              path: '/pay',
-              name: 'pay',
+            {
+              path: "/pay",
+              name: "pay",
               component: PayInit,
             },
             {
-              path: '/payment-details/:orderCode',
-              name: 'payment-details',
+              path: "/payment-details/:orderCode",
+              name: "payment-details",
               component: PaymentDetails,
             },
             {
-              path: '/payment-completed',
-              name: 'payment-completed',
+              path: "/payment-completed",
+              name: "payment-completed",
               component: PaymentCompleted,
             },
             {
-              path: '/current-process',
-              name: 'current-process',
+              path: "/current-process",
+              name: "current-process",
               component: CurrentProcess,
             },
             {
-              path: '/current-process-map/:orderCode',
-              name: 'current-process-map',
+              path: "/current-process-map/:orderCode",
+              name: "current-process-map",
               component: CurrentProcessMap,
-            }
-          ]
- 
-          
- 
- 
+            },
+          ],
         },
         {
           path: "/order-request",
@@ -199,26 +193,22 @@ const router = createRouter({
                   component: DeliveryHistory,
                 },
               ],
-
-              },
-              {  
+            },
+            {
               path: "/resume/my-purchases",
               name: "my-purchases",
               component: MyPurchases,
-
             },
-          ],
+          ]
         },
         {
-
-          path: '/support',
-          name: 'support',
+          path: "/support",
+          name: "support",
           component: Support,
-        }
-      ]
-     },
-
-  ]
-})
+        },
+      ],
+    },
+  ],
+});
 
 export default router;
