@@ -16,7 +16,7 @@
 
             </nav>
         </div>
-        <!-- <router-view>
+        <router-view>
             <ul class="menu">
                 <div class="menu-indicator" :style="{left:positionToMove, width:sliderWidth}"></div>
                 <li class="menu-item" v-for="link in links" :key="link.id" @click="sliderIndicator(link.id)"
@@ -30,7 +30,7 @@
                 </li>
 
             </ul>
-        </router-view> -->
+        </router-view>  
     </header>
     <RouterView />
 
@@ -59,7 +59,7 @@ export default {
                 {
                     id: 3,
                     text: "My Orders",
-                    path: '/my-orders',
+                    path: '/pay',
                 },
                 {
                     id: 4,

@@ -95,7 +95,7 @@ export default {
                     console.log(response.data[0])
                     localStorage.setItem("nombre", response.data[0].name)
                     localStorage.setItem("id", response.data[0].id)
-                    localStorage.setItem("photo_url", response.data[0].photo_url)
+                    localStorage.setItem("photo_url", response.data[0].picture)
 
 
                 } else {
