@@ -1,7 +1,6 @@
 {
   "users": [
     {
-
       "name": "Jasmin Aleda",
       "username": "Jamin02",
       "password": "123123123",
@@ -14,7 +13,6 @@
       "picture": "https://thumbs.dreamstime.com/b/nice-positive-woman-yellow-background-portrait-emotion-163675981.jpg",
       "id": 1,
       "points": 55
-
     },
     {
       "name": "Emily Aria",
@@ -82,7 +80,6 @@
       "id": 6
     },
     {
-
       "name": "Juan Perez",
       "username": "PepitoJuan",
       "password": "1234567",
@@ -98,7 +95,7 @@
     {
       "id": 25,
       "name": "Lili Ramos",
-      "age":25,
+      "age": 25,
       "email": "liliramos@gmail.com",
       "phone": "987654321",
       "photo_url": "https://i.postimg.cc/X7tMTxy2/image-9.png",
@@ -106,7 +103,7 @@
       "rating": 4.5,
       "country": "Peru",
       "password": 123,
-      "value":92
+      "value": 92
     }
   ],
   "inchatOrders": [
@@ -339,13 +336,11 @@
       "orderDestination": "Lima, Peru",
       "orderMaxDate": "2020-10-20T00:00:00.000Z",
       "currentProcess": 82
-    }
-  ],
-  "bookedOrders": [
+    },
     {
-      "id": 3,
+      "id": 12,
       "orderCode": "JAUYHE",
-      "clientId": 7,
+      "clientId": 1,
       "touristId": 4,
       "amount": 970,
       "currency": "USD",
@@ -355,8 +350,11 @@
       "originCountry": "Colombia",
       "requestDate": "2020-08-20T00:00:00.000Z",
       "orderDestination": "Lima, Peru",
-      "orderMaxDate": "2020-10-20T00:00:00.000Z"
-    },
+      "orderMaxDate": "2020-10-20T00:00:00.000Z",
+      "currentProcess": 27
+    }
+  ],
+  "bookedOrders": [
     {
       "id": 5,
       "orderCode": "PQHBAX",
@@ -523,7 +521,6 @@
     {},
     {}
   ],
-
   "popular_stores": [
     {
       "id": 1,
@@ -682,7 +679,7 @@
   ],
   "comments": [
     {
-      "id":1,
+      "id": 1,
       "id_to": 1,
       "id_from": 12,
       "name": "Alejandra Mesa",
@@ -691,7 +688,7 @@
       "stars": 5
     },
     {
-      "id":2,
+      "id": 2,
       "id_to": 1,
       "id_from": 13,
       "name": "Carlos Morales",
@@ -700,7 +697,7 @@
       "stars": 5
     },
     {
-      "id":3,
+      "id": 3,
       "id_to": 2,
       "id_from": 14,
       "name": "Cristiano Ramirez",
@@ -709,17 +706,16 @@
       "stars": 4
     },
     {
-      "id":4,
+      "id": 4,
       "id_to": 1,
       "id_from": 12,
       "name": "Violet Myers",
       "comment": "They took a long time to deliver my product",
       "photo_com": "https://i.postimg.cc/cHp2Q8zq/comment-1.png",
       "stars": 1
-      
     },
     {
-      "id":4,
+      "id": 4,
       "id_to": 25,
       "id_from": 13,
       "name": "Miles Morales",

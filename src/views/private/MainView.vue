@@ -4,9 +4,9 @@
 
 <template>
   <NavbarHome/>
-  <footer>
+<!-- <footer>
     <Footer></Footer>
-  </footer>
+  </footer>   -->
 
 </template>
 

@@ -70,6 +70,9 @@ Button{
   transition: none;
 }
 footer{
+  /* position: absolute;
+  bottom: 0vw;
+  width: 100%; */
   background:linear-gradient(90deg, #264986 3.89%, rgba(61, 179, 197, 0.8) 100%);
 }
 header{
