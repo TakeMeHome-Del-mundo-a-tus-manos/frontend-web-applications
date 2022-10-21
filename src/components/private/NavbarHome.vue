@@ -172,7 +172,7 @@
                     <div class="box-client-data">
                       <aside class="subtitle-client-data">Client data</aside>
                       <img class="client-data-Photo" alt="ClientPhoto" :src="user.picture">
-                      <aside class="name-client-data">{{ order.name }}</aside>
+                      <aside class="name-client-data">{{ user.name }}</aside>
                     </div>
                   </div>
                   <div class="box-bottom-contract-information">
