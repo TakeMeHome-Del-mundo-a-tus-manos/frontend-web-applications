@@ -42,7 +42,7 @@
   </div>
 </div>
 
-<pv-dialog
+<Dialog
     v-model:visible=makeContract
     :style="{ width: '900px' }"
     class="p-fluid"
@@ -115,7 +115,7 @@
       />
       
     </template>
-  </pv-dialog>
+  </Dialog>
  
 
 

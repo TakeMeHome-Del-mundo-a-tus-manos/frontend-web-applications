@@ -64,7 +64,6 @@ import Knob from 'primevue/knob';
 import Password from 'primevue/password';
 import TabView from 'primevue/tabview';
 import TabPanel from 'primevue/tabpanel';
-import Dialog from 'primevue/dialog';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 

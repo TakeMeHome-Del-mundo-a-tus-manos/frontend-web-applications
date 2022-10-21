@@ -130,11 +130,11 @@ export default {
             if (this.name == "" || this.orderURL == ""||this.category == "" || this.price == ""||this.dimensions == "" ) {
                 alert("Please fill in all the fields");
             } else {
-                this.link="/";
+                this.link="/make-order";
                 //Convertir a JSON
                 this.order.name = this.name;
                 this.order.orderURL = this.orderURL;
-                this.order.category = this.category;
+                this.order.category = this.category.name;
                 this.order.price = this.price;
                 this.order.dimensions = this.dimensions
                 this.order.orderOrigin = sessionStorage.getItem("orderOrigin");

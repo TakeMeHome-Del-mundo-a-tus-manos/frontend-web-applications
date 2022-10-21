@@ -100,7 +100,7 @@
     {
       "id": 17,
       "orderCode": "AWSDFRGD",
-      "userId": 1,
+      "clientId": 1,
       "touristId": 0,
       "amount": 730,
       "currency": "SOL",
@@ -116,7 +116,7 @@
     {
       "id": 18,
       "orderCode": "AWSDFRGD",
-      "userId": 2,
+      "clientId": 2,
       "touristId": 0,
       "amount": 730,
       "currency": "SOL",
@@ -132,7 +132,7 @@
     {
       "id": 19,
       "orderCode": "AWSDFRGD",
-      "userId": 3,
+      "clientId": 3,
       "touristId": 0,
       "amount": 730,
       "currency": "SOL",
@@ -306,6 +306,22 @@
       "orderDestination": "Lima, Peru",
       "orderMaxDate": "2020-10-20T00:00:00.000Z",
       "currentProcess": 12
+    },
+    {
+      "id": 11,
+      "orderCode": "AWSWYRGD",
+      "clientId": 1,
+      "touristId": 1,
+      "amount": 730,
+      "currency": "SOL",
+      "productImage": "https://m.media-amazon.com/images/I/51iulgmBeLL._AC_SL1000_.jpg",
+      "productName": "Apple iPhone 12",
+      "productStore": "https://www.pngmart.com/files/8/Amazon-PNG-Pic.png",
+      "originCountry": "United States",
+      "requestDate": "2020-08-20T00:00:00.000Z",
+      "orderDestination": "Lima, Peru",
+      "orderMaxDate": "2020-10-20T00:00:00.000Z",
+      "currentProcess": 82
     }
   ],
   "bookedOrders": [
@@ -342,7 +358,7 @@
     {
       "id": 8,
       "orderCode": "AWSDFRXL",
-      "userId": 3,
+      "clientId": 3,
       "touristId": 1,
       "amount": 730,
       "currency": "SOL",
@@ -358,7 +374,7 @@
     {
       "id": 9,
       "orderCode": "AWSDFRXS",
-      "userId": 2,
+      "clientId": 2,
       "touristId": 1,
       "amount": 730,
       "currency": "SOL",
@@ -372,25 +388,9 @@
       "currentProcess": 0
     },
     {
-      "id": 10,
-      "orderCode": "AWSWYRGD",
-      "userId": 1,
-      "touristId": 1,
-      "amount": 730,
-      "currency": "SOL",
-      "productImage": "https://m.media-amazon.com/images/I/51iulgmBeLL._AC_SL1000_.jpg",
-      "productName": "Apple iPhone 12",
-      "productStore": "https://www.pngmart.com/files/8/Amazon-PNG-Pic.png",
-      "originCountry": "United States",
-      "requestDate": "2020-08-20T00:00:00.000Z",
-      "orderDestination": "Lima, Peru",
-      "orderMaxDate": "2020-10-20T00:00:00.000Z",
-      "currentProcess": 0
-    },
-    {
       "id": 11,
       "orderCode": "AJKDFRGD",
-      "userId": 3,
+      "clientId": 3,
       "touristId": 3,
       "amount": 730,
       "currency": "SOL",
@@ -406,7 +406,7 @@
     {
       "id": 12,
       "orderCode": "AWRMFRGD",
-      "userId": 3,
+      "clientId": 3,
       "touristId": 2,
       "amount": 730,
       "currency": "SOL",
@@ -424,7 +424,7 @@
     {
       "id": 14,
       "orderCode": "AWSDFRGD",
-      "userId": 3,
+      "clientId": 3,
       "touristId": 1,
       "amount": 730,
       "currency": "SOL",
@@ -452,7 +452,7 @@
     {
       "id": 15,
       "orderCode": "AWSDFRGD",
-      "userId": 2,
+      "clientId": 2,
       "touristId": 1,
       "amount": 730,
       "currency": "SOL",
