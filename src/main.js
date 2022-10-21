@@ -3,6 +3,7 @@ import App from './App.vue'
 import PrimeVue from 'primevue/config';
 import router from './router'
 
+
 // App Theme
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
@@ -26,11 +27,11 @@ import Dropdown from 'primevue/dropdown';
 import Divider from 'primevue/divider';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
- 
+import DataView from 'primevue/dataview';
+import Paginator from 'primevue/paginator';
+
 import Carousel from 'primevue/carousel';
  
-
-
 import Login from './components/public/Login.vue'
 import NavbarInit from './components/public/Navbar.vue'
 import FooterInit from './components/public/Footer-Login.vue'
@@ -43,15 +44,12 @@ import NavbarHome from './components/private/NavbarHome.vue'
 import MakeTripContent from './components/private/trip/MakeTripContent.vue'
 import OrderTripSelectBar from './components/private/trip/OrderTripSelectbar.vue'
 import Home from './components/public/Home.vue'
-
+import ResumeNavbar from './components/private/resume/ResumeNavbar.vue'
 
 import MakeOrderContent from './components/private/order/MakeOrderContent.vue'
 import PublishOrderContent from './components/private/order/PublishOrderContent.vue'
 import OrderSelectBar from './components/private/order/OrderSelectBar.vue'
-
-
-
-
+ 
 
 import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
@@ -79,6 +77,7 @@ createApp(App)
 .component('pv-calendar',Calendar)
 .component('pv-dropdown',Dropdown)
 .component('pv-carousel', Carousel)
+.component('DataView', DataView)
 .component('Login',Login)
 .component('NavbarInit',NavbarInit)
 .component('FooterInit',FooterInit)
@@ -91,12 +90,11 @@ createApp(App)
 .component('MakeTripContent',MakeTripContent)
 .component('TripSelectBar', TripSelectBar)
 .component('OrderTripSelectBar', OrderTripSelectBar)
-
-
 .component('MakeOrderContent', MakeOrderContent)
 .component('PublishOrderContent', PublishOrderContent)
 .component('OrderSelectBar', OrderSelectBar)
-
+.component('ResumeNavbar', ResumeNavbar)
+.component('Paginator', Paginator)
 .component('useVuelidate',useVuelidate)
 .component('required',required)
 .component('email',email)

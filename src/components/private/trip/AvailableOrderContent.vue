@@ -9,17 +9,12 @@ export default {
       orderService: null,
       responsiveOptions: [
         {
-          breakpoint: '1024px',
-          numVisible: 3,
-          numScroll: 3
-        },
-        {
-          breakpoint: '600px',
+          breakpoint: '1245px',
           numVisible: 2,
-          numScroll: 2
+          numScroll: 1
         },
         {
-          breakpoint: '480px',
+          breakpoint: '915px',
           numVisible: 1,
           numScroll: 1
         }
@@ -39,7 +34,7 @@ export default {
 <template>
   <div class="content-section implementation">
     <div class="card">
-      <pv-carousel :value="availableOrders" :numVisible="3" :numScroll="3" :responsiveOptions="responsiveOptions">
+      <pv-carousel :value="availableOrders" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions">
         <template #item="slotProps">
           <div class="product-item" v-if="!slotProps.data.booked">
             <div class="product-item-content ">

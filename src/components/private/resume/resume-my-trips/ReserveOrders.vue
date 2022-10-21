@@ -11,12 +11,12 @@ export default {
         {
           breakpoint: '1024px',
           numVisible: 3,
-          numScroll: 1
+          numScroll: 3
         },
         {
           breakpoint: '600px',
           numVisible: 2,
-          numScroll: 1
+          numScroll: 2
         },
         {
           breakpoint: '480px',
@@ -39,8 +39,11 @@ export default {
 
 <template>
   <div class="content-section implementation">
+    <div class="ml-6 mb-5">
+        <label class="text-4xl font-bold">Reserved Orders</label>
+    </div>
     <div class="card">
-      <pv-carousel :value="bookedOrders" :numVisible="3" :numScroll="3" :responsiveOptions="responsiveOptions">
+      <pv-carousel :value="bookedOrders" :numVisible="2" :numScroll="3" :responsiveOptions="responsiveOptions">
         <template #item="slotProps">
           <div class="product-item">
             <div class="product-item-content ">
