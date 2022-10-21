@@ -6,6 +6,8 @@
   <div>
     <OrderSelectBar/>
   </div>
+  <footer>
+  </footer>
 </template>
 
 

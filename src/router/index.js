@@ -1,3 +1,4 @@
+
 import { createRouter, createWebHistory } from "vue-router";
 import Signup1View from "../views/public/Signup1View.vue";
 import Signup2View from "../views/public/Signup2View.vue";
@@ -12,6 +13,7 @@ import BookedOderContent from "../components/private/trip/BookedOrderContent.vue
 import Home from "../components/public/Home.vue";
 import SeeMessage from "../components/public/SeeMessage.vue";
 import ResumeView from "../views/private/resume/ResumeView.vue";
+ 
 import ResumeTripsNavbar from "../components/private/resume/resume-my-trips/ResumeTripsNabvar.vue";
 import TravelInProgress from "../components/private/resume/resume-my-trips/TravelInProgress.vue";
 import DeliveryHistory from "../components/private/resume/resume-my-trips/DeliveryHistory.vue";
@@ -23,6 +25,9 @@ import MyPurchases from "../components/private/resume/resume-my-purchases/MyPurc
 import MakeOrderContent from "../components/private/order/MakeOrderContent.vue";
 import PublishOrderContent from "../components/private/order/PublishOrderContent.vue";
 import OrderPublishView from "../views/private/order/OrderPublishView.vue";
+
+import MyProfile from '../components/private/profile/MyProfile.vue'
+import ProfileTravel from '../components/private/profile/ProfileTravel.vue'
 
 //My orders
 import MyOrdersSelectBar from "../components/private/my-orders/Selectbar-my-orders.vue";
@@ -67,9 +72,21 @@ const router = createRouter({
           component: Home,
         },
         {
-          path: "/messages",
-          name: "messages",
+          path: '/my-profile',
+          name: 'my-profile',
+          component: MyProfile,
+        },
+        {
+          path: '/messages',
+          name: 'messages',
           component: SeeMessage,
+          
+        },
+        {
+          path: '/profile-travel',
+          name: 'profile-travel',
+          component: ProfileTravel,
+      
         },
         {
           path: "/my-orders",

@@ -37,3 +37,8 @@ export default {
     }
 }
 </script>
+<style>
+.menubar{
+    color:white;
+}
+</style>
