@@ -17,6 +17,7 @@ export class UserApiService {
   update(id, data) {
     return http.put(`/login/${id}`, data);
   }
+  
 
   delete(id) {
     return http.delete(`/login/${id}`);
@@ -40,5 +41,18 @@ export class UserApiService {
   }
   findByName(name) {
     return http.get(`/login?name=${name}`);
+  }
+
+
+  getAvailable_Orders(){
+    return http.get(`/availableOrders`)
+  }
+
+  getPeople(){
+    return http.get(`/users`)
+  }
+
+  getNotifications(id){
+    return http.get(`/notifications?id=${id}`)
   }
 }

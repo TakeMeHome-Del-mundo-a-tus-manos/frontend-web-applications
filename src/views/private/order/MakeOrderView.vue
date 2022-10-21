@@ -5,6 +5,7 @@
 <template>
   <div>
     <TripSelectBar/>
+    <MakeOrderContent/>
   </div>
   <footer>
     

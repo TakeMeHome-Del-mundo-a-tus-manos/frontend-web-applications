@@ -3,6 +3,24 @@
   <center>
     
     <div  id="img_home" class="home_account">
+
+      <div class="card-1 p-4 shadow-0 border-round w-100 lg:w-20 Home inline-block">
+        <img class="UserPhoto home-img" alt="UserPhoto" :src="this.photo_src">
+        <aside class="text5">Hi, {{ this.name }}!.</aside>
+
+        <div class="popular_stores p-4 shadow-0 border-round w-auto lg:w-40 Home ">
+          <aside class="text3 font-medium line-height-3 ">Popular Stores</aside>
+          <div class="box3 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores.slice(0,2)" :key="store.id" >
+            <a :href="store.link" target="_blank"><img class="Walmart home-img" alt="Walmart" :src="store.image_url"></a>
+          </div>
+          <div class="box4 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores.slice(2,5)" :key="store.id" >
+            <a :href="store.link" target="_blank"><img class="Walmart1 home-img" alt="Walmart" :src="store.image_url"></a>
+          </div>
+        </div>
+
+
+
+      <!-- odificacion ->
       <div class="user">
           <img class="UserPhoto" alt="UserPhoto" :src="this.photo_src">
           <aside class="text5">Hi, {{ this.name }}!.</aside>
@@ -12,6 +30,7 @@
             
           </RouterLink>
           <Button label="Order Request" class="w-auto home-button btnRe" ></Button>
+
 
       </div>
       <div class="content">
@@ -34,11 +53,11 @@
           <aside class="text3 font-medium line-height-3">Recent Orders</aside>
           <div class="Boxes" v-for="product in recent_orders.slice(0,2)" :key="product.id"> 
             <div class="box1 p-4 shadow-1 border-round w-full lg:w-20">
-              <img id="PhotoIphone" alt="PhotoIphone" :src="product.product_url">
+              <img id="Iphone" alt="Iphone" :src="product.product_url">
               <center>
                 <aside class="Subtitle1">{{product.product_name}}</aside>
                 <aside class="time1">{{product.time_before}}</aside>
-                <img class="Apple2" alt="Apple2" :src="product.store_url">
+                <img class="Apple2 home-img" alt="Apple2" :src="product.store_url">
               </center>
             </div>
           </div>
@@ -102,7 +121,7 @@
   box-shadow: 0px 0px 1px #999;
   transition:all 300ms;
 }
-img:hover{
+.home-img:hover{
   transform: scale(1.2,1.2);
 }
 .text2 {
@@ -146,11 +165,10 @@ img:hover{
   font-size:12px;
 
   font-weight: bold;
-  font-family: Poppins;
   margin: 10px auto;
 
 }
-#PhotoIphone{
+#Iphone{
   top:-10px;
   width: 100px;
   height: 100px;
@@ -192,18 +210,27 @@ img:hover{
   height:120px;
 }
 .card-2{
-  margin-top:60px;
+  margin-top:0px;
   float: right;
   width: 500px;
   height:400px;
 }
 .Walmart1{
+  height: 100px;
+  float:left;
+}
+.Walmart{
+  height: 100px;
   float:left;
 }
 .content{
   position: absolute;
   display:flex;
   top:15vw;
+}
+
+.home_account{
+  margin-top:20px;
 }
 
 </style>
