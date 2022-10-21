@@ -12,7 +12,8 @@
       "idCard": "0001",
       "description": "What’s up? My name is Jasmin, but you can call me Mixwell. I use to travel around the world and I can help you bringing some articles",
       "picture": "https://thumbs.dreamstime.com/b/nice-positive-woman-yellow-background-portrait-emotion-163675981.jpg",
-      "id": 1
+      "id": 1,
+      "points": 55
 
     },
     {
@@ -92,10 +93,10 @@
       "idCard": "123",
       "description": "a",
       "picture": "https://thumbs.dreamstime.com/b/nice-positive-woman-yellow-background-portrait-emotion-163675981.jpg",
-      "id": 25
+      "id": 26
     },
     {
-      "id": 26,
+      "id": 25,
       "name": "Lili Ramos",
       "age":25,
       "email": "liliramos@gmail.com",
@@ -511,10 +512,6 @@
       "orderMaxDate": "2020-10-20T00:00:00.000Z",
       "currentProcess": 23
     }
-  ],
-  "comments": [
-    {},
-    {}
   ],
   "chats": [
     {},

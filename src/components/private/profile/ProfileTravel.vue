@@ -111,7 +111,7 @@
     }
     </script>
     
-    <style>
+    <style scoped>
     .Body{
         align-items: center;
         color:black;

@@ -47,7 +47,7 @@
 </template>
 
 
-<style>
+<style scoped>
 .p-tabview {
     display: flex;
     flex-direction: column;
@@ -68,7 +68,8 @@
 }
 
 .p-tabview-panels {
-    width: 80vw;
+    min-width: 80vw;
+    min-height: 80vh;
 }
 
 @media screen and (max-width: 750px) {

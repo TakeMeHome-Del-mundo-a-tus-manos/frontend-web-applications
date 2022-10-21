@@ -18,7 +18,7 @@
                 
                 <div class="col-6 align-items-center justify-content-center">
                     
-                    <TabView>
+                    <TabView >
 	                    <TabPanel header="Personal Information">
 	                    	<br><br>
                             <div class="personalInf"> Full name<Button class="btn-name p-button-rounded" disabled="disabled" >{{ user.name }}</Button></div><br><br>
@@ -32,7 +32,7 @@
                             <h2 class="pointsTitle">Currently you have</h2>
 	                    	<div class="points">
                                 
-                                <Knob v-model="user.value" readonly :size="300"/>
+                                <Knob v-model="user.points" readonly :size="300"/>
                             </div>
 	                    </TabPanel>
 	                    <TabPanel header="Comments" >
@@ -69,7 +69,6 @@
 <script>
 
 import { UserApiServiceJSON } from "../../../services/user-api-service-json";
-import axios from 'axios';
 export default {
   name: 'myProfile',
   components: {
@@ -111,7 +110,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+
 .Body{
     align-items: center;
     color:black;
@@ -286,7 +287,7 @@ export default {
 .personalInf{
     display: flex;
     position: relative;
-align-items: center;
+    align-items: center;
     left: 5vw;
 }
 

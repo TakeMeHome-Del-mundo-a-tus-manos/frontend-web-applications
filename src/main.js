@@ -37,7 +37,6 @@ import Galleria from 'primevue/galleria';
 import TabView from 'primevue/tabview';
 import TabPanel from 'primevue/tabpanel';
 
-import Knob from 'primevue/knob';
 import Image from 'primevue/image';
 import Rating from 'primevue/rating';
 
@@ -80,8 +79,6 @@ import CurrentProcess from './components/private/my-orders/CurrentProcess.vue'
 import Checkbox from 'primevue/checkbox';
 import Knob from 'primevue/knob';
 import Password from 'primevue/password';
-import TabView from 'primevue/tabview';
-import TabPanel from 'primevue/tabpanel';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 

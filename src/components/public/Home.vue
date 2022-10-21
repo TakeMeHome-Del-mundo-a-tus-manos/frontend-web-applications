@@ -1,9 +1,7 @@
 <template>
 
   <center>
-    
     <div  id="img_home" class="home_account">
-
       <div class="card-1 p-4 shadow-0 border-round w-100 lg:w-20 Home inline-block">
         <img class="UserPhoto home-img" alt="UserPhoto" :src="this.photo_src">
         <aside class="text5">Hi, {{ this.name }}!.</aside>
@@ -18,38 +16,13 @@
           </div>
         </div>
 
-
-
-      <!-- odificacion ->
-      <div class="user">
-          <img class="UserPhoto" alt="UserPhoto" :src="this.photo_src">
-          <aside class="text5">Hi, {{ this.name }}!.</aside>
-          <RouterLink to="/My-Profile">
-            
-            <div style="text-align: center;"><a href="" ><aside class="text2 font-medium line-height-3">My account</aside></a></div>
-            
-          </RouterLink>
-          <Button label="Order Request" class="w-auto home-button btnRe" ></Button>
-
-
       </div>
-      <div class="content">
-        <div class="card-1 p-4 shadow-0 border-round w-100 lg:w-20 Home inline-block">  
-        <div class="ordersRequest">
-            <div class="popular_stores p-4 shadow-0 border-round w-auto lg:w-40 Home ">
-              <aside class="text3 font-medium line-height-3 ">Popular Stores</aside>
-              <div class="box3 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores.slice(0,2)" :key="store.id" >
-                <a :href="store.link" target="_blank"><img class="Walmart" alt="Walmart" :src="store.image_url"></a>
-              </div>
-              <div class="box4 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores.slice(2,5)" :key="store.id" >
-                <a :href="store.link" target="_blank"><img class="Walmart1" alt="Walmart" :src="store.image_url"></a>
-              </div>
-            </div>
-          
-        </div>
-      </div>
+
       <div class="card-2 p-4 shadow-0 border-round w-100 lg:w-20 Home inline-block">
-        <div class="recent_orders p-4 shadow-0 border-round w-auto lg:w-40 Home ">
+        <div style="text-align: center;"><a href="/my-profile" ><aside class="text2 font-medium line-height-3">My account</aside></a></div>
+        <Button label="Order Request" class="w-auto home-button" ></Button>
+        <div class="box_blank p-4 shadow-0 border-round w-auto lg:w-20 Home"> </div>
+        <div class="recent_orders p-4 shadow-0 border-round w-auto lg:w-20 Home">
           <aside class="text3 font-medium line-height-3">Recent Orders</aside>
           <div class="Boxes" v-for="product in recent_orders.slice(0,2)" :key="product.id">
             <div class="box1 p-4 shadow-1 border-round w-full lg:w-20">
@@ -62,25 +35,26 @@
             </div>
           </div>
         </div>
+
       </div>
-      </div>
-      
     </div>
   </center>
 
+  <center>
+
+  </center>
 
 </template>
 
 
-<style>
+<style scoped>
 
 .Home{
   font-family: Poppins;
-  top:5vw;
 }
 .home_account{
   margin-top:-30px;
-  margin-bottom:-50px;
+  margin-bottom:50px;
   height:900px;
   width:1000px;
 }
@@ -95,11 +69,9 @@
 
 }
 .home-button{
-  position: absolute;
-
   background-image: linear-gradient(to right, rgba(39, 70, 133, 0.8) 0%, rgba(61, 179, 197, 0.8) 100%);
-  left: 14vw;
-  top: 6.3vw
+  left: 300px;
+  top: -30px;
 }
 .inline-block{
   display: inline-block;
@@ -108,13 +80,11 @@
   width: 100%;
 }
 .UserPhoto {
-  position: absolute;
+  float:left;
   height: 120px;
   width:120px;
   border-radius: 50%;
-  box-shadow: 0px 0px 3px #999;
-  top: 9vw;
-  left: 24vw;
+  box-shadow: 0px 0px 3px #999
 }
 #img_home img{
   width: 120px;
@@ -125,9 +95,7 @@
   transform: scale(1.2,1.2);
 }
 .text2 {
-  position: absolute;
-  top:12vw;
-  left: 53vw;
+  margin-top:20px;
   font-weight: bold;
   text-decoration: underline black;
   font-size:15px;
@@ -140,15 +108,12 @@
   border-left:3px solid #2794E3;
   left:50%;
 }
-.text5{
-  position: absolute;
+   .text5{
   font-size:40px;
-  left: 31vw;
-  top: 9vw;
+  right:200px;
   font-weight: bold;
-  max-inline-size: 12vw;
 }
-.time1{
+   .time1{
   font-size:12px;
   text-decoration: underline black;
 }
@@ -162,8 +127,6 @@
   height: 62px;
 }
 .Subtitle1{
-  font-size:12px;
-
   font-weight: bold;
   margin: 10px auto;
 
@@ -222,11 +185,6 @@
 .Walmart{
   height: 100px;
   float:left;
-}
-.content{
-  position: absolute;
-  display:flex;
-  top:15vw;
 }
 
 .home_account{

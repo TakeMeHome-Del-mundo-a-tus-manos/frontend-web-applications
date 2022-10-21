@@ -101,7 +101,7 @@ export default {
     justify-content: center;
     margin: 0;
     .card {
-        width: 45%;
+        width: 45vw;
         form {
             margin-top: 2rem;
         }

@@ -1,6 +1,6 @@
  
 import httpJson from './http/http-common';
- 
+import axios from 'axios';
 
 export class UserApiServiceJSON {
   getAll() {
@@ -44,10 +44,10 @@ export class UserApiServiceJSON {
   }
   getCommentsById(id){
     //return httpJson.get(`/comments?id_to_like=${id}`)
-    return axios.get("http://localhost:3000/api/v1/comments?id_to_like="+id)
+    return axios.get("http://localhost:3000/api/v1/comments?id_to="+id)
   }
   getClaimsById(id){
     //return httpJson.get(`/comments?id_to_like=${id}`)
-    return axios.get("http://localhost:3000/api/v1/claims?id_to_like="+id)
+    return axios.get("http://localhost:3000/api/v1/claims?id_to="+id)
   }
 }
