@@ -4,19 +4,20 @@
             <img src="../icons/TKM-favicon.png" alt="Image" height="50" class="mb-3">
             <div class="text-900 text-3xl font-medium mb-3">Welcome, let's get started!</div>
             <span class="text-600 font-medium line-height-3">Don't have an account?</span>
-            <RouterLink to="/signup1"> <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a></RouterLink>
+            <RouterLink to="/signup1"> <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create
+                    today!</a></RouterLink>
         </div>
 
         <div>
             <div class="input-div">
-                <label for="email1"  class="block text-900 font-medium mb-2"> <strong> Email/Username</strong></label>
+                <label for="email1" class="block text-900 font-medium mb-2"> <strong> Email/Username</strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-user" />
-                    <InputText type="email" class="p-inputtext-md" placeholder="Username" v-model="user"/>
+                    <InputText type="email" class="p-inputtext-md" placeholder="Username" v-model="user" />
                 </span>
             </div>
-            <div class="input-div" >
-                <label for="password1" class="block text-900 font-medium mb-2" > <strong> Password</strong></label>
+            <div class="input-div">
+                <label for="password1" class="block text-900 font-medium mb-2"> <strong> Password</strong></label>
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-lock" />
                     <InputText type="password" class="p-inputtext-md" placeholder="************" v-model="password" />
@@ -31,7 +32,7 @@
             <Message v-if="error" severity="error" key="Dynamic Warning Message">{{error_msg}}</Message>
 
             <RouterLink :to="link">
-                <Button  label="Login" class="w-full" v-on:click="login()">
+                <Button label="Login" class="w-full" v-on:click="login()">
                 </Button>
             </RouterLink>
 
@@ -40,70 +41,72 @@
 </template>
 
 <style>
-    .login{
-        font-family: Poppins;
-    }
-    
-    RouterLink Button{
-        background-image: linear-gradient(to right, rgba(39, 70, 133, 0.8) 0%, rgba(61, 179, 197, 0.8) 100%);
-    }
-    .login input{
-        width: 100%;
-    }
-    .login .input-span{
-        width: 100%;
-    }
-    .input-div{
-        margin: 30px;
-    }
-    .extra-form-div{
-        width: 100%;
-    }
-    
+.login {
+    font-family: Poppins;
+}
 
+RouterLink Button {
+    background-image: linear-gradient(to right, rgba(39, 70, 133, 0.8) 0%, rgba(61, 179, 197, 0.8) 100%);
+}
+
+.login input {
+    width: 100%;
+}
+
+.login .input-span {
+    width: 100%;
+}
+
+.input-div {
+    margin: 30px;
+}
+
+.extra-form-div {
+    width: 100%;
+}
 </style>
 
 <script>
-    import { UserApiService } from "../../services/user-api-service";
-    
-    export default {
-      name: 'login',
-      components: {
-    
-      },
-      data: function () {
+import { UserApiService } from "../../services/user-api-service";
+
+export default {
+    name: 'login',
+    components: {
+
+    },
+    data: function () {
         this.usuarioApiService = new UserApiService()
-    
+
         return {
-          user: "",
-          password: "",
-          error: false,
-          error_msg: "",
-          link:""
+            user: "",
+            password: "",
+            error: false,
+            error_msg: "",
+            link: ""
         }
-      },
-      methods: {
+    },
+    methods: {
         login() {
-          this.submittedLogin = true
-          this.usuarioApiService.getByEmailAndPassword(this.user, this.password).then(response => {
+            this.submittedLogin = true
+            this.usuarioApiService.getByEmailAndPassword(this.user, this.password).then(response => {
                 if (response.data.length != 0) {
-                  console.log(response.data.length)
-                  this.link = '/home';
-                   console.log(response.data[0])
-                  localStorage.setItem("nombre", response.data[0].name)
-                  localStorage.setItem("id", response.data[0].id)
-                  localStorage.setItem("photo_url", response.data[0].photo_url)
-                   
-    
+                    console.log(response.data.length)
+                    this.link = '/home';
+                    console.log(response.data[0])
+                    localStorage.setItem("nombre", response.data[0].name)
+                    localStorage.setItem("id", response.data[0].id)
+                    localStorage.setItem("photo_url", response.data[0].photo_url)
+
+
                 } else {
-                  this.error = true
-                  this.error_msg = "Login Error";
+                    this.error = true
+                    this.error_msg = "Login Error";
                 }
-    
-              }
-          )
+
+            }
+            )
         }
-      }
-    
     }
-    </script>
+
+}
+</script>

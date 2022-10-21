@@ -17,7 +17,13 @@ import MakeOrderContent from '../components/private/order/MakeOrderContent.vue'
 import PublishOrderContent from '../components/private/order/PublishOrderContent.vue'
 import OrderPublishView from '../views/private/order/OrderPublishView.vue'
 
-
+//My orders
+import MyOrdersSelectBar from '../components/private/my-orders/Selectbar-my-orders.vue'
+import PayInit from '../components/private/my-orders/PayInit.vue'
+import PaymentDetails from '../components/private/my-orders/PaymentDetails.vue'
+import PaymentCompleted from '../components/private/my-orders/PaymentCompleted.vue'
+import CurrentProcess from '../components/private/my-orders/CurrentProcess.vue'
+import CurrentProcessMap from '../components/private/my-orders/CurrentProcessMap.vue'
 
 
 const router = createRouter({
@@ -62,7 +68,34 @@ const router = createRouter({
         {
           path: '/my-orders',
           name: 'my-orders',
-          component: null,
+          component: MyOrdersSelectBar,
+          children: [
+            { 
+              path: '/pay',
+              name: 'pay',
+              component: PayInit,
+            },
+            {
+              path: '/payment-details/:orderCode',
+              name: 'payment-details',
+              component: PaymentDetails,
+            },
+            {
+              path: '/payment-completed',
+              name: 'payment-completed',
+              component: PaymentCompleted,
+            },
+            {
+              path: '/current-process',
+              name: 'current-process',
+              component: CurrentProcess,
+            },
+            {
+              path: '/current-process-map/:orderCode',
+              name: 'current-process-map',
+              component: CurrentProcessMap,
+            }
+          ]
         },
         
         {
