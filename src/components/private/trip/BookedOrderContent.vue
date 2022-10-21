@@ -1,5 +1,6 @@
 <script>
 import {OrderApiService} from "@/services/order/order-api-service";
+import {UserApiServiceJSON} from "@/services/user-api-service-json";
 
 export default {
 
@@ -7,19 +8,17 @@ export default {
     return {
       bookedOrders: [],
       orderService: null,
+      userService: null,
+      myHash: null,
+      users: [],
       responsiveOptions: [
         {
-          breakpoint: '1024px',
-          numVisible: 3,
-          numScroll: 3
-        },
-        {
-          breakpoint: '600px',
+          breakpoint: '1245px',
           numVisible: 2,
-          numScroll: 2
+          numScroll: 1
         },
         {
-          breakpoint: '480px',
+          breakpoint: '915px',
           numVisible: 1,
           numScroll: 1
         }
@@ -28,43 +27,61 @@ export default {
   },
   created() {
     this.orderService = new OrderApiService();
-    this.orderService.getAll().then((response) => {
-      const orders = response.data;
-      this.bookedOrders = orders.filter(order => order.booked === true);
+    this.userService = new UserApiServiceJSON();
+    this.users = new Array(); 
+    this.myHash = new Map();
+
+    this.orderService.getBookedOrdersByTouristId(localStorage.getItem("id")).then((response) => {
+      this.bookedOrders = response.data;
+
+       //getting users id
+       for (let i = 0; i < this.bookedOrders.length; i++) {
+         this.users.push(this.bookedOrders[i].userId);
+      }
+      //getting users name by id
+      for (let i = 0; i < this.users.length; i++) {
+        this.userService.getById(this.users[i]).then((response) => {
+          this.myHash.set(this.users[i], response.data);
+        }
+      );
+      }
+
     });
   }
 }
-
 </script>
 
 <template>
   <div class="content-section implementation">
     <div class="card">
-      <pv-carousel :value="bookedOrders" :numVisible="3" :numScroll="3" :responsiveOptions="responsiveOptions">
+      <pv-carousel :value="bookedOrders" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions">
         <template #item="slotProps">
           <div class="product-item">
             <div class="product-item-content ">
               <div class="grid flex align-content-between align-items-center">
                 <div>
-                  <img :src="slotProps.data.iconImage" class="person-icon"/>
+                  <img :src="myHash.get(slotProps.data.userId).picture" class="person-icon"/>
                 </div>
                 <div class="ml-4">
-                  <div class="font-bold">{{ slotProps.data.name }}</div>
-                  <div class="text-sm text-left">Requested {{ slotProps.data.orderDate }} ago</div>
+                  <div class="font-bold">{{ myHash.get(slotProps.data.userId).name}}</div>
+                  <div class="text-sm text-left">Requested 1h ago</div>
                 </div>
               </div>
 
-              <div class="grid flex align-content-between mt-1">
-                <div class="col-6 align-items-center">
-                  <img :src="slotProps.data.productImage" class="person-product"/>
-                  <img :src="slotProps.data.storeImage" class="person-store">
+              <div class="grid flex align-content-between mt-2">
+                <div class="col-6 flex align-items-center justify-content-center align-content-center flex-column">
+                  <div class="product-image-container">
+
+                    <img :src="slotProps.data.productImage" class="person-product"/>
+                    <img :src="slotProps.data.productStore" class="person-store">
+                  </div>
                 </div>
                 <div class="col-6 text-left">
-                  <div class="font-bold">{{ slotProps.data.orderName }}</div>
+                  <div class="font-bold">{{ slotProps.data.productName }}</div>
                   <div class="text-sm mt-2">
                     <div class="mt-1">Delivery {{ slotProps.data.orderDestination }}</div>
-                    <div class="mt-1">Bring From {{ slotProps.data.orderOrigin }}</div>
-                    <div class="mt-1">Before {{ slotProps.data.orderMaxDate }}</div>
+                    <div class="mt-1">Bring From {{ slotProps.data.originCountry }}</div>
+                    <div class="mt-1">Before {{ slotProps.data.orderMaxDate.slice(0, 10) }}</div>
                   </div>
                 </div>
               </div>
@@ -95,12 +112,19 @@ export default {
 
   .person-icon {
     width: 50px;
+    height: 50px;
     border-radius: 50%;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 
+  .product-image-container{
+    width: 130px;
+    height: 150px;
+    margin-left: 1rem;
+  }
   .person-product {
-    width: 140px;
+    max-width: 85%;
+    max-height: 85%;
   }
 
   .person-store {
@@ -118,21 +142,17 @@ export default {
     }
   }
 
-  /*
-    .container {
-      width: 200px;
-      height: 120px;
-    }
-
-      Resize images
-    .container img {
-      width: 100%;
-      height: auto;
-    }
-  */
-
-
 }
+
+
+::v-deep(.p-carousel-next){
+ background: #1589A2 !important;
+}
+
+::v-deep(.p-carousel-prev){
+ background: #1589A2 !important;
+}
+
 
 
 </style>

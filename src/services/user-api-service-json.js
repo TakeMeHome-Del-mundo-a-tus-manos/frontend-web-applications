@@ -1,5 +1,6 @@
-import axios from 'axios';
-import httpJson from './http/http-common-json'
+ 
+import httpJson from './http/http-common';
+ 
 
 export class UserApiServiceJSON {
   getAll() {
