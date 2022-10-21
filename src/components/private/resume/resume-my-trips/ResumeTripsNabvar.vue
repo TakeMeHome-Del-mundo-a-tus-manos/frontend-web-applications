@@ -4,11 +4,13 @@
 <template>
 
  <div class="grid">
+
  <div class="col-1 pt-5 ml-3 md:ml-0 md:pt-8 flex align-items-start">
     <div class="vl ml-4"></div>
  </div> 
 
   <div class="col-8 ml-3 md:col-2 md:ml-0">
+
     <div class="grid pt-5 md:pt-8 ">
       <div class=" font-semibold text-center hover:bg-blue-50">
         <router-link to="/resume/my-trips" class="no-underline">Travel in progress</router-link>

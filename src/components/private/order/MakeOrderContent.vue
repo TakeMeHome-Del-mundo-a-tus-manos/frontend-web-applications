@@ -1,18 +1,18 @@
 <template class="make-order">
-  <div class="flex mt-5">
+  <div class="flex mt-6">
     <label class="text-4xl font-bold">Make An Order</label>
     <i class="order-box ml-6" style="font-size: 2.5rem"></i>
   </div>
   <!--3 rows-->
 
-  <div class="grid mt-5">
+  <div class="grid mt-6">
     <div class="col-6 flex ">
-      <i class="order-origin ml-3 "></i>
-      <label class="text-2xl ml-5">Where will your order be placed? </label>
+      <i class="order-origin ml-6 "></i>
+      <label class="text-2xl ml-6">Where will your order be placed? </label>
     </div>
     <div class="col-6 flex justify-content-start">
-      <pv-dropdown class="drop-down" v-model="selectedOrigin" :options="originCities" optionLabel="name"
-                   placeholder="Select a City">
+      <pv-dropdown class="drop-down" v-model="orderOrigin" :options="originCities" optionLabel="name" v-on:change="validateOrigin()" placeholder="Select a City">
+       
         <template #value="slotProps">
           <div class="country-item" v-if="slotProps.value">
             <img :src="'https://countryflagsapi.com/png/' + slotProps.value.code"/>
@@ -30,6 +30,8 @@
           </div>
         </template>
       </pv-dropdown>
+      <div class="input-div">
+       <Message v-if=orderOriginError v-on:close="orderOriginError=false" severity="error">Origin is<strong> empty</strong> </Message></div>
     </div>
   </div>
 
@@ -39,8 +41,7 @@
       <label class="text-2xl ml-5 ">Where will the order be brought from?</label>
     </div>
     <div class="col-6 flex justify-content-start">
-      <pv-dropdown class="drop-down" v-model="selectedDestination" :options="destinationCities" optionLabel="name"
-                   placeholder="Select a City">
+      <pv-dropdown class="drop-down" v-model="orderDestination" :options="destinationCities" optionLabel="name" v-on:change="validateDestination()" placeholder="Select a City">
         <template #value="slotProps">
           <div class="country-item" v-if="slotProps.value">
             <img :src="'https://countryflagsapi.com/png/' + slotProps.value.code"/>
@@ -64,9 +65,9 @@
   
 
   <!--Continue Button-->
-  <RouterLink to="/order-publish-complete">
+  <RouterLink :to="link">
     <div class=" flex mt-6 trip login">
-      <Button label="Continue" class="w-18rem h-3rem text-white text-lg font-bold justify-content-center">Continue
+      <Button label="Continue" class="w-18rem h-3rem text-white text-lg font-bold justify-content-center" v-on:click="validate()"> Continue
       </Button>
     </div>
   </RouterLink>
@@ -75,27 +76,65 @@
 
 <script>
 export default {
+    
     data() {
-    return {
-      selectedOrigin: null,
-      originCities: [
-        {name: 'United States', code: 'US'},
-        {name: 'China', code: 'CN'},
-        {name: 'France', code: 'FR'},
-        {name: 'Japan', code: 'JP'},
-        {name: 'United Kingdom', code: 'GB'}
-      ],
-      selectedDestination: null,
-      destinationCities: [
-        {name: 'Peru', code: 'PE'},
-        {name: 'Brazil', code: 'BR'},
-        {name: 'Chile', code: 'CL'},
-        {name: 'Argentina', code: 'AR'},
-        {name: 'Mexico', code: 'MX'}
-      ],
-      date: null,
+      return {
+        orderOrigin:"",
+        orderDestination:"",
+        link:"",
+
+        orderOriginError: false,
+        orderDestinationError: false,
+
+        selectedOrigin: null,
+        originCities: [
+          {name: 'United States', code: 'US'},
+          {name: 'China', code: 'CN'},
+          {name: 'France', code: 'FR'},
+          {name: 'Japan', code: 'JP'},
+          {name: 'United Kingdom', code: 'GB'}
+        ],
+        selectedDestination: null,
+        destinationCities: [
+          {name: 'Peru', code: 'PE'},
+          {name: 'Brazil', code: 'BR'},
+          {name: 'Chile', code: 'CL'},
+          {name: 'Argentina', code: 'AR'},
+          {name: 'Mexico', code: 'MX'}
+        ],
+        date: null,
+      };
+    },
+    created() {
+        sessionStorage.clear();
+    },
+    methods:{
+      validate() {
+        if (this.orderOrigin == "" || this.orderDestination == "") {
+          alert("Please fill in all the fields");
+        }else{
+          this.link="/order-publish-complete";
+          sessionStorage.setItem("orderOrigin", this.orderOrigin);
+          sessionStorage.setItem("orderDestination", this.orderDestination);
+        } 
+      },
+      validateOrigin: function () {
+        if (this.orderOrigin == "") {
+          this.orderOriginError = true
+        } else {
+          this.orderOriginError = false
+        }
+      },
+      validateDestination () {
+        if (this.orderDestination == "") {
+          this.orderDestinationError = true
+        } else {
+          this.orderDestinationError = false
+        }
+      },
     }
-  }
+
+    
 }
 </script>
 

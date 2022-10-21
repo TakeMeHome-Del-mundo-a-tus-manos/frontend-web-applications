@@ -3,6 +3,7 @@ import App from './App.vue'
 import PrimeVue from 'primevue/config';
 import router from './router'
 
+
 // App Theme
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
@@ -26,19 +27,10 @@ import Dropdown from 'primevue/dropdown';
 import Divider from 'primevue/divider';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
- 
-
 import Carousel from 'primevue/carousel';
-
-
-
-
- 
 import DataView from 'primevue/dataview';
 import Paginator from 'primevue/paginator';
 import Galleria from 'primevue/galleria';
- 
- 
  
 import Login from './components/public/Login.vue'
 import NavbarInit from './components/public/Navbar.vue'
@@ -59,12 +51,12 @@ import PublishOrderContent from './components/private/order/PublishOrderContent.
 import OrderSelectBar from './components/private/order/OrderSelectBar.vue'
  
 
+
 //My orders
 import MyOrdersSelectBar from './components/private/my-orders/Selectbar-my-orders.vue'
 import PayInit from './components/private/my-orders/PayInit.vue'
 import PaymentDetails from './components/private/my-orders/PaymentDetails.vue'
 import CurrentProcess from './components/private/my-orders/CurrentProcess.vue'
-
 
 import Checkbox from 'primevue/checkbox';
 import Knob from 'primevue/knob';
@@ -75,7 +67,6 @@ import Dialog from 'primevue/dialog';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 
- 
 import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 
@@ -146,6 +137,3 @@ app.use(PrimeVue, { ripple: true })
     .component('CurrentProcess', CurrentProcess)
     
     .mount('#app');
-
- 
-

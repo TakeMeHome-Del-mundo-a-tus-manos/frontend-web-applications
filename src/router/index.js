@@ -16,6 +16,13 @@ import ResumeTripsNavbar from "../components/private/resume/resume-my-trips/Resu
 import TravelInProgress from "../components/private/resume/resume-my-trips/TravelInProgress.vue"
 import DeliveryHistory from "../components/private/resume/resume-my-trips/DeliveryHistory.vue"
 import ReservedOrders from "../components/private/resume/resume-my-trips/ReserveOrders.vue"
+ 
+import MyPurchases from "../components/private/resume/resume-my-purchases/MyPurchases.vue"
+
+import MakeOrderContent from "../components/private/order/MakeOrderContent.vue";
+import PublishOrderContent from "../components/private/order/PublishOrderContent.vue";
+import OrderPublishView from "../views/private/order/OrderPublishView.vue";
+ 
 //My orders
 import MyOrdersSelectBar from '../components/private/my-orders/Selectbar-my-orders.vue'
 import PayInit from '../components/private/my-orders/PayInit.vue'
@@ -23,10 +30,7 @@ import PaymentDetails from '../components/private/my-orders/PaymentDetails.vue'
 import PaymentCompleted from '../components/private/my-orders/PaymentCompleted.vue'
 import CurrentProcess from '../components/private/my-orders/CurrentProcess.vue'
 import CurrentProcessMap from '../components/private/my-orders/CurrentProcessMap.vue'
-
-import MakeOrderContent from "../components/private/order/MakeOrderContent.vue";
-import PublishOrderContent from "../components/private/order/PublishOrderContent.vue";
-import OrderPublishView from "../views/private/order/OrderPublishView.vue";
+ 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -102,6 +106,7 @@ const router = createRouter({
  
           
  
+ 
         },
 
         {
@@ -176,7 +181,14 @@ const router = createRouter({
                   name: "delivery-history",
                   component: DeliveryHistory,
                 },
-              ]
+              ],
+
+              },
+              {  
+              path: "/resume/my-purchases",
+              name: "my-purchases",
+              component: MyPurchases,
+
             },
           ],
         },

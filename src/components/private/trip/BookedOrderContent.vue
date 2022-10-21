@@ -13,6 +13,11 @@ export default {
       users: [],
       responsiveOptions: [
         {
+          breakpoint: '1024px',
+          numVisible: 3,
+          numScroll: 1
+        },
+        {
           breakpoint: '1245px',
           numVisible: 2,
           numScroll: 1
