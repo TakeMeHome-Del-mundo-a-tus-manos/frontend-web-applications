@@ -463,7 +463,7 @@
       "productImage": "https://droidsans.com/wp-content/uploads/2020/08/galaxy-tab-s7-cov-1280x720.jpg",
       "productName": "GALAXY TAB S7 PLUS 12.4'' 128GB PEN INCLUDED",
       "productStore": "https://cdn.corporate.walmart.com/dims4/WMT/71169a3/2147483647/strip/true/crop/2389x930+0+0/resize/980x381!/quality/90/?url=https%3A%2F%2Fcdn.corporate.walmart.com%2Fd6%2Fe7%2F48e91bac4a8ca8f22985b3682370%2Fwalmart-logos-lockupwtag-horiz-blu-rgb.png",
-      "currentProcess": 0
+      "currentProcess": 0,
       "orderOrigin": "Japan",
       "orderMaxDate": "Oct 23"
     },
@@ -498,12 +498,12 @@
     {
       "id": 3,
       "orderCode": "AWSDFRGD",
-      "clientId": 3,
+      "clientId": 1,
       "touristId": 4,
       "amount": 730,
       "currency": "PE",
       "productImage": "https://promart.vteximg.com.br/arquivos/ids/5359588-1000-1000/image-43d473025ded48ad9c5ebc9d7fd412e1.jpg?v=637853979995770000",
-      "productName": "Promart Silla Gamer Ergonómica Dreizt Shine RGB Series Negro Luces Con Posapies Reclinable",
+      "productName": "Promart Silla Gamer Ergonómica Dreizt Shine RGB",
       "productStore": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1200px-Amazon_logo.svg.png",
       "originCountry": "Chile",
       "requestDate": "2020-08-20T00:00:00.000Z",

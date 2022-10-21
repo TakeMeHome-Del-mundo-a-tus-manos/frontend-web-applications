@@ -25,8 +25,8 @@ export class OrderApiService{
         return http.get(`/bookedOrders?touristId=${touristId}`);
     }
 
-    getOrderByUserId(userId){
-        return http.get(`/orders?userId=${userId}`);
+    getOrderByUserId(clientId){
+        return http.get(`/availableOrders?clientId=${clientId}`);
     }
     
 }
