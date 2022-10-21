@@ -22,24 +22,25 @@
         <TabView>
             <TabPanel>
                 <template #header>
-                    <div>
-                        <RouterLink to="/pay" class="no-underline">
+                    <RouterLink to="/pay" class="no-underline">
                         <span>Pay</span>
                     </RouterLink>
-                    </div>
                 </template>
                 <RouterView></RouterView>
             </TabPanel>
             <TabPanel>
                 <template #header>
                     <RouterLink to="/current-process" class="no-underline">
-                        <span>Orders in Progress</span>
+                        <span>
+                            Orders in Progress
+                        </span>
                     </RouterLink>
                 </template>
                 <RouterView></RouterView>
+
             </TabPanel>
         </TabView>
-        
+
 
 
     </div>
@@ -47,8 +48,7 @@
 
 
 <style>
-
-.p-tabview{
+.p-tabview {
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -58,7 +58,7 @@
     margin-top: 5vh;
 }
 
-.p-tabview-nav{
+.p-tabview-nav {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -67,19 +67,23 @@
     background-color: #f2f2f2;
 }
 
-.p-tabview-panels{
+.p-tabview-panels {
     width: 80vw;
 }
 
 @media screen and (max-width: 750px) {
 
-    .p-tabview-nav{
+    .p-tabview-nav {
         width: 80vw;
     }
-    
-}
 
+}
 </style>
+
+<script>
+
+
+</script>
 <!-- 
 <style>
 

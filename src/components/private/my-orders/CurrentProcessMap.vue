@@ -3,7 +3,7 @@
         <div>
             <h2>Current Process</h2>
         </div>
-        <div class="card-pd row">
+        <div class="card-pd row card-cp">
             <div class="card-cpp">
                 <div class="product">
                     <div class="card-image">
@@ -48,7 +48,7 @@ export default {
     data() {
         return {
             myOrdersApiService: new MyOrdersApiService(),
-            process: null
+            process: {}
         }
     },
     created() {
@@ -72,6 +72,33 @@ export default {
 
 
 <style scoped>
+
+.main-content-cp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.main-content-cp .card-cp{
+    margin: 2vh 10vw;
+}
+.row{
+    display: flex;
+    align-items: center;
+}
+
+.row p{
+    justify-content: right;
+
+}
+
+.row p.accent-info{
+    justify-content: left;
+}
+
 .cppp .card-cpp {
     display: flex;
     flex-direction: column;
@@ -79,11 +106,17 @@ export default {
 }
 
 .cppp .card-pd {
-    width: 80%;
+    width: auto;
     display: flex;
     justify-content: space-evenly;
 }
-
+.card-image{
+    justify-content: center;
+}
+.card-image img{
+    width: 70%;
+    justify-content: center;
+}
 .cppp h4 {
     text-transform: uppercase;
     padding: 2vh 1vh 0 1vh;
@@ -98,10 +131,14 @@ export default {
     padding: 0;
 }
 
+.cppp .product .row {
+   justify-content: space-evenly;
+}
+
 .cppp .message span {
     font-style: normal;
     font-weight: 400;
-    font-size: 27px;
+    font-size: 25px;
     line-height: 30px;
     display: flex;
     align-items: center;
@@ -120,5 +157,26 @@ export default {
 .map iframe{
     width: 90%;
     border-radius: 20px;
+}
+
+@media (max-width: 960px) {
+    .cppp .card-pd {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .cppp .card-cpp {
+        width: 100%;
+    }
+    .cppp .map {
+        width: 100%;
+    }
+    .message{
+        display: none;
+    }
+    .card-image img{
+        align-self: center;
+        width: 50%;
+    }
 }
 </style>

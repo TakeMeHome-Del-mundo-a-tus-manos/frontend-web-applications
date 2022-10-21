@@ -42,8 +42,7 @@
 
 import { MyOrdersApiService } from "../../../services/my-orders/myOrders-api-service";
 
-export default {
-    name: "CurrentProcess",
+export default{
     data() {
         return {
             myOrdersApiService: new MyOrdersApiService(),
@@ -52,7 +51,7 @@ export default {
         }
     },
     mounted() {
-        this.myOrdersApiService.getCurrentProcesses().then((response) => {
+        this.myOrdersApiService.getCurrentProcesses(localStorage.getItem('id')).then((response) => {
             this.processes = response.data;
         });
     },
@@ -65,7 +64,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped >
 
 .column {
     display: flex;
@@ -84,7 +83,7 @@ export default {
 }
 
 .main-content-cp .card-pd{
-    width: 50vw;
+    width: auto;
     display: flex;
     justify-content: space-between;
 
@@ -118,7 +117,21 @@ export default {
 }
 
 .main-content-cp .card-cp{
-    margin: 2vh 0;
+    margin: 2vh 10vw;
+}
+
+@media only screen and (max-width: 960px){
+    .main-content-cp .card-pd{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+    .main-content-cp .product{
+        display: none;
+    }
+    .card-pd .row{
+        justify-content: center;
+    }
 }
 
 </style>

@@ -54,6 +54,8 @@ import OrderSelectBar from './components/private/order/OrderSelectBar.vue'
 import MyOrdersSelectBar from './components/private/my-orders/Selectbar-my-orders.vue'
 import PayInit from './components/private/my-orders/PayInit.vue'
 import PaymentDetails from './components/private/my-orders/PaymentDetails.vue'
+import CurrentProcess from './components/private/my-orders/CurrentProcess.vue'
+
 
 import Checkbox from 'primevue/checkbox';
 import Knob from 'primevue/knob';
@@ -142,6 +144,7 @@ app.use(PrimeVue, { ripple: true })
     .component('Knob', Knob)
     .component('Password', Password)
     .component('Toast', Toast)
-
+    .component('CurrentProcess', CurrentProcess)
+    
     .mount('#app');
 

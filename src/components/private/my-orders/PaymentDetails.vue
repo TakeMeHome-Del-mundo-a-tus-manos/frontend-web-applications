@@ -3,7 +3,7 @@
 
     <!-- Card de producto -->
     <div class="row main-row">
-        <div class="column">
+        <div>
             <div class="card-pd card-pdd">
                 <div class="card-header">
                     <div class="card-image">
@@ -72,8 +72,10 @@
                 </div>
 
             </div>
-            <Button :disabled="!checked" label="Confirm" class="w-full confirm" v-on:click="goConfirm()"></Button>
-            <Button label="Cancel" class="w-full cancel" v-on:click="goPay()"></Button>
+            <div class="column c-btn">
+                <Button :disabled="!checked" label="Confirm" class="w-full confirm" v-on:click="goConfirm()"></Button>
+                <Button label="Cancel" class="w-full cancel" v-on:click="goPay()"></Button>
+            </div>
         </div>
     </div>
 
@@ -92,6 +94,9 @@ export default {
             myOrdersApiService: new MyOrdersApiService(),
             checked: false,
             orderData: {
+
+            },
+            notification: {
 
             }
         }
@@ -116,16 +121,34 @@ export default {
                 console.log(response);
 
                 this.orderData.id = null;
-                this.orderData.currentProcess = parseInt(Math.random()*101);
+                this.orderData.currentProcess = parseInt(Math.random() * 101);
                 this.myOrdersApiService.addOrder('pending', this.orderData).then((response) => {
                     console.log(response);
+                    //this.sendNotification();
                     this.$router.push("/payment-completed");
+
                 });
 
             }).catch((error) => {
                 console.log(error);
             });
 
+        },
+        sendNotification() {
+            makeNotification();
+            this.myOrdersApiService.sendNotification(this.notification).then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(error);
+            });
+        },
+        makeNotification() {
+            this.notification = {
+                "title": "Order Confirmed",
+                "body": "Your order has been confirmed",
+                "icon": "https://cdn-icons-png.flaticon.com/512/323/323310.png",
+                "date": Date.now(),
+            };
         }
 
     }
@@ -134,6 +157,12 @@ export default {
 </script>
 
 <style>
+.column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
 .row {
     display: flex;
 }
@@ -194,7 +223,7 @@ export default {
 }
 
 .card-store img {
-    width: 5vw;
+    max-width: 50px;
 }
 
 .card-content .row {
@@ -267,7 +296,7 @@ export default {
 .card-cf {
     width: 15vw;
     padding-top: 2vh;
-    height: 42.3vh;
+    height: 42.3%;
 }
 
 .label-cf {
@@ -319,4 +348,77 @@ export default {
     top: 4px;
     left: 0px;
 }
+
+@media screen and (max-width: 1100px) {
+    .main-row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-pd {
+        width: auto;
+    }
+
+    .sub {
+        display: none;
+    }
+
+    .card-image img {
+        width: 25vw;
+        height: auto;
+    }
+
+    .card-content {
+        margin-left: 2vw;
+    }
+
+    .card-title h3 {
+        text-align: justify;
+    }
+
+    .card-cf {
+        margin-top: 3vh;
+    }
+
+    .w-full {
+        width: 50% !important;
+    }
+
+    .c-btn{
+        margin-top: 2vh;
+    }
+
+    .row-cf{
+        align-items: center;
+    }
+    .card-pdd{
+        font-size: smaller;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .card-header{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .w-full {
+        width: 70% !important;
+    }
+
+    .card-image{
+        justify-content: center;
+    }
+    .card-image img {
+        width: 45vw;
+        height: auto;
+    }
+
+    .card-title{
+        margin-top: 3vh;
+    }
+}
+
+
 </style>
