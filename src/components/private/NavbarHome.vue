@@ -54,15 +54,15 @@
 
                     <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
                       <img id="Play5" alt="Play5" :src="order.productImage">
-                      <aside class="Subtitle-Play5">{{order.orderName}}</aside>
+                      <aside class="Subtitle-Play5">{{order.productName}}</aside>
                       <div class="date-container">
                         <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{order.orderDestination}}</b></aside>
-                        <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{order.orderOrigin}}</b></aside>
-                        <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{order.orderDate}}</b></aside>
+                        <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{order.originCountry}}</b></aside>
+                        <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{order.requestDate}}</b></aside>
                         <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{order.orderMaxDate}}</b></aside>
                         <div class="box-bottom-contract">
                           <aside class="sub-sold-by">Sold by</aside>
-                          <img class="Amazon" alt="Amazon" :src="order.storeImage">
+                          <img class="Amazon" alt="Amazon" :src="order.productStore">
                         </div>
                       </div>
                     </div>
@@ -70,14 +70,17 @@
                   </div>
                   <div class="box-courier-data">
                     <aside class="subtitle-courier-data">Courier data</aside>
-                    <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
+
+                    <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
+                      <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
+                    </div>
                     <aside class="name-courier-data">{{ this.name }}</aside>
                   </div>
                   <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
                     <div class="box-client-data">
                       <aside class="subtitle-client-data">Client data</aside>
-                      <img class="client-data-Photo" alt="ClientPhoto" :src="order.iconImage">
-                      <aside class="name-client-data">{{ order.name }}</aside>
+                      <img class="client-data-Photo" alt="ClientPhoto" :src="user.picture">
+                      <aside class="name-client-data">{{ user.name }}</aside>
                     </div>
                   </div>
                   <div class="box-bottom-contract-information">
@@ -146,15 +149,15 @@
 
                     <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
                       <img id="Play5" alt="Play5" :src="order.productImage">
-                      <aside class="Subtitle-Play5">{{order.orderName}}</aside>
+                      <aside class="Subtitle-Play5">{{order.productName}}</aside>
                       <div class="date-container">
                         <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{order.orderDestination}}</b></aside>
-                        <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{order.orderOrigin}}</b></aside>
-                        <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{order.orderDate}}</b></aside>
+                        <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{order.originCountry}}</b></aside>
+                        <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{order.requestDate}}</b></aside>
                         <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{order.orderMaxDate}}</b></aside>
                         <div class="box-bottom-contract">
                           <aside class="sub-sold-by">Sold by</aside>
-                          <img class="Amazon" alt="Amazon" :src="order.storeImage">
+                          <img class="Amazon" alt="Amazon" :src="order.productStore">
                         </div>
                       </div>
                     </div>
@@ -168,7 +171,7 @@
                   <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
                     <div class="box-client-data">
                       <aside class="subtitle-client-data">Client data</aside>
-                      <img class="client-data-Photo" alt="ClientPhoto" :src="order.iconImage">
+                      <img class="client-data-Photo" alt="ClientPhoto" :src="user.picture">
                       <aside class="name-client-data">{{ order.name }}</aside>
                     </div>
                   </div>
@@ -222,15 +225,15 @@
 
                       <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
                         <img id="Play5" alt="Play5" :src="order.productImage">
-                        <aside class="Subtitle-Play5">{{order.orderName}}</aside>
+                        <aside class="Subtitle-Play5">{{order.productName}}</aside>
                         <div class="date-container">
                           <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{order.orderDestination}}</b></aside>
-                          <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{order.orderOrigin}}</b></aside>
-                          <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{order.orderDate}}</b></aside>
+                          <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{order.originCountry}}</b></aside>
+                          <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{order.requestDate}}</b></aside>
                           <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{order.orderMaxDate}}</b></aside>
                           <div class="box-bottom-contract">
                             <aside class="sub-sold-by">Sold by</aside>
-                            <img class="Amazon" alt="Amazon" :src="order.storeImage">
+                            <img class="Amazon" alt="Amazon" :src="order.productStore">
                           </div>
                         </div>
                       </div>
@@ -257,7 +260,7 @@
 <script>
 
 import { UserApiService } from "../../services/user-api-service";
-
+import {UserApiServiceJSON} from "../../services/user-api-service-json";
 export default {
     data() {
         return {
@@ -274,6 +277,7 @@ export default {
             modal3:null,
             OpenModal4: false,
             modal4:null,
+            user:null,
 
             OpenModalContractAccepted: false,
             modalContractAccepted:null,
@@ -281,6 +285,7 @@ export default {
             modalContractRejected:null,
 
             homeUserApiService: null,
+            UserApiServiceJSON:null,
             photo_src:"",
             popular_stores:[],
             recent_orders:[],
@@ -333,24 +338,26 @@ export default {
         this.photo_src = localStorage.getItem("photo_url");
 
         this.homeUserApiService = new UserApiService()
+        this.UserApiServiceJSON=new UserApiServiceJSON()
+
         this.homeUserApiService.getPopularStores().then((response) => {
           this.popular_stores = response.data;
-          console.log(this.popular_stores)
         });
 
         this.homeUserApiService.getRecentOrders(localStorage.getItem("id")).then((response) => {
           this.recent_orders = response.data;
-          console.log(this.recent_orders)
         });
 
         this.homeUserApiService.getAvailable_Orders().then((response) => {
           this.availableOrders = response.data;
-          console.log(this.availableOrders)
         });
 
       this.homeUserApiService.getNotifications(localStorage.getItem("id")).then((response) => {
         this.notifications = response.data;
-        console.log(this.notifications)
+      });
+
+      this.UserApiServiceJSON.getById(localStorage.getItem("id")).then((response) => {
+        this.user = response.data;
       });
 
     },

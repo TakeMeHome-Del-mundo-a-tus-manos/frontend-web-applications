@@ -522,7 +522,7 @@ i{
   font-size: 9px;
 }
 .box-bottom-contract{
-  margin-top:-10px;
+  margin-top:-50px;
   margin-left:18px;
   width: 100px;
   height: 40px;
@@ -705,7 +705,7 @@ i{
   box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.1);
 }
 .box-contract-resume-rejected{
-  margin-top: 35px;
+  margin-top: 20px;
   padding-left: 40px;
 }
 .box-complete-rejected{

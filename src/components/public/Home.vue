@@ -24,13 +24,13 @@
         <div class="box_blank p-4 shadow-0 border-round w-auto lg:w-20 Home"> </div>
         <div class="recent_orders p-4 shadow-0 border-round w-auto lg:w-20 Home">
           <aside class="text3 font-medium line-height-3">Recent Orders</aside>
-          <div class="Boxes" v-for="product in recent_orders.slice(0,2)" :key="product.id"> 
+          <div class="Boxes" v-for="product in recent_orders.slice(0,2)" :key="product.id">
             <div class="box1 p-4 shadow-1 border-round w-full lg:w-20">
-              <img id="Iphone" alt="Iphone" :src="product.product_url">
+              <img id="Iphone" alt="Iphone" :src="product.productImage">
               <center>
-                <aside class="Subtitle1">{{product.product_name}}</aside>
-                <aside class="time1">{{product.time_before}}</aside>
-                <img class="Apple2 home-img" alt="Apple2" :src="product.store_url">
+                <aside class="Subtitle1">{{product.productName}}</aside>
+                <aside class="time1">{{product.orderMaxDate}}</aside>
+                <img class="Apple2 home-img" alt="Apple2" :src="product.productStore">
               </center>
             </div>
           </div>
@@ -138,7 +138,7 @@
   float:left;
 }
 .Apple2{
-  height: 50px;
+  height: 30px;
   width: 150px;
   box-shadow: 0px 0px 0px #999;
 }

@@ -32,7 +32,7 @@ export class UserApiService {
   }
 
   getRecentOrders(id){
-    return http.get(`/completed_orders?client_id=${id}`)
+    return http.get(`/completedOrders?clientId=${id}`)
 
   }
 
