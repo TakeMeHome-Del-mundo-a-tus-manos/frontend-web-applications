@@ -3,7 +3,10 @@
     <aside class="subtitle">You have 0 new messages</aside>
     <div class="box20">
       <img class="ContactPhoto" alt="ContactPhoto" src="src/components/img/ContactPhoto.png">
-      <aside class="name">Lili Ramos</aside>
+      <RouterLink to="/profile-travel">   
+        <aside class="name">Lili Ramos</aside>      
+      </RouterLink>
+      
       <aside class="message">Write a message...</aside>
     </div>
     <div class="box30">
@@ -22,6 +25,7 @@
 <style>
 .SeeMessage{
   font-family: Poppins;
+  margin-bottom: 3vw;
 }
 img.ContactPhoto{
   bottom:50px;

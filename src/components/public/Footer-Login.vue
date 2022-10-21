@@ -7,7 +7,7 @@
                 <Button icon="pi pi-facebook" class="p-button-raised p-button-rounded" />
                 <Button icon="pi pi-instagram" class="p-button-raised p-button-rounded" />
                 <Button icon="pi pi-linkedin" class="p-button-raised p-button-rounded" />
-                <p>© TakeMeHome, 2022.</p>
+                <a>© TakeMeHome, 2022.</a>
             </div>
         </footer>
 
@@ -20,7 +20,6 @@ footer {
     background: rgb(38, 73, 134);
     background: linear-gradient(90deg, rgba(38, 73, 134, 1) 0%, rgba(21, 137, 162, 0.95) 70%);
     color: white;
-    padding: 50px;
     text-align: center;
     margin-top: 20px;
 }
@@ -30,10 +29,11 @@ i {
     margin: 8px;
 }
 
-p {
+a {
     margin-top: 15px;
     width: auto;
     display: block;
+    text-align: center;
 }
 
 </style>

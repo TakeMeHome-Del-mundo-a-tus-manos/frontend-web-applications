@@ -26,24 +26,29 @@ import Dropdown from 'primevue/dropdown';
 import Divider from 'primevue/divider';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
- 
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
 import Carousel from 'primevue/carousel';
- 
+import Knob from 'primevue/knob';
+import Image from 'primevue/image';
+import Rating from 'primevue/rating';
 
 
 import Login from './components/public/Login.vue'
 import NavbarInit from './components/public/Navbar.vue'
-import FooterInit from './components/public/Footer-Login.vue'
+import FooterInit from './components/private/Footer.vue'
 import Signup1 from './components/public/Signup1.vue'
 import Signup2 from './components/public/Signup2.vue'
 import Signup3 from './components/public/Signup3.vue'
 import TripSelectBar from './components/private/trip/TripSelectbar.vue'
-import Footer from './components/private/Footer.vue'
+import Footer from './components/public/FooterLog.vue'
 import NavbarHome from './components/private/NavbarHome.vue'
 import MakeTripContent from './components/private/trip/MakeTripContent.vue'
 import OrderTripSelectBar from './components/private/trip/OrderTripSelectbar.vue'
 import Home from './components/public/Home.vue'
 
+import MyProfile from './components/private/profile/MyProfile.vue'
+import ProfileTravel from './components/private/profile/ProfileTravel.vue'
 
 import MakeOrderContent from './components/private/order/MakeOrderContent.vue'
 import PublishOrderContent from './components/private/order/PublishOrderContent.vue'
@@ -76,9 +81,20 @@ createApp(App)
 .component('Divider',Divider)
 .component('Splitter',Splitter)
 .component('SplitterPanel',SplitterPanel)
+.component('TabView',TabView)
+.component('TabPanel',TabPanel)
+.component('Knob',Knob)
+.component('Rating',Rating)
+.component('Image',Image)
+
+
+
+
 .component('pv-calendar',Calendar)
 .component('pv-dropdown',Dropdown)
 .component('pv-carousel', Carousel)
+
+
 .component('Login',Login)
 .component('NavbarInit',NavbarInit)
 .component('FooterInit',FooterInit)
@@ -91,6 +107,9 @@ createApp(App)
 .component('MakeTripContent',MakeTripContent)
 .component('TripSelectBar', TripSelectBar)
 .component('OrderTripSelectBar', OrderTripSelectBar)
+.component('MyProfile', MyProfile)
+.component('ProfileTravel', ProfileTravel)
+
 
 
 .component('MakeOrderContent', MakeOrderContent)

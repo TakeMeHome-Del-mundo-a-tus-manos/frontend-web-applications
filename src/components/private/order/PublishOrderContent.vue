@@ -74,7 +74,9 @@
 
 <style>
 .make-order{
-    display: flex
+    display: flex;
+    margin-bottom: 5vw;
+    overflow: hidden
 }
 
 

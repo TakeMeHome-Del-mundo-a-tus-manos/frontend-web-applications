@@ -6,6 +6,9 @@
   <div>
     <TripSelectBar/>
   </div>
+  <footer>
+    
+  </footer>
 </template>
 
 

@@ -11,7 +11,8 @@ import AvailableOderContent from '../components/private/trip/AvailableOrderConte
 import BookedOderContent from '../components/private/trip/BookedOrderContent.vue'
 import Home from '../components/public/Home.vue'
 import SeeMessage from '../components/public/SeeMessage.vue'
-
+import MyProfile from '../components/private/profile/MyProfile.vue'
+import ProfileTravel from '../components/private/profile/ProfileTravel.vue'
 
 import MakeOrderContent from '../components/private/order/MakeOrderContent.vue'
 import PublishOrderContent from '../components/private/order/PublishOrderContent.vue'
@@ -55,9 +56,21 @@ const router = createRouter({
           component: Home,
         },
         {
+          path: '/my-profile',
+          name: 'my-profile',
+          component: MyProfile,
+        },
+        {
           path: '/messages',
           name: 'messages',
           component: SeeMessage,
+          
+        },
+        {
+          path: '/profile-travel',
+          name: 'profile-travel',
+          component: ProfileTravel,
+      
         },
         {
           path: '/my-orders',
