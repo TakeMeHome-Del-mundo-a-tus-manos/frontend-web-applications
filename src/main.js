@@ -1,7 +1,7 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 import PrimeVue from 'primevue/config';
-import router from './router'
+import router from './router';
 
 
 // App Theme
@@ -44,8 +44,9 @@ import NavbarHome from './components/private/NavbarHome.vue'
 import MakeTripContent from './components/private/trip/MakeTripContent.vue'
 import OrderTripSelectBar from './components/private/trip/OrderTripSelectbar.vue'
 import Home from './components/public/Home.vue'
+import ScrollPanel from 'primevue/scrollpanel';
+import Dialog from 'primevue/dialog';
 import ResumeNavbar from './components/private/resume/ResumeNavbar.vue'
-
 import MakeOrderContent from './components/private/order/MakeOrderContent.vue'
 import PublishOrderContent from './components/private/order/PublishOrderContent.vue'
 import OrderSelectBar from './components/private/order/OrderSelectBar.vue'
@@ -78,6 +79,7 @@ app.use(ToastService);
 app.use(PrimeVue, { ripple: true })
     .use(router)
     .component('Card', Card)
+    .component('ScrollPanel', ScrollPanel)
     .component('Button', Button)
     .component('SelectButton', SelectButton)
     .component('Sidebar', Sidebar)
