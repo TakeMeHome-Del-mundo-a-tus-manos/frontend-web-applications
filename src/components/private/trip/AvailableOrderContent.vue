@@ -37,12 +37,9 @@ export default {
        for (let i = 0; i < this.availableOrders.length; i++) {
          this.users.push(this.availableOrders[i].clientId);
         }
-          console.log(" I WAS HERE  ");
-
         //getting users name by id
         for (let i = 0; i < this.users.length; i++) {
           this.userService.getById(this.users[i]).then((response) => {
-            console.log("aaaaaaaaaaaaaaa", response.data);
             this.myHash.set(this.users[i], response.data);
         }
       );
