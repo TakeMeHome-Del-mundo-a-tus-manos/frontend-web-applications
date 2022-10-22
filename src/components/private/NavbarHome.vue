@@ -36,7 +36,7 @@
     <div class="modal" ref="modal">
       <button @click="OpenModalMain = false" class="close-btn2">x</button>
       <div class="not-newOrder" v-for="notification in notifications" :key="notification.id" v-if="notifications.type===newOrder">
-        <img class="not-message" src="src/components/img/not-message.png" alt="message">
+        <img class="not-message" src="../img/not-message.png" alt="message">
         <div class="not-resume">
           <h3 class="not-resume-txt">You have a new order.</h3>
           <h3 class="not-resume-txt">Click to read the contract</h3>
@@ -123,14 +123,14 @@
         </div>
       </div>
       <div class="not-orderArrived" v-for="notification in notifications" :key="notification.id" v-if="notifications.type===orderArrived">
-        <img class="not-message" src="src/components/img/not-box.png" alt="box">
+        <img class="not-message" src="../img/not-box.png" alt="box">
         <div class="not-resume">
           <h3 class="not-resume-txt">Your order has arrived!.</h3>
         </div>
       </div>
 
       <div class="not-contractAccepted" v-for="notification in notifications" :key="notification.id" v-if="notifications.type===contractAccepted">
-        <img class="not-message" src="src/components/img/not-contact-accepted.png" alt="box">
+        <img class="not-message" src="../img/not-contact-accepted.png" alt="box">
         <div class="not-resume">
           <h3 class="not-resume-txt">Contract accepted!</h3>
         </div>
@@ -202,7 +202,7 @@
 
 
       <div class="not-contractRejected" v-for="notification in notifications" :key="notification.id" v-if="notifications.type===contractRejected">
-        <img class="not-message" src="src/components/img/not-contact-rejected.png" alt="box">
+        <img class="not-message" src="../img/not-contact-rejected.png" alt="box">
         <div class="not-resume">
           <h3 class="not-resume-txt">Contract rejected!</h3>
           <Button @click="OpenModalContractRejected = true" class="btn-OpenNewModalContractRejected">See</Button>
