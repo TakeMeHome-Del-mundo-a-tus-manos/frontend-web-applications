@@ -352,13 +352,11 @@
       "orderDestination": "Lima, Peru",
       "orderMaxDate": "2020-10-20T00:00:00.000Z",
       "currentProcess": 27
-    }
-  ],
-  "bookedOrders": [
+    },
     {
-      "id": 5,
+      "id": 13,
       "orderCode": "PQHBAX",
-      "clientId": 6,
+      "clientId": 1,
       "touristId": 4,
       "amount": 970,
       "currency": "USD",
@@ -368,8 +366,27 @@
       "originCountry": "Colombia",
       "requestDate": "2020-08-20T00:00:00.000Z",
       "orderDestination": "Lima, Peru",
-      "orderMaxDate": "2020-10-20T00:00:00.000Z"
+      "orderMaxDate": "2020-10-20T00:00:00.000Z",
+      "currentProcess": 30
     },
+    {
+      "id": 14,
+      "orderCode": "AJKDFRGD",
+      "clientId": 1,
+      "touristId": 3,
+      "amount": 730,
+      "currency": "SOL",
+      "productImage": "https://shop.carobels.com/329-large_default/secador-de-pelo-profesional-sculpby-3300-ionic-c-1800w.jpg",
+      "productName": "Secador Sculby 3300",
+      "productStore": "https://www.pngmart.com/files/8/Amazon-PNG-Pic.png",
+      "originCountry": "United States",
+      "requestDate": "2020-08-20T00:00:00.000Z",
+      "orderDestination": "Lima, Peru",
+      "orderMaxDate": "2020-10-20T00:00:00.000Z",
+      "currentProcess": 31
+    }
+  ],
+  "bookedOrders": [
     {
       "id": 8,
       "orderCode": "AWSDFRXL",
@@ -391,22 +408,6 @@
       "orderCode": "AWSDFRXS",
       "clientId": 2,
       "touristId": 1,
-      "amount": 730,
-      "currency": "SOL",
-      "productImage": "https://shop.carobels.com/329-large_default/secador-de-pelo-profesional-sculpby-3300-ionic-c-1800w.jpg",
-      "productName": "Secador Sculby 3300",
-      "productStore": "https://www.pngmart.com/files/8/Amazon-PNG-Pic.png",
-      "originCountry": "United States",
-      "requestDate": "2020-08-20T00:00:00.000Z",
-      "orderDestination": "Lima, Peru",
-      "orderMaxDate": "2020-10-20T00:00:00.000Z",
-      "currentProcess": 0
-    },
-    {
-      "id": 11,
-      "orderCode": "AJKDFRGD",
-      "clientId": 3,
-      "touristId": 3,
       "amount": 730,
       "currency": "SOL",
       "productImage": "https://shop.carobels.com/329-large_default/secador-de-pelo-profesional-sculpby-3300-ionic-c-1800w.jpg",
