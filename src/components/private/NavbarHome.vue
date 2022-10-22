@@ -72,9 +72,9 @@
                     <aside class="subtitle-courier-data">Courier data</aside>
 
                     <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
-                      <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
+                      <img class="Courier-data-Photo" alt="CourierPhoto" :src="order.iconImage">
+                      <aside class="name-courier-data">{{ order.touristName }}</aside>
                     </div>
-                    <aside class="name-courier-data">{{ this.name }}</aside>
                   </div>
                   <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
                     <div class="box-client-data">
@@ -91,7 +91,7 @@
                     <div class="box-bottom-right-contract-information">
                       <aside class="txt-order-id">GRGATSA</aside>
                       <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
-                        <aside class="txt-amount-usd">{{order.amount}}</aside>
+                        <aside class="txt-amount-usd">{{order.amount}} USD</aside>
                       </div>
                     </div>
                   </div>
@@ -165,8 +165,10 @@
                   </div>
                   <div class="box-courier-data">
                     <aside class="subtitle-courier-data">Courier data</aside>
-                    <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
-                    <aside class="name-courier-data">{{ this.name }}</aside>
+                    <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
+                      <img class="Courier-data-Photo" alt="CourierPhoto" :src="order.iconImage">
+                      <aside class="name-courier-data">{{ order.touristName }}</aside>
+                    </div>
                   </div>
                   <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
                     <div class="box-client-data">
@@ -183,7 +185,7 @@
                     <div class="box-bottom-right-contract-information">
                       <aside class="txt-order-id">GRGATSA</aside>
                       <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
-                        <aside class="txt-amount-usd">{{order.amount}}</aside>
+                        <aside class="txt-amount-usd">{{order.amount}} USD</aside>
                       </div>
                     </div>
                   </div>
@@ -214,8 +216,10 @@
               <div class="box-complete-rejected">
                 <div class="box-courier-data-by">
                   <aside class="subtitle-courier-data">Courier data</aside>
-                  <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
-                  <aside class="name-courier-data">{{ this.name }}</aside>
+                  <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0,1)" :key="order.id" >
+                    <img class="Courier-data-Photo" alt="CourierPhoto" :src="order.iconImage">
+                    <aside class="name-courier-data">{{ order.touristName }}</aside>
+                  </div>
                 </div>
 
                 <div class="box-contract-resume-rejected">
