@@ -352,13 +352,11 @@
       "orderDestination": "Lima, Peru",
       "orderMaxDate": "2020-10-20T00:00:00.000Z",
       "currentProcess": 27
-    }
-  ],
-  "bookedOrders": [
+    },
     {
-      "id": 5,
+      "id": 13,
       "orderCode": "PQHBAX",
-      "clientId": 6,
+      "clientId": 1,
       "touristId": 4,
       "amount": 970,
       "currency": "USD",
@@ -368,8 +366,11 @@
       "originCountry": "Colombia",
       "requestDate": "2020-08-20T00:00:00.000Z",
       "orderDestination": "Lima, Peru",
-      "orderMaxDate": "2020-10-20T00:00:00.000Z"
-    },
+      "orderMaxDate": "2020-10-20T00:00:00.000Z",
+      "currentProcess": 49
+    }
+  ],
+  "bookedOrders": [
     {
       "id": 8,
       "orderCode": "AWSDFRXL",
@@ -659,6 +660,11 @@
         {
           "message": "this is a test",
           "date": "17:12:6",
+          "type": "sent"
+        },
+        {
+          "message": "",
+          "date": "10:30:54",
           "type": "sent"
         }
       ]

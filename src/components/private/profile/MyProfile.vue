@@ -6,7 +6,7 @@
                 <div class="col-3 ">
                     <br>
                     <div class="contPhoto">
-                        <img class="userPhoto" :src="user.photo_url" alt="Image"  width="200" preview  />
+                        <img class="userPhoto" :src="user.picture" alt="Image"  width="200" preview  />
                     </div>
                     
                     <h2 class="userName">{{ user.name }}</h2>
@@ -36,7 +36,7 @@
                             </div>
 	                    </TabPanel>
 	                    <TabPanel header="Comments" >
-                            <div v-for="comment in comments">
+                            <div v-for="comment in comments" :key="comment.id" >
                                 <div class="card"  >
                                 <Card style="width: 35rem;height: 8rem; ">
                                 
@@ -135,7 +135,7 @@ export default {
 .commentComment{
     position: relative;
     left: 17%;
-    top: -115px;
+    top: -95px;
     font-style: normal;
     align-content: flex-start;
 
