@@ -40,23 +40,24 @@ export default {
     this.myHashPictures = new Map();
   },
   mounted() { 
-    this.orderService.getBookedOrdersByTouristId(localStorage.getItem("id")).then((response) => {
+
+    //bookeOrders have the id 2
+    this.orderService.getByOrderStatusIdAndUserId(2, localStorage.getItem("id")).then((response) => {
       this.bookedOrders = response.data;
       
-      //getting users id
+      console.log(this.bookedOrders);
+
+      // call api with methid getProductsByOrderId and get the product name and picture, then hash it, the key is the order id and the value is the product name and picture
       for (let i = 0; i < this.bookedOrders.length; i++) {
-        this.users.push(this.bookedOrders[i].clientId);
+        this.orderService.getProductByOrderId(this.bookedOrders[i].id).then((response) => {
+          this.myHashNames.set(this.bookedOrders[i].id, response.data.name);
+          this.myHashPictures.set(this.bookedOrders[i].id, response.data.productUrl);
+
+          console.log(this.myHashPictures);
+
+        });
       }
-      //getting users name by id
-      for (let i = 0; i < this.users.length; i++) {
-        this.userService.getById(this.users[i]).then((response) => {
-          this.myHashNames.set(this.users[i], response.data.name);
-          this.myHashPictures.set(this.users[i], response.data.picture);
-        }
-        );
-      }
-      
-      console.log("aaaa",this.myHash);
+ 
     });
   }
 };
@@ -77,11 +78,11 @@ export default {
             <div class="product-item-content ">
               <div class="grid flex align-content-between align-items-center">
                 <div>
-                  <img :src="myHashPictures.get(slotProps.item.clientId)" class="person-icon"/>
+                  <img :src="slotProps.item.client.photoUrl" class="person-icon"/>
                 </div>
                 <div class="ml-4">
-                  <div class="font-bold">{{ myHashNames.get(slotProps.item.clientId)}}</div>
-                  <div class="text-sm text-left">Requested 1h ago</div>
+                  <div class="font-bold">{{ slotProps.item.client.fullName}}</div>
+                  <div class="text-sm text-left">Requested {{slotProps.item.requestDate.slice(0, 10)}}</div>
                 </div>
               </div>
 
@@ -89,15 +90,15 @@ export default {
                 <div class="col-6 flex align-items-center justify-content-center align-content-center flex-column">
                   <div class="product-image-container">
 
-                    <img :src="slotProps.item.productImage" class="person-product"/>
+                    <img :src="myHashPictures.get(slotProps.item.id)" class="person-product"/>
                   </div>
                 </div>
                 <div class="col-6 text-left">
-                  <div class="font-bold">{{ slotProps.item.productName }}</div>
+                  <div class="font-bold">{{ myHashNames.get(slotProps.item.id) }}</div>
                   <div class="text-sm mt-2">
                     <div class="mt-1">Delivery {{ slotProps.item.orderDestination }}</div>
                     <div class="mt-1">Bring From {{ slotProps.item.originCountry }}</div>
-                    <div class="mt-1">Data {{ slotProps.item.orderMaxDate.slice(0, 10)  }}</div>
+                    <div class="mt-1">Data {{ slotProps.item.deadlineDate.slice(0, 10)  }}</div>
                   </div>
                 </div>
               </div>
