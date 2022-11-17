@@ -5,6 +5,9 @@ export default {
   data() {
     return {
       deliveredOrders: [],
+      myProductUrlHash: null,
+      myProductNameHash: null,
+      myProductStoreHash: null,
       first: 0,
       totalRecords: 120,
       totalRecords2: 12,
@@ -15,14 +18,35 @@ export default {
 
   created() {
     this.orderService = new OrderApiService();
-  },
-
-  mounted() { 
-    this.orderService.getCompletedOrdersByTouristId(localStorage.getItem("id")).then((response) => {
+    this.myProductUrlHash = new Map();   
+    this.myProductNameHash = new Map();
+    this.myProductStoreHash = new Map();
+ 
+  
+    //completed oders have the id 4
+    this.orderService.getByOrderStatusIdAndUserId(4, localStorage.getItem("id")).then((response) => {
       this.deliveredOrders = response.data;
       this.totalRecords2 = this.deliveredOrders.length;
+      console.log(this.deliveredOrders);
+  
+      //get orders calling the api with method getProductByOrderId and passing the order id, then map it, key is the order id and value is the product
+      this.deliveredOrders.forEach((order) => {
+        this.orderService.getProductByOrderId(order.id).then((response) => {
+          this.myProductUrlHash.set(order.id, response.data.productUrl);
+          this.myProductNameHash.set(order.id, response.data.name);
+          this.myProductStoreHash.set(order.id, response.data.store);
+        });
+      });
+      
+    //hash 
+
+      console.log(this.products.at(0));
     });
+    console.log(this.myProductUrlHash);
   },
+
+ 
+  
 };
 </script>
 
@@ -38,29 +62,29 @@ export default {
         :totalRecords="totalRecords2"
         template=" PrevPageLink CurrentPageReport NextPageLink "
         class="paginator"
-      >
+        >
       </Paginator>
-
+      
       <div
-        v-for="order in deliveredOrders.slice(first, first + 1)"
-        :key="order.id"
-        class="card-container"
+      v-for="order in deliveredOrders.slice(first, first + 1)"
+      :key="order.id"
+      class="card-container"
       >
-        <Card class="card">
-          <template #content>
-            <div class="grid">
-              <div class="col-5 custom-grid">
-                <div class="inner-card-content">
-                  <img :src="order.productImage" alt="" class="img-card" />
+      <Card class="card">
+        <template #content>
+          <div class="grid">
+            <div class="col-5 custom-grid">
+              <div class="inner-card-content">
+                  <img :src="myProductUrlHash.get(order.id)" alt="" class="img-card" />
                 </div>
               </div>
               <div class="col-7">
                 <div class="inner-card-text">
-                  <h3 class="text-center">{{ order.productName }}</h3>
+                  <h3 class="text-center">{{ myProductNameHash.get(order.id) }}</h3>
                   <label>{{ order.requestDate.slice(0,10)}}</label>
                   <label class="mt-2">To: {{ order.orderDestination }}</label>
                   <div class="store-card-content">
-                    <img :src="order.productStore" alt="" class="img-card" />
+                    <img :src="myProductStoreHash.get(order.id)" alt="" class="img-card" />
                   </div>
                 </div>
               </div>
