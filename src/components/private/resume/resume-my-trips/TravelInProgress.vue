@@ -4,7 +4,10 @@ import { OrderApiService } from "@/services/order/order-api-service";
 export default {
   data() {
     return {
-      ordersInProgress: [],
+      deliveredOrders: [],
+      myProductUrlHash: null,
+      myProductNameHash: null,
+      myProductStoreHash: null,
       first: 0,
       totalRecords: 120,
       totalRecords2: 12,
@@ -15,20 +18,41 @@ export default {
 
   created() {
     this.orderService = new OrderApiService();
+    this.myProductUrlHash = new Map();   
+    this.myProductNameHash = new Map();
+    this.myProductStoreHash = new Map();
+ 
+  
+    //pending oders have the id 3
+    this.orderService.getByOrderStatusIdAndUserId(3, localStorage.getItem("id")).then((response) => {
+      this.deliveredOrders = response.data;
+      this.totalRecords2 = this.deliveredOrders.length;
+      console.log(this.deliveredOrders);
+  
+      //get orders calling the api with method getProductByOrderId and passing the order id, then map it, key is the order id and value is the product
+      this.deliveredOrders.forEach((order) => {
+        this.orderService.getProductByOrderId(order.id).then((response) => {
+          this.myProductUrlHash.set(order.id, response.data.productUrl);
+          this.myProductNameHash.set(order.id, response.data.name);
+          this.myProductStoreHash.set(order.id, response.data.store);
+        });
+      });
+      
+    //hash 
+
+      console.log(this.products.at(0));
+    });
+    console.log(this.myProductUrlHash);
   },
 
-  mounted() { 
-    this.orderService.getPendingOrdersByTouristId(localStorage.getItem("id")).then((response) => {
-      this.ordersInProgress = response.data;
-      this.totalRecords2 = this.ordersInProgress.length;
-    });
-  },
+ 
+  
 };
 </script>
 
 <template>
   <div class="ml-5 md:ml-6 mb-4">
-    <label class="text-3xl md:text-4xl font-bold">Travel In Progress</label>
+    <label class="text-3xl md:text-4xl font-bold">Delivery History</label>
   </div>
   <div class="grid">
     <div class="paginator-container col-5 md:col-12 md:ml-0">
@@ -38,29 +62,29 @@ export default {
         :totalRecords="totalRecords2"
         template=" PrevPageLink CurrentPageReport NextPageLink "
         class="paginator"
-      >
+        >
       </Paginator>
-
+      
       <div
-        v-for="order in ordersInProgress.slice(first, first + 1)"
-        :key="order.id"
-        class="card-container"
+      v-for="order in deliveredOrders.slice(first, first + 1)"
+      :key="order.id"
+      class="card-container"
       >
-        <Card class="card">
-          <template #content>
-            <div class="grid">
-              <div class="col-5 custom-grid">
-                <div class="inner-card-content">
-                  <img :src="order.productImage" alt="" class="img-card" />
+      <Card class="card">
+        <template #content>
+          <div class="grid">
+            <div class="col-5 custom-grid">
+              <div class="inner-card-content">
+                  <img :src="myProductUrlHash.get(order.id)" alt="" class="img-card" />
                 </div>
               </div>
               <div class="col-7">
                 <div class="inner-card-text">
-                  <h3 class="text-center">{{ order.productName }}</h3>
+                  <h3 class="text-center">{{ myProductNameHash.get(order.id) }}</h3>
                   <label>{{ order.requestDate.slice(0,10)}}</label>
                   <label class="mt-2">To: {{ order.orderDestination }}</label>
                   <div class="store-card-content">
-                    <img :src="order.productStore" alt="" class="img-card" />
+                    <img :src="myProductStoreHash.get(order.id)" alt="" class="img-card" />
                   </div>
                 </div>
               </div>
