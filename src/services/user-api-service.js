@@ -24,7 +24,7 @@ export class UserApiService {
   }
 
   getByEmailAndPassword(email, password) {
-    return http.get(`/users?email=${email}&&password=${password}`);
+    return http.get(`/users/${email}/${password}`);
   }
 
   getPopularStores(){
@@ -32,12 +32,18 @@ export class UserApiService {
   }
 
   getRecentOrders(id){
-    return http.get(`/completedOrders?clientId=${id}`)
+    //return http.get(`/completedOrders?clientId=${id}`)
+    //1 AVAILABLE
+    //2 IN CHAT
+    //3 BOOKED
+    //4 PENDING
+    //5 COMPLETED
+    // TODO: falta traer los productos por id de usuario y por estado de orden
+    return http.get(`/orders/status/5`);
 
   }
   getPeople(id){
     return http.get(`/users=${id}`)
-
   }
   findByName(name) {
     return http.get(`/login?name=${name}`);

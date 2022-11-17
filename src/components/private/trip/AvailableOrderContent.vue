@@ -31,7 +31,9 @@ export default {
     this.users = new Array(); 
     this.myHash = new Map();
 
-    this.orderService.getAvailableOrders().then((response) => {
+   // available orders have the id 1
+
+    this.orderService.getOrdersByStatus(1).then((response) => {
       this.availableOrders = response.data;
       //getting users id
        for (let i = 0; i < this.availableOrders.length; i++) {

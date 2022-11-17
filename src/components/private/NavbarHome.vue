@@ -341,9 +341,9 @@ export default {
         this.homeUserApiService = new UserApiService()
         this.UserApiServiceJSON=new UserApiServiceJSON()
 
-        this.homeUserApiService.getPopularStores().then((response) => {
-          this.popular_stores = response.data;
-        });
+        // this.homeUserApiService.getPopularStores().then((response) => {
+        //   this.popular_stores = response.data;
+        // });
 
         this.homeUserApiService.getRecentOrders(localStorage.getItem("id")).then((response) => {
           this.recent_orders = response.data;

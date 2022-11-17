@@ -85,18 +85,19 @@ export default {
             link: ""
         }
     },
+    created() {
+        localStorage.clear();
+    },
     methods: {
         login() {
             this.submittedLogin = true
             this.usuarioApiService.getByEmailAndPassword(this.user, this.password).then(response => {
                 if (response.data.length != 0) {
-                    console.log(response.data.length)
                     this.link = '/home';
-                    console.log(response.data[0])
-                    localStorage.setItem("nombre", response.data[0].name)
-                    localStorage.setItem("id", response.data[0].id)
-                    localStorage.setItem("photo_url", response.data[0].picture)
-
+                    console.log(response.data)
+                    localStorage.setItem("nombre", response.data.fullName)
+                    localStorage.setItem("id", response.data.id)
+                    localStorage.setItem("photo_url", response.data.photoUrl)
 
                 } else {
                     this.error = true

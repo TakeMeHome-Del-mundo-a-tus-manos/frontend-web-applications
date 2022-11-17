@@ -5,6 +5,10 @@ export class OrderApiService{
         return http.get('/availableOrders');
     }
 
+    getOrdersByStatus(statusId){
+        return http.get(`/status/${statusId}`);
+    }
+
     create(data) {
         return http.post("/availableOrders", data);
     }
