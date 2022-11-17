@@ -6,7 +6,7 @@
                 <div class="col-3 ">
                     <br>
                     <div class="contPhoto">
-                        <img class="userPhoto" :src="user.photo_url" alt="Image"  width="200" preview  />
+                        <img class="userPhoto" :src="user.picture" alt="Image"  width="200" preview  />
                     </div>
                     
                     <h2 class="userName">{{ user.name }}</h2>

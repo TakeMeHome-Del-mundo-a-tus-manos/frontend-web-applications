@@ -299,11 +299,11 @@ export default {
                     text: "Home",
                     path: '/home',
                 },
-                {
-                    id: 2,
-                    text: "My Messages",
-                    path: '/messages',
-                },
+                // {
+                //     id: 2,
+                //     text: "My Messages",
+                //     path: '/messages',
+                // },
                 {
                     id: 3,
                     text: "My Orders",

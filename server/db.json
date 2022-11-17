@@ -12,7 +12,8 @@
       "description": "What’s up? My name is Jasmin, but you can call me Mixwell. I use to travel around the world and I can help you bringing some articles",
       "picture": "https://thumbs.dreamstime.com/b/nice-positive-woman-yellow-background-portrait-emotion-163675981.jpg",
       "id": 1,
-      "points": 55
+      "points": 55,
+      "rating": 4
     },
     {
       "name": "Emily Aria",
@@ -660,6 +661,11 @@
         {
           "message": "this is a test",
           "date": "17:12:6",
+          "type": "sent"
+        },
+        {
+          "message": "",
+          "date": "21:26:14",
           "type": "sent"
         }
       ]
