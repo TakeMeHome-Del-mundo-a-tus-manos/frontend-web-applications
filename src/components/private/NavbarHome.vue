@@ -304,6 +304,7 @@ export default {
                 //     text: "My Messages",
                 //     path: '/messages',
                 // },
+
                 {
                     id: 3,
                     text: "My Orders",
