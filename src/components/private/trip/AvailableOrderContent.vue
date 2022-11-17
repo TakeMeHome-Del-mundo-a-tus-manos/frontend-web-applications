@@ -10,6 +10,8 @@ export default {
       orderService: null,
       userService: null,
       myHash: null,
+      myHashProduct: null,
+      orders: null,
       users: [],
       responsiveOptions: [
         {
@@ -28,23 +30,24 @@ export default {
   created() {
     this.orderService = new OrderApiService();
     this.userService = new UserApiServiceJSON();
-    this.users = new Array(); 
     this.myHash = new Map();
+    this.myHashProduct = new Map();
+ 
 
-   // available orders have the id 1
 
     this.orderService.getOrdersByStatus(1).then((response) => {
       this.availableOrders = response.data;
+
+      console.log(this.availableOrders);
       //getting users id
        for (let i = 0; i < this.availableOrders.length; i++) {
-         this.users.push(this.availableOrders[i].clientId);
+         this.myHash.set(this.availableOrders[i].userId, this.availableOrders[i].user);
         }
-        //getting users name by id
-        for (let i = 0; i < this.users.length; i++) {
-          this.userService.getById(this.users[i]).then((response) => {
-            this.myHash.set(this.users[i], response.data);
-        }
-      );
+        
+      for (let i = 0; i < this.availableOrders.length; i++) {
+        this.orderService.getProductByOrderId(this.availableOrders[i].id).then((response) => {
+          this.myHashProduct.set(this.availableOrders[i].id, response.data);
+        });
       }
 
     });
@@ -61,11 +64,11 @@ export default {
             <div class="product-item-content ">
               <div class="grid flex align-content-between align-items-center">
                 <div>
-                  <img :src="myHash.get(slotProps.data.clientId).picture" class="person-icon"/>
+                  <img :src="myHash.get(slotProps.data.userId).photoUrl" class="person-icon"/>
                 </div>
                 <div class="ml-4">
-                  <div class="font-bold">{{ myHash.get(slotProps.data.clientId).name}}</div>
-                  <div class="text-sm text-left">Requested 1h ago</div>
+                  <div class="font-bold">{{ myHash.get(slotProps.data.userId).fullName}}</div>
+                  <div class="text-sm text-left">Requested {{slotProps.data.requestDate.slice(0, 10) }}</div>
                 </div>
               </div>
 
@@ -73,16 +76,16 @@ export default {
                 <div class="col-6 flex align-items-center justify-content-center align-content-center flex-column">
                   <div class="product-image-container">
 
-                    <img :src="slotProps.data.productImage" class="person-product"/>
-                    <img :src="slotProps.data.productStore" class="person-store">
+                    <img :src="myHashProduct.get(slotProps.data.id).productUrl" class="person-product"/>
+                    <img :src="myHashProduct.get(slotProps.data.id).store" class="person-store">
                   </div>
                 </div>
                 <div class="col-6 text-left">
-                  <div class="font-bold">{{ slotProps.data.productName }}</div>
+                  <div class="font-bold">{{ myHashProduct.get(slotProps.data.id).name }}</div>
                   <div class="text-sm mt-2">
                     <div class="mt-1">Delivery {{ slotProps.data.orderDestination }}</div>
                     <div class="mt-1">Bring From {{ slotProps.data.originCountry }}</div>
-                    <div class="mt-1">Before {{ slotProps.data.orderMaxDate.slice(0, 10) }}</div>
+                    <div class="mt-1">Before {{ slotProps.data.deadlineDate.slice(0, 10) }}</div>
                   </div>
                 </div>
               </div>
