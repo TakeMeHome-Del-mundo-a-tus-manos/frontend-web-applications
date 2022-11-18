@@ -6,7 +6,14 @@ export class OrderApiService{
     }
 
     getOrdersByStatus(statusId){
-        return http.get(`/status/${statusId}`);
+        return http.get(`/orders/status/${statusId}`);
+    }
+
+    getProductByOrderId(orderId){
+        return http.get(`/products/order/${orderId}`);
+    }
+    getByOrderStatusIdAndUserId(statusId, userId){
+        return http.get(`/orders/status/${statusId}/user/${userId}`);
     }
 
     create(data) {
