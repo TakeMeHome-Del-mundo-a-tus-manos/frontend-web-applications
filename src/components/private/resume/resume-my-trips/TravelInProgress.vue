@@ -23,8 +23,8 @@ export default {
     this.myProductStoreHash = new Map();
  
   
-    //pending oders have the id 3
-    this.orderService.getByOrderStatusIdAndUserId(3, localStorage.getItem("id")).then((response) => {
+    //pending oders have the id 4
+    this.orderService.getByOrderStatusIdAndUserId(4, localStorage.getItem("id")).then((response) => {
       this.deliveredOrders = response.data;
       this.totalRecords2 = this.deliveredOrders.length;
       console.log(this.deliveredOrders);
