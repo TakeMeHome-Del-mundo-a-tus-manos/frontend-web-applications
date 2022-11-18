@@ -7,28 +7,28 @@
             <div class="card-pd card-pdd">
                 <div class="card-header">
                     <div class="card-image">
-                        <img alt="product image" :src="orderData.productImage">
+                        <img alt="product image" :src="productData.productUrl">
                     </div>
                     <div class="card-content">
                         <div class="card-title">
-                            <h3>{{orderData.productName}}</h3>
+                            <h3>{{ productData.name }}</h3>
                         </div>
                         <div class="card-store">
                             <div class="row">
                                 <p>Sold by </p>
-                                <img :src="orderData.productStore" alt="">
+                                <img :src="productData.store" alt="">
 
                             </div>
                             <div class="card-details">
                                 <div class="row">
                                     <p><b>Order ID:</b></p>
-                                    <p class="accent-info"><b>{{orderData.orderCode}}</b></p>
+                                    <p class="accent-info"><b>{{ orderData.orderCode }}</b></p>
                                 </div>
                                 <div class="row">
                                     <p><b>Origin country:</b></p>
-                                    <p class="accent-info"><b>{{orderData.originCountry}}</b></p>
-                                    <img class="country-icon"
-                                        src="https://cdn-icons-png.flaticon.com/512/323/323310.png" alt="">
+                                    <p class="accent-info"><b>{{ orderData.originCountry }}</b></p>
+                                    <!-- <img class="country-icon"
+                                        src="https://cdn-icons-png.flaticon.com/512/323/323310.png" alt=""> -->
                                 </div>
                             </div>
                         </div>
@@ -59,11 +59,11 @@
             <div class="card-details">
                 <div class="row">
                     <p><b>ORDER ID:</b></p>
-                    <p class="accent-info"><b>{{orderData.orderCode}}</b></p>
+                    <p class="accent-info"><b>{{ orderData.orderCode }}</b></p>
                 </div>
                 <div class="row">
                     <p><b>TOTAL: </b></p>
-                    <p class="accent-info"> <b>{{orderData.amount}}</b></p>
+                    <p class="accent-info"> <b>{{ productData.price }} {{ productData.currency }}</b></p>
 
                 </div>
                 <div class="label-cf">
@@ -98,6 +98,9 @@ export default {
             },
             notification: {
 
+            },
+            productData: {
+
             }
         }
     },
@@ -110,14 +113,25 @@ export default {
         this.orderData = localStorage.getItem("orderData");
         this.orderData = JSON.parse(this.orderData);
         console.log(this.orderData)
+        this.myOrdersApiService.getProductByOrderId(this.orderData.id).then((response) => {
+            this.productData = response.data;
+            console.log(this.productData);
+            localStorage.setItem("productData", JSON.stringify(this.productData));
+        })
+
     },
     methods: {
         goPay() {
             this.$router.push("/pay");
         },
         goConfirm() {
+            
+            this.myOrdersApiService.changeOrderStatusToPending(this.orderData.id, [{ 
+                "value": 5, "path": "/orderStatusId", "op": "replace" }]).then(() => {
+                this.$router.push("/payment-completed");
+            })
 
-            this.myOrdersApiService.deleteOrder('booked', this.orderData.id).then((response) => {
+            /*this.myOrdersApiService.deleteOrder('booked', this.orderData.id).then((response) => {
                 console.log(response);
 
                 this.orderData.id = null;
@@ -131,7 +145,7 @@ export default {
 
             }).catch((error) => {
                 console.log(error);
-            });
+            });*/
 
         },
         sendNotification() {
@@ -157,12 +171,13 @@ export default {
 </script>
 
 <style>
-.column{
+.column {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
+
 .row {
     display: flex;
 }
@@ -385,40 +400,40 @@ export default {
         width: 50% !important;
     }
 
-    .c-btn{
+    .c-btn {
         margin-top: 2vh;
     }
 
-    .row-cf{
+    .row-cf {
         align-items: center;
     }
-    .card-pdd{
+
+    .card-pdd {
         font-size: smaller;
     }
 }
 
 @media screen and (max-width: 500px) {
-    .card-header{
+    .card-header {
         display: flex;
         flex-direction: column;
     }
-    
+
     .w-full {
         width: 70% !important;
     }
 
-    .card-image{
+    .card-image {
         justify-content: center;
     }
+
     .card-image img {
         width: 45vw;
         height: auto;
     }
 
-    .card-title{
+    .card-title {
         margin-top: 3vh;
     }
 }
-
-
 </style>

@@ -44,10 +44,10 @@ export class UserApiServiceJSON {
   }
   getCommentsById(id){
     //return httpJson.get(`/comments?id_to_like=${id}`)
-    return axios.get("http://localhost:7120/api/v1/comments?id_to="+id)
+    return axios.get("https://takemehome-api.herokuapp.com/api/v1/comments?id_to="+id)
   }
   getClaimsById(id){
     //return httpJson.get(`/comments?id_to_like=${id}`)
-    return axios.get("http://localhost:7120/api/v1/claims?id_to="+id)
+    return axios.get("https://takemehome-api.herokuapp.com/api/v1/claims?id_to="+id)
   }
 }

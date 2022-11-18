@@ -9,15 +9,15 @@
             <div class="card-details">
                 <div class="row">
                     <p><b>Order Number:</b></p>
-                    <p class="accent-info"><b>123456789</b></p>
+                    <p class="accent-info"><b> {{this.random}} </b></p>
                 </div>
                 <div class="row">
                     <p><b>Order ID: </b></p>
-                    <p class="accent-info"> <b>{{orderData.orderCode}}</b></p>
+                    <p class="accent-info"> <b>{{ orderData.orderCode }}</b></p>
                 </div>
                 <div class="row">
                     <p><b>Amount: </b></p>
-                    <p class="accent-info"> <b>{{orderData.amount}} {{orderData.currency}}</b></p>
+                    <p class="accent-info"> <b>{{ productData.price }} {{ productData.currency }}</b></p>
                 </div>
             </div>
 
@@ -38,22 +38,28 @@ export default {
     data() {
         return {
             orderData: {
-                orderCode: '',
-                amount: 0,
-                currency: '',
-            }
+
+            },
+            productData: {
+
+            },
+            random : Math.floor(Math.random() * 1000000000)
         }
     },
     mounted() {
 
         localStorage.getItem("orderData") ? this.orderData = JSON.parse(localStorage.getItem("orderData")) : this.orderData = {};
+        localStorage.getItem("productData") ? this.productData = JSON.parse(localStorage.getItem("productData")) : this.productData = {};
 
     },
     methods: {
         goPay() {
+            localStorage.removeItem("orderData");
+            localStorage.removeItem("productData");
             this.$router.push('/pay');
         }
-    }
+    },
+
 }
 
 </script>

@@ -74,12 +74,16 @@ export default {
                 }
 
                 else {
-                    this.orderData = response.data[0];
+                    this.orderData = response.data;
 
-                    var id = response.data[0].id;
+                    if(response.data.orderStatus.id != 3){
+                        this.$toast.add({ severity: 'error', summary: 'Order error', detail: 'The order is not ready to be paid', life: 3000 });
+                        return;
+                    }
+                    var id = response.data.id;
                     this.$router.push({ name: 'payment-details', params: { orderCode: id } });
                     localStorage.setItem('orderData', JSON.stringify(this.orderData));
-
+                    
                     //Comunicación entre componentes
                     /* setTimeout(() => {
                          this.emitter.emit("orderCodeEmit", response.data[0]);

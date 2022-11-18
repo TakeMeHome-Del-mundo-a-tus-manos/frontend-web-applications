@@ -53,28 +53,28 @@
                   <aside class="sub-contract-information">Contract Information</aside>
                 </center>
                 <aside class="sub-contract-resume">Contract Resume</aside>
-                <div class="Boxes" v-for="product in recent_orders.slice(1, 2)" :key="product.id">
+                <div class="Boxes" >
                   <div class="box_container_contract p-4 shadow-0 border-round w-full lg:w-20">
 
-                    <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0, 1)" :key="order.id">
-                      <img id="Play5" alt="Play5" :src="order.productImage">
-                      <aside class="Subtitle-Play5">{{ order.productName }}</aside>
-                      <div class="date-container">
+                    <div class="Box-dates-available-order" >
+                      <img id="Play5" alt="Play5" :src="notification.order.product.productUrl">
+                      <aside class="Subtitle-Play5">{{ notification.order.product.name }}</aside>
+                      <div class="date-container"> 
                         <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{
-                            order.orderDestination
+                            notification.order.orderDestination
                         }}</b></aside>
                         <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{
-                            order.originCountry
+                            notification.order.originCountry
                         }}</b></aside>
                         <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{
-                            order.requestDate
+                            notification.order.requestDate
                         }}</b></aside>
                         <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{
-                            order.orderMaxDate
+                            notification.order.deadlineDate
                         }}</b></aside>
                         <div class="box-bottom-contract">
                           <aside class="sub-sold-by">Sold by</aside>
-                          <img class="Amazon" alt="Amazon" :src="order.productStore">
+                          <img class="Amazon" alt="Amazon" :src="notification.order.product.productStore">
                         </div>
                       </div>
                     </div>
@@ -83,16 +83,16 @@
                   <div class="box-courier-data">
                     <aside class="subtitle-courier-data">Courier data</aside>
 
-                    <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0, 1)" :key="order.id">
-                      <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
+                    <div class="Box-dates-available-order" >
+                      <img class="Courier-data-Photo" alt="CourierPhoto" :src="notification.order.user.photoUrl">
                     </div>
-                    <aside class="name-courier-data">{{ this.name }}</aside>
+                    <aside class="name-courier-data">{{ notification.order.user.name}}</aside>
                   </div>
-                  <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0, 1)" :key="order.id">
+                  <div class="Box-dates-available-order2">
                     <div class="box-client-data">
                       <aside class="subtitle-client-data">Client data</aside>
-                      <img class="client-data-Photo" alt="ClientPhoto" :src="user.picture">
-                      <aside class="name-client-data">{{ user.name }}</aside>
+                      <img class="client-data-Photo" alt="ClientPhoto" :src="notification.order.user.photoUrl">
+                      <aside class="name-client-data">{{ notification.order.user.name}}</aside>
                     </div>
                   </div>
                   <div class="box-bottom-contract-information">
@@ -101,10 +101,9 @@
                       <aside class="txt-amount">Amount:</aside>
                     </div>
                     <div class="box-bottom-right-contract-information">
-                      <aside class="txt-order-id">GRGATSA</aside>
-                      <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0, 1)"
-                        :key="order.id">
-                        <aside class="txt-amount-usd">{{ order.amount }}</aside>
+                      <aside class="txt-order-id">{{ notification.order.orderCode }}</aside>
+                      <div class="Box-dates-available-order2" >
+                        <aside class="txt-amount-usd">{{ notification.order.product.price }}</aside>
                       </div>
                     </div>
                   </div>
@@ -151,7 +150,7 @@
       </div>
 
       <div class="not-orderArrived" v-for="notification in notifications" :key="notification.id"
-        v-if="notifications.type === orderArrived">
+        v-if="notifications.type === 'orderArrived' ">
         <img class="not-message" src="../img/not-box.png" alt="box">
         <div class="not-resume">
           <h3 class="not-resume-txt">Your order has arrived!.</h3>
@@ -159,7 +158,7 @@
       </div>
 
       <div class="not-contractAccepted" v-for="notification in notifications" :key="notification.id"
-        v-if="notifications.type === contractAccepted">
+        v-if="notifications.type === 'contractAccepted'">
         <img class="not-message" src="../img/not-contact-accepted.png" alt="box">
         <div class="not-resume">
           <h3 class="not-resume-txt">Contract accepted!</h3>
@@ -180,24 +179,24 @@
                   <div class="box_container_contract p-4 shadow-0 border-round w-full lg:w-20">
 
                     <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0, 1)" :key="order.id">
-                      <img id="Play5" alt="Play5" :src="order.productImage">
-                      <aside class="Subtitle-Play5">{{ order.productName }}</aside>
-                      <div class="date-container">
+                      <img id="Play5" alt="Play5" :src="notification.order.product.productUrl">
+                      <aside class="Subtitle-Play5">{{ notification.order.product.name }}</aside>
+                      <div class="date-container"> 
                         <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{
-                            order.orderDestination
+                            notification.order.orderDestination
                         }}</b></aside>
                         <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{
-                            order.originCountry
+                            notification.order.originCountry
                         }}</b></aside>
                         <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{
-                            order.requestDate
+                            notification.order.requestDate
                         }}</b></aside>
                         <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{
-                            order.orderMaxDate
+                            notification.order.deadlineDate
                         }}</b></aside>
                         <div class="box-bottom-contract">
                           <aside class="sub-sold-by">Sold by</aside>
-                          <img class="Amazon" alt="Amazon" :src="order.productStore">
+                          <img class="Amazon" alt="Amazon" :src="notification.order.product.productStore">
                         </div>
                       </div>
                     </div>
@@ -205,14 +204,14 @@
                   </div>
                   <div class="box-courier-data">
                     <aside class="subtitle-courier-data">Courier data</aside>
-                    <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
-                    <aside class="name-courier-data">{{ this.name }}</aside>
+                    <img class="Courier-data-Photo" alt="CourierPhoto" :src="notification.order.user.photoUrl">
+                    <aside class="name-courier-data">{{ notification.order.user.name }}</aside>
                   </div>
                   <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0, 1)" :key="order.id">
                     <div class="box-client-data">
                       <aside class="subtitle-client-data">Client data</aside>
-                      <img class="client-data-Photo" alt="ClientPhoto" :src="user.picture">
-                      <aside class="name-client-data">{{ user.name }}</aside>
+                      <img class="client-data-Photo" alt="ClientPhoto" :src="notification.order.user.photoUrl">
+                      <aside class="name-client-data">{{ notification.order.user.name }}</aside>
                     </div>
                   </div>
                   <div class="box-bottom-contract-information">
@@ -221,10 +220,10 @@
                       <aside class="txt-amount">Amount:</aside>
                     </div>
                     <div class="box-bottom-right-contract-information">
-                      <aside class="txt-order-id">GRGATSA</aside>
+                      <aside class="txt-order-id">{{ notification.order.orderCode }}</aside>
                       <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0, 1)"
                         :key="order.id">
-                        <aside class="txt-amount-usd">{{ order.amount }}</aside>
+                        <aside class="txt-amount-usd">{{ notification.order.product.price }}</aside>
                       </div>
                     </div>
                   </div>
@@ -245,7 +244,7 @@
 
 
       <div class="not-contractRejected" v-for="notification in notifications" :key="notification.id"
-        v-if="notifications.type === contractRejected">
+        v-if="notifications.type === 'contractRejected'">
         <img class="not-message" src="../img/not-contact-rejected.png" alt="box">
         <div class="not-resume">
           <h3 class="not-resume-txt">Contract rejected!</h3>
@@ -260,8 +259,8 @@
               <div class="box-complete-rejected">
                 <div class="box-courier-data-by">
                   <aside class="subtitle-courier-data">Courier data</aside>
-                  <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
-                  <aside class="name-courier-data">{{ this.name }}</aside>
+                  <img class="Courier-data-Photo" alt="CourierPhoto" :src="notification.order.user.photoUrl">
+                  <aside class="name-courier-data">{{ notification.order.user.name }}</aside>
                 </div>
 
                 <div class="box-contract-resume-rejected">
@@ -271,24 +270,24 @@
 
                       <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0, 1)"
                         :key="order.id">
-                        <img id="Play5" alt="Play5" :src="order.productImage">
-                        <aside class="Subtitle-Play5">{{ order.productName }}</aside>
-                        <div class="date-container">
+                        <img id="Play5" alt="Play5" :src="notification.order.product.productUrl">
+                        <aside class="Subtitle-Play5">{{ notification.order.product.name }}</aside>
+                        <div class="date-container"> 
                           <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{
-                              order.orderDestination
+                              notification.order.orderDestination
                           }}</b></aside>
                           <aside class="date-container-txt">Bring from <b class="date-container-txt-bold">{{
-                              order.originCountry
+                              notification.order.originCountry
                           }}</b></aside>
                           <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{
-                              order.requestDate
+                              notification.order.requestDate
                           }}</b></aside>
                           <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{
-                              order.orderMaxDate
+                              notification.order.deadlineDate
                           }}</b></aside>
                           <div class="box-bottom-contract">
                             <aside class="sub-sold-by">Sold by</aside>
-                            <img class="Amazon" alt="Amazon" :src="order.productStore">
+                            <img class="Amazon" alt="Amazon" :src="notification.order.product.productStore">
                           </div>
                         </div>
                       </div>
