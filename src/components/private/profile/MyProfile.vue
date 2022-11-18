@@ -9,7 +9,7 @@
                         <img class="userPhoto" :src="user.photoUrl" alt="Image"  width="200" preview  />
                     </div>
                     
-                    <h2 class="userName">{{ user.userName }}</h2>
+                    <h2 class="userName">{{ user.username }}</h2>
 
                     <a class="userDescription">{{user.description}}</a>
 
@@ -21,7 +21,7 @@
                     <TabView >
 	                    <TabPanel header="Personal Information">
 	                    	<br><br>
-                            <div class="personalInf"> Full name<Button class="btn-name p-button-rounded" disabled="disabled" >{{ user.userName }}</Button></div><br><br>
+                            <div class="personalInf"> Full name<Button class="btn-name p-button-rounded" disabled="disabled" >{{ user.fullName }}</Button></div><br><br>
                             <div class="personalInf">Age<Button class="btn-year p-button-rounded" disabled="disabled" >{{ user.dateOfBirth }} years</Button></div><br><br>
                             <div class="personalInf">E-mail<Button class="btn-email p-button-rounded" disabled="disabled" >{{user.email}}</Button></div><br><br>
                             <div class="personalInf">Phone<Button class="btn-phone p-button-rounded" disabled="disabled" >{{user.phone}}</Button></div><br><br>
@@ -97,7 +97,7 @@ export default {
     this.myProfileUserApiService.getClaimsById(localStorage.getItem("id")).then((response) => {
         this.claims=response.data;
     });
-    // axios.get(`http://localhost:3000/api/v1/comments?id_to_like=${localStorage.getItem("id")}`).then((response)=>{
+    // axios.get(`https://takemehome-api.herokuapp.com/api/v1/comments?id_to_like=${localStorage.getItem("id")}`).then((response)=>{
     //     this.comments=response.data;
     // })   
     // console.log(this.comments)

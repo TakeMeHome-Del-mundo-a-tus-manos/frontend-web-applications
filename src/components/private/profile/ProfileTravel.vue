@@ -97,7 +97,7 @@
         this.profileTravelUserApiService.getClaimsById('25').then((response) => {
             this.claims=response.data;
         });
-        // axios.get(`http://localhost:3000/api/v1/comments?id_to_like=${localStorage.getItem("id")}`).then((response)=>{
+        // axios.get(`https://takemehome-api.herokuapp.com/api/v1/comments?id_to_like=${localStorage.getItem("id")}`).then((response)=>{
         //     this.comments=response.data;
         // })   
         // console.log(this.comments)
