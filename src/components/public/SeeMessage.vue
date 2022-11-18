@@ -194,7 +194,7 @@ import { UserApiServiceJSON } from "../../services/user-api-service-json";
       }
     
     }
-    </script>
+</script>
 
 <style scoped>
 .resume-info{

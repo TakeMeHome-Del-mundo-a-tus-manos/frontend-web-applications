@@ -4,21 +4,23 @@
     <img class="img-signo" src="../img/signo.png" alt="signo de interrogación">
       <div class="box-right">
         <div class="box-input-gmail">
-          <img class="pi-envelop" src="../icons/pi-envelop.png" alt="pi pi-envelop">
+          <i class="pi-envelop pi pi-at"></i>
+          <!-- <img class="pi-envelop" src="../icons/pi-envelop.png" alt="pi pi-envelop"> -->
           <div class="input">
-                <InputText id="input-gmail" type="text" v-model="value1"  placeholder="tmh@gmail.com" disabled="true"/>
+                <InputText id="input-gmail" type="text" placeholder="tmh@gmail.com" disabled="true"/>
           </div>
         </div>
          <div class="box-input-number">
-           <img class="pi-user" src="../icons/pi-user.png" alt="pi pi-user">
+          <i class="pi-envelop pi pi-phone"></i>
+           <!-- <img class="pi-user" src="../icons/pi-user.png" alt="pi pi-user"> -->
            <div class="input">
-              <InputText id="input-number" type="text" v-model="value1" placeholder="+51 962273579" disabled="false"/>
+              <InputText id="input-number" type="text" placeholder="+51 962273579" disabled="false"/>
            </div>
         </div>
         <div class="box-social-networks">
-          <img class="i-wpp" src="../img/wpp.png" alt="icon wpp">
-          <img class="i-fb" src="../img/fb.png" alt="icon fb">
-          <img class="i-ig" src="../img/ig.png" alt="icon ig">
+          <a href=""><img class="i-wpp" src="../img/wpp.png" alt="icon wpp"></a>
+          <a href=""><img class="i-fb" src="../img/fb.png" alt="icon fb"></a>
+          <a href=""><img class="i-ig" src="../img/ig.png" alt="icon tw"></a>
         </div>
         <Button label="SEND US A MESSAGE" class="btn-send w-18rem h-3rem text-white text-lg font-bold justify-content-center">SEND US A MESSAGE
         </Button>
@@ -30,6 +32,10 @@
 *{
   margin:0;
   padding:0;
+}
+
+.pi{
+  color: black;
 }
 .supp-subtitle{
   font-size:40px;
@@ -83,7 +89,8 @@
   width:30px;
   height: 30px;
   margin-left:30px;
-  margin-top:10px;
+  margin-top:2vh;
+  color: black;
 }
 .pi-user{
   width:30px;

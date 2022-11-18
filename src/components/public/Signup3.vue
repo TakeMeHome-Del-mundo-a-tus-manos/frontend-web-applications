@@ -11,7 +11,7 @@
                 <span class="p-input-icon-left input-span">
                     <i class="pi pi-user" />
                     <InputText type="text" class="p-inputtext-md" placeholder="Username" v-model="username"
-                        v-on:change="validateUsername()" />
+                        v-on:change="" /> <!-- TODO : validateUsername()-->
                 </span>
                 <Message v-if=usernameError v-on:close="usernameError=false" severity="error">Name is <strong>
                         empty</strong>
@@ -20,13 +20,21 @@
                     already exists</strong>
                 </Message>
             </div>
-
+            <div class="input-div">
+                            <label class="block text-900 font-medium mb-2"> <strong> Photo url </strong></label>
+                            <span class="p-input-icon-left input-span">
+                                <i class="pi pi-camera" />
+                                <InputText type="text" class="p-inputtext-md" placeholder="Paste your photo url" v-model="photoUrl"/>
+                            </span>
+                        </div>
             <div class="input-div">
                 <label class="block text-900 font-medium mb-2"> <strong> Description about you </strong></label>
                 <span class="input-span">
                     <Textarea :autoResize="true" class="p-inputtextarea" v-model="description" />
                 </span>
             </div>
+
+            
 
             <div class="input-div">
                 <RouterLink :to="link">
@@ -97,15 +105,18 @@ export default {
             sameUsernameError: false,
 
             user: {
-                name: "",
+                fullName: "",
                 username: "",
                 password: "",
                 email: "",
                 country: "",
-                birthDate: "",
+                dateOfBirth: "",
+                idNumber: "",
+                description: "",
+                photoUrl: "https://www.nicepng.com/png/full/202-2024580_png-file-profile-icon-vector-png.png",
+                points: 0,
+                rating: 0,
                 phone: "",
-                idCard: "",
-                description: ""
 
             }
         }
@@ -117,16 +128,21 @@ export default {
             } else {
                 this.link = "/"
                 //Convertir a JSON
-                this.user.name = sessionStorage.getItem("name");
+                this.user.fullName = sessionStorage.getItem("name");
                 this.user.username = this.username;
                 this.user.password = sessionStorage.getItem("password");
                 
                 this.user.email = sessionStorage.getItem("email");
                 this.user.country = sessionStorage.getItem("country");
-                this.user.birthDate = sessionStorage.getItem("birthDate");
+                this.user.dateOfBirth = sessionStorage.getItem("birthDate");
+                this.user.idNumber = sessionStorage.getItem("idCard");
+                this.user.description = this.description;
+
+                if(this.photoUrl != ""){
+                    this.user.photoUrl = this.photoUrl;
+                }
+
                 this.user.phone = sessionStorage.getItem("phone");
-                this.user.idCard = sessionStorage.getItem("idCard");
-                this.user.description = this.description
                 console.log(this.user)
                 //sessionStorage.setItem("user", JSON.stringify(user));
                 this.userApiServiceJSON.create(this.user);

@@ -30,9 +30,9 @@ export class UserApiServiceJSON {
   findByName(name) {
     return httpJson.get(`/users?name=${name}`);
   }
-  usernameExists(username){
+  emailExists(email){
 
-    return httpJson.get(`/users?username=${username}`)
+    return httpJson.get(`/users/email/${email}`)
   }
   getMessages(id) {
     return httpJson.get(`/messages?usersId=${id}`);
@@ -44,10 +44,10 @@ export class UserApiServiceJSON {
   }
   getCommentsById(id){
     //return httpJson.get(`/comments?id_to_like=${id}`)
-    return axios.get("http://localhost:3000/api/v1/comments?id_to="+id)
+    return axios.get("http://localhost:7120/api/v1/comments?id_to="+id)
   }
   getClaimsById(id){
     //return httpJson.get(`/comments?id_to_like=${id}`)
-    return axios.get("http://localhost:3000/api/v1/claims?id_to="+id)
+    return axios.get("http://localhost:7120/api/v1/claims?id_to="+id)
   }
 }

@@ -38,8 +38,7 @@ export class UserApiService {
     //3 BOOKED
     //4 PENDING
     //5 COMPLETED
-    // TODO: falta traer los productos por id de usuario y por estado de orden
-    return http.get(`/orders/status/5`);
+    return http.get(`/products/5/${id}`);
 
   }
   getPeople(id){
@@ -50,8 +49,8 @@ export class UserApiService {
   }
 
 
-  getAvailable_Orders(){
-    return http.get(`/availableOrders`)
+  getAvailable_Orders(userId){
+    return http.get(`/ordersByStatus/1/${userId}`)
   }
 
   getPeople(){
@@ -59,6 +58,7 @@ export class UserApiService {
   }
 
   getNotifications(id){
-    return http.get(`/notifications?id=${id}`)
+    return http.get(`/notifications/${id}`)
+    //return http.get(`/notifications/users/${id}`)
   }
 }

@@ -4,34 +4,36 @@
     <div  id="img_home" class="home_account">
       <div class="card-1 p-4 shadow-0 border-round w-100 lg:w-20 Home inline-block">
         <!--DESCOMENTAR-->
-        <!-- <img class="UserPhoto home-img" alt="UserPhoto" :src="this.photo_src">
-        <aside class="text5">Hi, {{ this.name }}!.</aside>
+        <img class="UserPhoto home-img" alt="UserPhoto" :src="this.photo_src">
+        <aside class="text5">Hi, {{ this.name }}!</aside>
 
         <div class="popular_stores p-4 shadow-0 border-round w-auto lg:w-40 Home ">
           <aside class="text3 font-medium line-height-3 ">Popular Stores</aside>
-          <div class="box3 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores.slice(0,2)" :key="store.id" >
+          <!-- <div class="box3 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores.slice(0,2)" :key="store.id" >
             <a :href="store.link" target="_blank"><img class="Walmart home-img" alt="Walmart" :src="store.image_url"></a>
           </div>
           <div class="box4 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores.slice(2,5)" :key="store.id" >
             <a :href="store.link" target="_blank"><img class="Walmart1 home-img" alt="Walmart" :src="store.image_url"></a>
-          </div>
-        </div> -->
+          </div> -->
+        </div>
 
       </div>
 
       <div class="card-2 p-4 shadow-0 border-round w-100 lg:w-20 Home inline-block">
         <div style="text-align: center;"><a href="/my-profile" ><aside class="text2 font-medium line-height-3">My account</aside></a></div>
-        <Button label="Order Request" class="w-auto home-button" ></Button>
+        <Button label="Order Request" class="w-auto home-button" v-on:click="toOrderRequest()"></Button>
         <div class="box_blank p-4 shadow-0 border-round w-auto lg:w-20 Home"> </div>
         <div class="recent_orders p-4 shadow-0 border-round w-auto lg:w-20 Home">
           <aside class="text3 font-medium line-height-3">Recent Orders</aside>
-          <div class="Boxes" v-for="product in recent_orders.slice(0,2)" :key="product.id">
+
+          <div class="Boxes" v-for="product in recent_orders.slice(0, 2)" :key="product.id">
             <div class="box1 p-4 shadow-1 border-round w-full lg:w-20">
               <img id="Iphone" alt="product image" :src="product.productUrl">
               <center>
                 <aside class="Subtitle1">{{product.name}}</aside>
                 <aside class="time1">{{product.order.deadlineDate}}</aside>
-                <img class="Apple2 home-img" alt="Apple2" :src="product.store">
+                <!-- <img class="Apple2 home-img" alt="Apple2" :src="product.store"> -->
+                <aside class="text4 font-medium line-height-3">{{product.store}}</aside>
               </center>
             </div>
           </div>
@@ -60,7 +62,7 @@
   width:1000px;
 }
 .popular_stores{
-  margin-top:80px;
+  margin-top:20px;
   height:500px;
   width:800px;
 
@@ -229,7 +231,9 @@ export default {
     });
   },
   methods: {
-
+    toOrderRequest(){
+      this.$router.push("/make-order")
+    }
   }
 
 }

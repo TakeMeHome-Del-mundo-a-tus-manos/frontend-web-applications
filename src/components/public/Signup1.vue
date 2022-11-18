@@ -14,6 +14,9 @@
                         v-on:change="validateEmail()" />
                 </span>
                 <Message v-if=emailError v-on:close="emailError=false" severity="error">Email address<strong> is not valid</strong> </Message>
+                <Message v-if=sameEmailError v-on:close="sameEmailError=false" severity="warn">This email is <strong>
+                    already used</strong>
+                </Message>
             </div>
 
             <div class="input-div">
@@ -51,6 +54,7 @@
 </template>
 
 <script>
+import { UserApiServiceJSON } from "../../services/user-api-service-json";
 
 export default {
     name: "Signup1",
@@ -58,7 +62,10 @@ export default {
 
     },
     data() {
+        this.userApiServiceJSON = new UserApiServiceJSON();
+
         return {
+            sameEmailError: false,
             email: "",
             password: "",
             confirmPassword: "",
@@ -85,6 +92,7 @@ export default {
 
         },
         validateEmail() {
+
             var re = /\S+@\S+\.\S+/;
 
             if (re.test(this.email)) 
@@ -92,7 +100,8 @@ export default {
             else {
                 this.emailError = true;
             }
-            console.log(this.emailError);
+            this.emailExists();
+
 
         },
         validatePassword() {
@@ -107,6 +116,16 @@ export default {
             }
             else
                 this.passwordConfirmError = false;
+        },
+        emailExists() {
+            this.userApiServiceJSON.emailExists(this.email).then(response => {
+                if (response.data.email == this.email) {
+                    this.sameEmailError = true;
+                }
+            }).catch(error => {
+                this.sameEmailError = false;
+            });
+
         }
     }
 }

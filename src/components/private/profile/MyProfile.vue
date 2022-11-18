@@ -41,7 +41,7 @@
                                 <Card style="width: 35rem;height: 8rem; ">
                                 
                                 <template #content>
-                                    <Avatar :image="comment.photo_com"  class="mr-2" size="xlarge" shape="circle" />
+                                    <Avatar :image="comment.order.client.photo"  class="mr-2" size="xlarge" shape="circle" />
                                     <img src="../../img/Star.png" alt="" class="star-foto"/>
                                     <div class="stars">{{comment.stars}}</div>
 
