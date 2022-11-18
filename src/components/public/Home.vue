@@ -33,7 +33,7 @@
                 <aside class="Subtitle1">{{product.name}}</aside>
                 <aside class="time1">{{product.order.deadlineDate}}</aside>
                 <!-- <img class="Apple2 home-img" alt="Apple2" :src="product.store"> -->
-                <aside class="text4 font-medium line-height-3">{{product.store}}</aside>
+                <aside class="text4 font-medium line-height-3 mt-2">Amazon</aside>
               </center>
             </div>
           </div>
