@@ -42,7 +42,7 @@ export default {
   mounted() { 
 
     //bookeOrders have the id 2
-    this.orderService.getByOrderStatusIdAndUserId(2, localStorage.getItem("id")).then((response) => {
+    this.orderService.getByOrderStatusIdAndUserId(3, localStorage.getItem("id")).then((response) => {
       this.bookedOrders = response.data;
       
       console.log(this.bookedOrders);
