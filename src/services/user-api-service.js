@@ -1,7 +1,8 @@
 import http from './http/http-common';
-
+import axios from 'axios';
 
 export class UserApiService {
+  baseUrl = 'https://localhost:7120/api/v1';
   getAll() {
     return http.get("/login");
   }
@@ -57,8 +58,11 @@ export class UserApiService {
     return http.get(`/users`)
   }
 
+  getProducts(){
+    return axios.get(`${this.baseUrl}/products`)
+  }
   getNotifications(id){
-    return http.get(`/notifications/${id}`)
+    return axios.get(`${this.baseUrl}/notifications/order/user/${id}`)
     //return http.get(`/notifications/users/${id}`)
   }
 }

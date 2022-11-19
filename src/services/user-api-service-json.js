@@ -3,6 +3,8 @@ import httpJson from './http/http-common';
 import axios from 'axios';
 
 export class UserApiServiceJSON {
+  baseUrl = 'https://localhost:7120/api/v1';
+
   getAll() {
     return httpJson.get("/users");
   }
@@ -44,10 +46,6 @@ export class UserApiServiceJSON {
   }
   getCommentsById(id){
     //return httpJson.get(`/comments?id_to_like=${id}`)
-    return axios.get("https://takemehome-api.herokuapp.com/api/v1/comments?id_to="+id)
-  }
-  getClaimsById(id){
-    //return httpJson.get(`/comments?id_to_like=${id}`)
-    return axios.get("https://takemehome-api.herokuapp.com/api/v1/claims?id_to="+id)
+    return axios.get(`${this.baseUrl}/comments/order/user/${id}`)
   }
 }

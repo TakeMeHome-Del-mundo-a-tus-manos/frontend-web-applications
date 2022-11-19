@@ -143,7 +143,9 @@ app.use(PrimeVue, { ripple: true })
     .component('TabPanel', TabPanel)
     .component('Checkbox', Checkbox)
     .component('Dialog', Dialog)
-
+    .component('Rating', Rating)
+    .component('Image', Image)
+    
     //My orders
     .component('MyOrdersSelectBar', MyOrdersSelectBar)
     .component('PayInit', PayInit)

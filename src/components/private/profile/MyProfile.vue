@@ -11,9 +11,12 @@
                     
                     <h2 class="userName">{{ user.username }}</h2>
 
-                    <a class="userDescription">{{user.description}}</a>
+                    <a class="userDescription">{{user.description}} </a>
 
-                    <Rating class="userRating" :modelValue="user.rating" :readonly="true" :stars="5" :cancel="false" />
+                    <div>
+                    <Rating class="userRating" :modelValue=user.rating :readonly="true" :stars="5" :cancel="false" />
+                    </div>
+
                 </div>
                 
                 <div class="col-6 align-items-center justify-content-center">
@@ -41,12 +44,12 @@
                                 <Card style="width: 35rem;height: 8rem; ">
                                 
                                 <template #content>
-                                    <Avatar :image="comment.order.client.photo"  class="mr-2" size="xlarge" shape="circle" />
+                                    <Avatar :image="comment.order.client.photoUrl"  class="mr-2" size="xlarge" shape="circle" />
                                     <img src="../../img/Star.png" alt="" class="star-foto"/>
                                     <div class="stars">{{comment.stars}}</div>
 
-                                    <h2 class="commentName">{{comment.name}}</h2>
-                                    <div class="commentComment">{{comment.comment}}</div>
+                                    <h2 class="commentName">{{comment.order.client.username}}</h2>
+                                    <div class="commentComment">{{comment.content}}</div>
 
                                 </template>
                                 </Card>
@@ -54,7 +57,7 @@
                             </div>
                             </div>
                             
-                    
+                            
 	                    	
 	                    </TabPanel>
                         
@@ -94,9 +97,9 @@ export default {
     this.myProfileUserApiService.getCommentsById(localStorage.getItem("id")).then((response) => {
         this.comments=response.data;
     });
-    this.myProfileUserApiService.getClaimsById(localStorage.getItem("id")).then((response) => {
-        this.claims=response.data;
-    });
+    //this.myProfileUserApiService.getClaimsById(localStorage.getItem("id")).then((response) => {
+    //    this.claims=response.data;
+    //});
     // axios.get(`https://takemehome-api.herokuapp.com/api/v1/comments?id_to_like=${localStorage.getItem("id")}`).then((response)=>{
     //     this.comments=response.data;
     // })   
@@ -129,13 +132,14 @@ export default {
 }
 .commentName{
     position: relative;
+    
     left: 17%;
-    top: -105px;
+    top: -86px;
 }
 .commentComment{
     position: relative;
     left: 17%;
-    top: -95px;
+    top: -80px;
     font-style: normal;
     align-content: flex-start;
 
@@ -174,6 +178,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: auto;
 }
 .userDescription{
     display: flex;

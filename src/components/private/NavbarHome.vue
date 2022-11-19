@@ -36,17 +36,18 @@
   <div v-if="OpenModalMain" class="modal-bg">
     <div class="modal" ref="modal">
       <button @click="OpenModalMain = false" class="close-btn2">x</button>
-      <div class="not-newOrder" v-for="notification in notifications" :key="notification.id"
-        v-if="notifications.type === newOrder">
+      <div v-for="notification in notifications" :key="notification.id">
+
+        <div class="not-newOrder" 
+        v-if="notification.type==='newOrder'" >
         <img class="not-message" src="../img/not-message.png" alt="message">
         <div class="not-resume">
           <h3 class="not-resume-txt">You have a new order.</h3>
           <h3 class="not-resume-txt">Click to read the contract</h3>
 
-          <Button @click="OpenModal2 = true" class="OpenNewModal">See</Button>
-
-          <div v-if="OpenModal2" class="modal2-bg">
-            <div class="modal2" ref="modal2">
+          <Button @click="OpenModal2 = true; " class="OpenNewModal">See</Button>
+          <div v-if="OpenModal2" class="modal2-bg" v-for="product in products.slice(0, 1)" :key="product.id">
+            <div class="modal2" ref="modal2" v-if="notification.order.id===product.order.id">
               <div class="not3-box">
                 <button @click="OpenModal2 = false" class="close-btn">x</button>
                 <center>
@@ -56,9 +57,9 @@
                 <div class="Boxes" >
                   <div class="box_container_contract p-4 shadow-0 border-round w-full lg:w-20">
 
-                    <div class="Box-dates-available-order" >
-                      <img id="Play5" alt="Play5" :src="notification.order.product.productUrl">
-                      <aside class="Subtitle-Play5">{{ notification.order.product.name }}</aside>
+                    <div class="Box-dates-available-order"  >
+                      <img id="Play5" alt="Play5" :src="product.productUrl">
+                      <aside class="Subtitle-Play5">{{product.name }}</aside>
                       <div class="date-container"> 
                         <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{
                             notification.order.orderDestination
@@ -74,7 +75,7 @@
                         }}</b></aside>
                         <div class="box-bottom-contract">
                           <aside class="sub-sold-by">Sold by</aside>
-                          <img class="Amazon" alt="Amazon" :src="notification.order.product.productStore">
+                          <img class="Amazon" alt="Amazon" :src="product.store">
                         </div>
                       </div>
                     </div>
@@ -84,26 +85,28 @@
                     <aside class="subtitle-courier-data">Courier data</aside>
 
                     <div class="Box-dates-available-order" >
-                      <img class="Courier-data-Photo" alt="CourierPhoto" :src="notification.order.user.photoUrl">
+                      <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
                     </div>
-                    <aside class="name-courier-data">{{ notification.order.user.name}}</aside>
+                    <aside class="name-courier-data">{{ this.name}}</aside>
                   </div>
-                  <div class="Box-dates-available-order2">
+                  <!--<div class="Box-dates-available-order2">
                     <div class="box-client-data">
                       <aside class="subtitle-client-data">Client data</aside>
-                      <img class="client-data-Photo" alt="ClientPhoto" :src="notification.order.user.photoUrl">
-                      <aside class="name-client-data">{{ notification.order.user.name}}</aside>
+                      <img class="client-data-Photo" alt="ClientPhoto" :src="this.photo_src">
+                      <aside class="name-client-data">{{ this.name}}</aside>
                     </div>
                   </div>
+                    -->
                   <div class="box-bottom-contract-information">
                     <div class="box-bottom-left-contract-information">
+                      <br><br><br>
                       <aside class="txt-order">Order ID:</aside>
                       <aside class="txt-amount">Amount:</aside>
                     </div>
                     <div class="box-bottom-right-contract-information">
                       <aside class="txt-order-id">{{ notification.order.orderCode }}</aside>
                       <div class="Box-dates-available-order2" >
-                        <aside class="txt-amount-usd">{{ notification.order.product.price }}</aside>
+                        <aside class="txt-amount-usd">{{ product.price }}</aside>
                       </div>
                     </div>
                   </div>
@@ -141,32 +144,31 @@
                 </div>
 
 
-
               </div>
             </div>
           </div>
 
         </div>
-      </div>
+        </div>
 
-      <div class="not-orderArrived" v-for="notification in notifications" :key="notification.id"
-        v-if="notifications.type === 'orderArrived' ">
+        <div class="not-orderArrived" 
+        v-if="notification.type === 'orderArrived' ">
         <img class="not-message" src="../img/not-box.png" alt="box">
         <div class="not-resume">
           <h3 class="not-resume-txt">Your order has arrived!.</h3>
         </div>
-      </div>
+        </div>
 
-      <div class="not-contractAccepted" v-for="notification in notifications" :key="notification.id"
-        v-if="notifications.type === 'contractAccepted'">
+        <div class="not-contractAccepted"  
+        v-if="notification.type === 'contractAccepted'">
         <img class="not-message" src="../img/not-contact-accepted.png" alt="box">
         <div class="not-resume">
           <h3 class="not-resume-txt">Contract accepted!</h3>
         </div>
 
         <Button @click="OpenModalContractAccepted = true" class="btn-OpenNewModalContractAccepted">See</Button>
-        <div v-if="OpenModalContractAccepted" class="modalContractAccepted-bg">
-          <div class="modalContractAccepted" ref="modalContractAccepted">
+        <div v-if="OpenModalContractAccepted" class="modalContractAccepted-bg" v-for="product in products.slice(2, 3)" :key="product.id">
+          <div class="modalContractAccepted" ref="modalContractAccepted" v-if="notification.order.id===product.order.id">
             <div class="title-m-c-a">
               <center>Your order has been accepted</center>
             </div>
@@ -175,12 +177,12 @@
             <div class="box-complete-contract-accepted">
               <div class="not3-box">
                 <aside class="sub-contract-resume">Contract Resume</aside>
-                <div class="Boxes" v-for="product in recent_orders.slice(1, 2)" :key="product.id">
+                <div class="Boxes" >
                   <div class="box_container_contract p-4 shadow-0 border-round w-full lg:w-20">
 
-                    <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0, 1)" :key="order.id">
-                      <img id="Play5" alt="Play5" :src="notification.order.product.productUrl">
-                      <aside class="Subtitle-Play5">{{ notification.order.product.name }}</aside>
+                    <div class="Box-dates-available-order">
+                      <img id="Play5" alt="Play5" :src="product.productUrl">
+                      <aside class="Subtitle-Play5">{{ product.name }}</aside>
                       <div class="date-container"> 
                         <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{
                             notification.order.orderDestination
@@ -196,7 +198,7 @@
                         }}</b></aside>
                         <div class="box-bottom-contract">
                           <aside class="sub-sold-by">Sold by</aside>
-                          <img class="Amazon" alt="Amazon" :src="notification.order.product.productStore">
+                          <img class="Amazon" alt="Amazon" :src="product.store">
                         </div>
                       </div>
                     </div>
@@ -204,14 +206,14 @@
                   </div>
                   <div class="box-courier-data">
                     <aside class="subtitle-courier-data">Courier data</aside>
-                    <img class="Courier-data-Photo" alt="CourierPhoto" :src="notification.order.user.photoUrl">
-                    <aside class="name-courier-data">{{ notification.order.user.name }}</aside>
+                    <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
+                    <aside class="name-courier-data">{{ this.name }}</aside>
                   </div>
-                  <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0, 1)" :key="order.id">
+                  <div class="Box-dates-available-order2" >
                     <div class="box-client-data">
                       <aside class="subtitle-client-data">Client data</aside>
-                      <img class="client-data-Photo" alt="ClientPhoto" :src="notification.order.user.photoUrl">
-                      <aside class="name-client-data">{{ notification.order.user.name }}</aside>
+                      <img class="client-data-Photo" alt="ClientPhoto" :src="this.photo_src">
+                      <aside class="name-client-data">{{ this.name }}</aside>
                     </div>
                   </div>
                   <div class="box-bottom-contract-information">
@@ -221,9 +223,8 @@
                     </div>
                     <div class="box-bottom-right-contract-information">
                       <aside class="txt-order-id">{{ notification.order.orderCode }}</aside>
-                      <div class="Box-dates-available-order2" v-for="order in availableOrders.slice(0, 1)"
-                        :key="order.id">
-                        <aside class="txt-amount-usd">{{ notification.order.product.price }}</aside>
+                      <div class="Box-dates-available-order2">
+                        <aside class="txt-amount-usd">{{ product.price }}</aside>
                       </div>
                     </div>
                   </div>
@@ -236,21 +237,19 @@
               </div>
             </div>
 
-
           </div>
         </div>
 
-      </div>
+        </div>
 
-
-      <div class="not-contractRejected" v-for="notification in notifications" :key="notification.id"
-        v-if="notifications.type === 'contractRejected'">
+        <div class="not-contractRejected"
+        v-if="notification.type === 'contractRejected'">
         <img class="not-message" src="../img/not-contact-rejected.png" alt="box">
         <div class="not-resume">
           <h3 class="not-resume-txt">Contract rejected!</h3>
           <Button @click="OpenModalContractRejected = true" class="btn-OpenNewModalContractRejected">See</Button>
-          <div v-if="OpenModalContractRejected" class="modalContractRejected-bg">
-            <div class="modalContractRejected" ref="modalContractRejected">
+          <div v-if="OpenModalContractRejected" class="modalContractRejected-bg" v-for="product in products.slice(3, 4)" :key="product.id">
+            <div class="modalContractRejected" ref="modalContractRejected" v-if="notification.order.id===product.order.id">
               <div class="title-m-c-r">
                 <center>Your order has been rejected by</center>
               </div>
@@ -259,19 +258,18 @@
               <div class="box-complete-rejected">
                 <div class="box-courier-data-by">
                   <aside class="subtitle-courier-data">Courier data</aside>
-                  <img class="Courier-data-Photo" alt="CourierPhoto" :src="notification.order.user.photoUrl">
-                  <aside class="name-courier-data">{{ notification.order.user.name }}</aside>
+                  <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
+                  <aside class="name-courier-data">{{ this.name }}</aside>
                 </div>
 
                 <div class="box-contract-resume-rejected">
                   <aside class="sub-contract-resume">Contract Resume</aside>
-                  <div class="Boxes" v-for="product in recent_orders.slice(1, 2)" :key="product.id">
+                  <div class="Boxes">
                     <div class="box_container_contract p-4 shadow-0 border-round w-full lg:w-20">
 
-                      <div class="Box-dates-available-order" v-for="order in availableOrders.slice(0, 1)"
-                        :key="order.id">
-                        <img id="Play5" alt="Play5" :src="notification.order.product.productUrl">
-                        <aside class="Subtitle-Play5">{{ notification.order.product.name }}</aside>
+                      <div class="Box-dates-available-order">
+                        <img id="Play5" alt="Play5" :src="product.productUrl">
+                        <aside class="Subtitle-Play5">{{ product.name}}</aside>
                         <div class="date-container"> 
                           <aside class="date-container-txt">Delivery <b class="date-container-txt-bold">{{
                               notification.order.orderDestination
@@ -287,7 +285,7 @@
                           }}</b></aside>
                           <div class="box-bottom-contract">
                             <aside class="sub-sold-by">Sold by</aside>
-                            <img class="Amazon" alt="Amazon" :src="notification.order.product.productStore">
+                            <img class="Amazon" alt="Amazon" :src="product.store">
                           </div>
                         </div>
                       </div>
@@ -304,8 +302,8 @@
           </div>
 
         </div>
+        </div>
       </div>
-
 
     </div>
   </div>
@@ -348,6 +346,7 @@ export default {
 
       availableOrders: [],
 
+      products: [],
       notifications: [],
       links: [
         {
@@ -413,6 +412,11 @@ export default {
 
     this.homeUserApiService.getNotifications(localStorage.getItem("id")).then((response) => {
       this.notifications = response.data;
+      console.log(this.notifications)
+    });
+    this.homeUserApiService.getProducts().then((response) => {
+      this.products = response.data;
+      console.log(this.products)
     });
 
     this.UserApiServiceJSON.getById(localStorage.getItem("id")).then((response) => {
@@ -421,6 +425,9 @@ export default {
 
   },
   methods: {
+    openModalNotification(){
+
+    },
     Add_code_to_dbJson(add_code) {
       // Requiring fs module
       const fs = require("fs");
