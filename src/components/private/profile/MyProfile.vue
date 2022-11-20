@@ -88,13 +88,13 @@ export default {
   created(){
     
     this.myProfileUserApiService = new UserApiServiceJSON()
-    this.myProfileUserApiService.getById(2).then((response) => {
+    this.myProfileUserApiService.getById(localStorage.getItem("id")).then((response) => {
       this.user = response.data;
 
       console.log(this.user)
     });
     
-    this.myProfileUserApiService.getCommentsById(2).then((response) => {
+    this.myProfileUserApiService.getCommentsById(localStorage.getItem("id")).then((response) => {
         this.comments=response.data;
     });
     //this.myProfileUserApiService.getClaimsById(localStorage.getItem("id")).then((response) => {
