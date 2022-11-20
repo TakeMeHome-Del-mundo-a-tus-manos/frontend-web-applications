@@ -1,6 +1,8 @@
 import http from '../http/http-common';
 
-export class OrderApiService{
+export class OrderApiService {
+    baseUrl = 'https://takemehome-api.herokuapp.com/api/v1';
+
     getAll(){
         return http.get('/availableOrders');
     }
@@ -18,6 +20,14 @@ export class OrderApiService{
 
     create(data) {
         return http.post("/availableOrders", data);
+    }
+
+    createOrder(data) {
+        return http.post("/orders", data);
+    }
+
+    createOrderProduct(data) {
+        return http.post("/products", data);
     }
 
      getPendingOrdersByTouristId(touristId){

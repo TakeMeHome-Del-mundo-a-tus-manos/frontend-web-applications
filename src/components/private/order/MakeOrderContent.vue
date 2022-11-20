@@ -114,8 +114,13 @@ export default {
           alert("Please fill in all the fields");
         }else{
           this.link="/order-publish-complete";
+          console.log("Imprimiendo ordenOrigin")
+          console.log(this.orderOrigin)
           sessionStorage.setItem("orderOrigin", this.orderOrigin);
+          sessionStorage.setItem("orderOriginCode", this.orderOrigin.code)
           sessionStorage.setItem("orderDestination", this.orderDestination);
+          sessionStorage.setItem("orderDestinationCode", this.orderDestination.code)
+
         } 
       },
       validateOrigin: function () {

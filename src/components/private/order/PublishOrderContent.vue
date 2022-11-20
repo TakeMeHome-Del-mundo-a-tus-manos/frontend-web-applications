@@ -113,46 +113,75 @@ export default {
         {name: 'Consumer Services'},
         {name: 'Consumer Non-Durables'}
       ],
-    order:{
-        name: "",
-        orderURL: "",
-        category: "",
-        price: "",
-        dimensions: "",
-        orderOrigin:"",
-        orderDestination:"",
-    },
-      
+     order:{
+        orderCode: "", // Random numero
+        originCountry: "", // si
+        userId: 0 , // si
+        clientId: 0, // si
+        orderDestination: "", // si
+        requestDate: "", // como obtener date current javascript
+        deadlineDate: "",  // como obtener date current javascript
+        currentProcess: 0, //
+        orderStatusId: 0 //
+      },
+      product: {
+        name: "",  //si
+        productUrl: "", //si
+        price: 0, //si
+        store: "",
+        currency: "",
+        orderId: 0 //si
+      }
   };
   },
   methods: {
         validate() {
-            if (this.name == "" || this.orderURL == ""||this.category == "" || this.price == ""||this.dimensions == "" ) {
-                alert("Please fill in all the fields");
-            } else {
-                this.link="/make-order";
-                //Convertir a JSON
-                this.order.name = this.name;
-                this.order.orderURL = this.orderURL;
-                this.order.category = this.category.name;
-                this.order.price = this.price;
-                this.order.dimensions = this.dimensions
-                this.order.orderOrigin = sessionStorage.getItem("orderOrigin");
-                this.order.orderDestination = sessionStorage.getItem("orderDestination");
-                
-                
-                console.log(this.order)
-                //sessionStorage.setItem("user", JSON.stringify(user));
-                this.OrderApiService.create(this.order);
-                console.log(order);
-                //sessionStorage.clear();
-                alert("Success!")
-            }
+
+          // 1. Cración de la orden
+          this.order.orderCode = GeneratorOrderCode(5);
+          this.order.originCountry = sessionStorage.getItem("orderOriginCode");
+          this.order.orderDestination = sessionStorage.getItem("orderDestinationCode");
+          this.order.userId =  localStorage.getItem("id")
+          this.order.clientId = localStorage.getItem("id")
+          this.order.requestDate = new Date().toISOString()
+          this.order.deadlineDate = new Date().toISOString()
+          this.order.currentProcess = 2 // hacerlo dinamico
+          this.order.orderStatusId = 4  // hacerlo dinamico
+
+          console.log(this.order)
+
+          this.OrderApiService.createOrder(this.order).then(response => {
+               console.log("Responde from backend");
+               console.log(response)
+              console.log("id de orden")
+              console.log(response.data.id)
+
+            // 2. Creación de un producto a la orden
+              this.product.name = this.name
+              this.product.productUrl = this.orderURL
+              this.product.price = this.price
+              this.product.store = "TakeMeHome"
+              this.product.currency = "USD"
+              this.product.orderId = response.data.id
+              this.OrderApiService.createOrderProduct(this.product)
+
+              alert("La orden se guardó exitosamente")
+
+              }
+          )
         },
         },
 }
 
-  
+    function GeneratorOrderCode(length) {
+      var result           = '';
+      var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var charactersLength = characters.length;
+      for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    }
 
 </script>
 

@@ -90,6 +90,7 @@ export default {
     },
     methods: {
         login() {
+            console.log("hehhehehhehe");
             this.submittedLogin = true
             this.usuarioApiService.getByEmailAndPassword(this.user, this.password).then(response => {
                 if (response.data.length != 0) {
