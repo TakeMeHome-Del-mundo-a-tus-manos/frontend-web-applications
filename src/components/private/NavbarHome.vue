@@ -50,9 +50,9 @@
             <div class="modal2" ref="modal2" v-if="notification.order.id===product.order.id">
               <div class="not3-box">
                 <button @click="OpenModal2 = false" class="close-btn">x</button>
-                <center>
+                <!-- <center> -->
                   <aside class="sub-contract-information">Contract Information</aside>
-                </center>
+                <!-- </center> -->
                 <aside class="sub-contract-resume">Contract Resume</aside>
                 <div class="Boxes" >
                   <div class="box_container_contract p-4 shadow-0 border-round w-full lg:w-20">
