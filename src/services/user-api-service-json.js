@@ -3,7 +3,7 @@ import httpJson from './http/http-common';
 import axios from 'axios';
 
 export class UserApiServiceJSON {
-  baseUrl = 'https://localhost:7120/api/v1';
+  baseUrl = 'https://takemehome-api.herokuapp.com/api/v1';
 
   getAll() {
     return httpJson.get("/users");
