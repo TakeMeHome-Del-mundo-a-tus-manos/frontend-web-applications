@@ -119,12 +119,12 @@
                     </Button>
                     <div v-if="OpenModal3" class="modal3-bg">
                       <div class="modal3" ref="modal3">
-                        <center>
+                        <!-- <center> -->
                           <aside class="txt-accept-contract">You have accepted the contract</aside>
-                        </center>
-                        <center>
+                        <!-- </center> -->
+                        <!-- <center> -->
                           <aside class="txt-accept-contract-add">The item will be added to your account</aside>
-                        </center>
+                        <!-- </center> -->
                         <Button @click="OpenModal3 = false" class="close-btn3">
                           <div class="txt-close">Close</div>
                         </Button>
@@ -132,9 +132,9 @@
                     </div>
                     <div v-if="OpenModal4" class="modal4-bg">
                       <div class="modal4" ref="modal4">
-                        <center>
+                        <!-- <center> -->
                           <aside class="txt-decline-contract">You have rejected the contract</aside>
-                        </center>
+                        <!-- </center> -->
                         <Button @click="OpenModal4 = false" class="close-btn4">
                           <div class="txt-close">Close</div>
                         </Button>
@@ -170,7 +170,7 @@
         <div v-if="OpenModalContractAccepted" class="modalContractAccepted-bg" v-for="product in products.slice(2, 3)" :key="product.id">
           <div class="modalContractAccepted" ref="modalContractAccepted" v-if="notification.order.id===product.order.id">
             <div class="title-m-c-a">
-              <center>Your order has been accepted</center>
+              <span style="text-align: center;">Your order has been accepted</span>
             </div>
 
 
@@ -251,7 +251,7 @@
           <div v-if="OpenModalContractRejected" class="modalContractRejected-bg" v-for="product in products.slice(3, 4)" :key="product.id">
             <div class="modalContractRejected" ref="modalContractRejected" v-if="notification.order.id===product.order.id">
               <div class="title-m-c-r">
-                <center>Your order has been rejected by</center>
+                <span style="text-align: center">Your order has been rejected by</span>
               </div>
 
 
