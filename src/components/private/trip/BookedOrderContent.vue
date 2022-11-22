@@ -45,9 +45,9 @@ export default {
       this.bookedOrders = response.data;
       console.log(this.bookedOrders);
 
-      //hash from booked orders, key is client id and value is client
+      //hash from booked orders, key is user id and value is user
       for (let i = 0; i < this.bookedOrders.length; i++) {
-        this.myHash.set(this.bookedOrders[i].clientId, this.bookedOrders[i].client);
+        this.myHash.set(this.bookedOrders[i].userId, this.bookedOrders[i].user);
       }
       
       for (let i = 0; i < this.bookedOrders.length; i++) {
@@ -70,10 +70,10 @@ export default {
             <div class="product-item-content ">
               <div class="grid flex align-content-between align-items-center">
                 <div>
-                  <img :src="myHash.get(slotProps.data.clientId).photoUrl" class="person-icon"/>
+                  <img :src="myHash.get(slotProps.data.userId).photoUrl" class="person-icon"/>
                 </div>
                 <div class="ml-4">
-                  <div class="font-bold">{{ myHash.get(slotProps.data.clientId).fullName}}</div>
+                  <div class="font-bold">{{ myHash.get(slotProps.data.userId).fullName}}</div>
                   <div class="text-sm text-left">Requested {{slotProps.data.requestDate.slice(0, 10)}}</div>
                 </div>
               </div>

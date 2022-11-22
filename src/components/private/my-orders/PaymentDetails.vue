@@ -126,8 +126,8 @@ export default {
         },
         goConfirm() {
             
-            this.myOrdersApiService.changeOrderStatusToPending(this.orderData.id, [{ 
-                "value": 5, "path": "/orderStatusId", "op": "replace" }]).then(() => {
+            this.myOrdersApiService.changeOrderStatus(this.orderData.id, [{ 
+                "value": 4, "path": "/orderStatusId", "op": "replace" }]).then(() => {
                 this.$router.push("/payment-completed");
             })
 

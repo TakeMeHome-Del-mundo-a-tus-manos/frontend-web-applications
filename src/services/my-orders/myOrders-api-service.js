@@ -20,7 +20,7 @@ export class MyOrdersApiService {
     // deleteOrder(type, orderId) {
     //     return axios.delete(`${this.baseUrl}/${type}Orders/${orderId}`);
     // }
-    changeOrderStatusToPending(orderId, order) {
+    changeOrderStatus(orderId, order) {
         
         return axios.patch(`${this.baseUrl}/orders/${orderId}`, order);
     }
@@ -36,7 +36,12 @@ export class MyOrdersApiService {
     getCurrentProcess(orderId) {
         return axios.get(`${this.baseUrl}/pendingOrders/${orderId}`);
     }
-
+    getOrderById(orderId) {
+        return axios.get(`${this.baseUrl}/orders/${orderId}`);
+    }
+    getProductByOrderId(orderId){
+        return axios.get(`${this.baseUrl}/products/order/${orderId}`);
+    }
     sendNotification(not) {
         return axios.post(`${this.baseUrl}/notifications`, not);
     }

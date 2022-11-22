@@ -6,53 +6,54 @@
 
         <div class="card-pd row card-cp" v-for="process in processes" :key="process.id">
             <div>
-                <Knob v-model="process.currentProcess" 
-                :size="200" 
-                :min="0" 
-                :max="100" 
-                readonly 
-                valueTemplate="{value}%"
-                valueColor="#264986"
-                range-color="#89aae2"
-                />
+                <Knob v-model="process.currentProcess" :size="200" :min="0" :max="100" readonly valueTemplate="{value}%"
+                    valueColor="#264986" range-color="#89aae2" />
                 <div class="row">
                     <p><b>Order ID:</b></p>
-                    <p class="accent-info"><b>{{process.orderCode}}</b></p>
+                    <p class="accent-info"><b>{{ process.orderCode }}</b></p>
                 </div>
                 <Button label="Search" class="confirm" v-on:click="goMap(process.id)"></Button>
- 
+
             </div>
 
             <div class="product">
-                <div class="card-image">    
-                    <img alt="user header"
-                    :src="process.productImage">
+                <div class="card-image">
+                    <img alt="user header" :src="myProductUrlHash.get(process.id)">
                 </div>
-                    <div class="card-title">
-                    <h3>{{process.productName}}</h3>
+                <div class="card-title">
+                    <h3>{{ myProductNameHash.get(process.id) }}</h3>
                 </div>
             </div>
-
         </div>
     </div>
-
 </template>
 
 <script>
 
-import { MyOrdersApiService } from "../../../services/my-orders/myOrders-api-service";
+import { OrderApiService } from "../../../services/order/order-api-service";
 
-export default{
+export default {
     data() {
         return {
-            myOrdersApiService: new MyOrdersApiService(),
-           value: 50,
-           processes: null,
+            orderService: new OrderApiService(),
+            value: 50,
+            processes: null,
+            myProductUrlHash: new Map(),
+            myProductNameHash: new Map(),
         }
     },
     mounted() {
-        this.myOrdersApiService.getCurrentProcesses(localStorage.getItem('id')).then((response) => {
+
+        this.orderService.getByOrderStatusIdAndUserId(4, localStorage.getItem("id")).then((response) => {
             this.processes = response.data;
+            //get orders calling the api with method getProductByOrderId and passing the order id, then map it, key is the order id and value is the product
+            this.processes.forEach((order) => {
+                this.orderService.getProductByOrderId(order.id).then((response) => {
+                    this.myProductUrlHash.set(order.id, response.data.productUrl);
+                    this.myProductNameHash.set(order.id, response.data.name);
+                });
+            });
+
         });
     },
     methods: {
@@ -65,7 +66,6 @@ export default{
 </script>
 
 <style scoped >
-
 .column {
     display: flex;
     flex-direction: column;
@@ -82,7 +82,7 @@ export default{
     text-align: center;
 }
 
-.main-content-cp .card-pd{
+.main-content-cp .card-pd {
     width: auto;
     display: flex;
     justify-content: space-between;
@@ -101,37 +101,39 @@ export default{
 .main-content-cp .row p {
     justify-content: right;
     margin-right: 5px;
-} 
+}
 
-.main-content-cp .card-title h3{
+.main-content-cp .card-title h3 {
     text-align: center;
     text-transform: uppercase;
 }
 
-.main-content-cp .product{
+.main-content-cp .product {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    padding: 0 1vw 0 5vw;; 
+    padding: 0 1vw 0 5vw;
+    ;
 }
 
-.main-content-cp .card-cp{
+.main-content-cp .card-cp {
     margin: 2vh 10vw;
 }
 
-@media only screen and (max-width: 960px){
-    .main-content-cp .card-pd{
+@media only screen and (max-width: 960px) {
+    .main-content-cp .card-pd {
         width: 80%;
         display: flex;
         flex-direction: column;
     }
-    .main-content-cp .product{
+
+    .main-content-cp .product {
         display: none;
     }
-    .card-pd .row{
+
+    .card-pd .row {
         justify-content: center;
     }
 }
-
 </style>

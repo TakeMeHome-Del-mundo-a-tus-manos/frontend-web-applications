@@ -1,6 +1,7 @@
 <script>
-import {OrderApiService} from "@/services/order/order-api-service";
-import {UserApiServiceJSON} from "@/services/user-api-service-json";
+import { OrderApiService } from "@/services/order/order-api-service";
+import { UserApiServiceJSON } from "@/services/user-api-service-json";
+import { MyOrdersApiService } from "../../../services/my-orders/myOrders-api-service";
 
 export default {
 
@@ -8,6 +9,7 @@ export default {
     return {
       availableOrders: [],
       orderService: null,
+      orderStatusService: new MyOrdersApiService(),
       userService: null,
       myHash: null,
       myHashProduct: null,
@@ -32,7 +34,7 @@ export default {
     this.userService = new UserApiServiceJSON();
     this.myHash = new Map();
     this.myHashProduct = new Map();
- 
+
 
 
     this.orderService.getOrdersByStatus(1).then((response) => {
@@ -40,10 +42,10 @@ export default {
 
       console.log(this.availableOrders);
       //getting users id
-       for (let i = 0; i < this.availableOrders.length; i++) {
-         this.myHash.set(this.availableOrders[i].userId, this.availableOrders[i].user);
-        }
-        
+      for (let i = 0; i < this.availableOrders.length; i++) {
+        this.myHash.set(this.availableOrders[i].userId, this.availableOrders[i].user);
+      }
+
       for (let i = 0; i < this.availableOrders.length; i++) {
         this.orderService.getProductByOrderId(this.availableOrders[i].id).then((response) => {
           this.myHashProduct.set(this.availableOrders[i].id, response.data);
@@ -51,7 +53,44 @@ export default {
       }
 
     });
-  }
+  },
+  methods: {
+    async changeOrderStatusToBooked(orderId) {
+      const userId = localStorage.getItem("id");
+      const orderCode = this.randomString();
+    
+      this.orderStatusService.changeOrderStatus(orderId, [{
+        "value": userId, "path": "/clientId", "op": "replace"
+      }]).then(() => {
+
+        this.orderStatusService.changeOrderStatus(orderId, [{
+          "value": 3, "path": "/orderStatusId", "op": "replace"
+        }]).then(() => {
+          //reload this component
+          this.orderStatusService.changeOrderStatus(orderId, [{
+            "value": orderCode, "path": "/orderCode", "op": "replace"
+          }])
+          this.$router.go();
+
+
+        }).catch((error) => {
+          console.log(error);
+        })
+      })
+
+
+    },
+    randomString(){
+      var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+      var string_length = 5;
+      var randomstring = '';
+      for (var i=0; i<string_length; i++) {
+          var rnum = Math.floor(Math.random() * chars.length);
+          randomstring += chars.substring(rnum,rnum+1);
+      }
+      return randomstring.toUpperCase();
+    }
+  },
 }
 </script>
 
@@ -64,11 +103,11 @@ export default {
             <div class="product-item-content ">
               <div class="grid flex align-content-between align-items-center">
                 <div>
-                  <img :src="myHash.get(slotProps.data.userId).photoUrl" class="person-icon"/>
+                  <img :src="myHash.get(slotProps.data.userId).photoUrl" class="person-icon" />
                 </div>
                 <div class="ml-4">
-                  <div class="font-bold">{{ myHash.get(slotProps.data.userId).fullName}}</div>
-                  <div class="text-sm text-left">Requested {{slotProps.data.requestDate.slice(0, 10) }}</div>
+                  <div class="font-bold">{{ myHash.get(slotProps.data.userId).fullName }}</div>
+                  <div class="text-sm text-left">Requested {{ slotProps.data.requestDate.slice(0, 10) }}</div>
                 </div>
               </div>
 
@@ -76,7 +115,7 @@ export default {
                 <div class="col-6 flex align-items-center justify-content-center align-content-center flex-column">
                   <div class="product-image-container">
 
-                    <img :src="myHashProduct.get(slotProps.data.id).productUrl" class="person-product"/>
+                    <img :src="myHashProduct.get(slotProps.data.id).productUrl" class="person-product" />
                     <img :src="myHashProduct.get(slotProps.data.id).store" class="person-store">
                   </div>
                 </div>
@@ -90,8 +129,12 @@ export default {
                 </div>
               </div>
               <div class="align-items-center">
-                <i class="pi pi-comments text-primary" style="font-size: 2rem"></i>
+                <a href="https://wa.link/ewxpt8" target="_blank"><i class="pi pi-comments text-primary"
+                    style="font-size: 2rem"></i></a>
+                <button v-on:click="changeOrderStatusToBooked(slotProps.data.id)"><i
+                    class="pi pi-shopping-cart text-primary" style="font-size: 2rem"></i></button>
               </div>
+
 
             </div>
 
@@ -121,11 +164,12 @@ export default {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 
-  .product-image-container{
+  .product-image-container {
     width: 130px;
     height: 150px;
     margin-left: 1rem;
   }
+
   .person-product {
     max-width: 85%;
     max-height: 85%;
@@ -149,14 +193,11 @@ export default {
 }
 
 
-::v-deep(.p-carousel-next){
- background: #1589A2 !important;
+::v-deep(.p-carousel-next) {
+  background: #1589A2 !important;
 }
 
-::v-deep(.p-carousel-prev){
- background: #1589A2 !important;
+::v-deep(.p-carousel-prev) {
+  background: #1589A2 !important;
 }
-
-
-
 </style>

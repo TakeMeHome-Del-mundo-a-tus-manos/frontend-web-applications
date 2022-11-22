@@ -8,10 +8,10 @@
                 <div class="product">
                     <div class="card-image">
                         <img alt="user header"
-                            :src="process.productImage">
+                            :src="productImage">
                     </div>
                     <div class="card-title">
-                        <h4>{{process.productName}}</h4>
+                        <h4>{{productName}}</h4>
                     </div>
                     <div class="row">
                         <p><b>Order ID:</b></p>
@@ -48,19 +48,23 @@ export default {
     data() {
         return {
             myOrdersApiService: new MyOrdersApiService(),
-            process: {}
+            process: {},
+            productImage: "",
+            productName: "",
         }
     },
     created() {
-        this.myOrdersApiService.getCurrentProcess(this.$route.params.orderCode).then((response) => {
+        this.myOrdersApiService.getOrderById(this.$route.params.orderCode).then((response) => {
             this.process = response.data;
+            this.myOrdersApiService.getProductByOrderId(this.$route.params.orderCode).then((response) => {
+                this.productImage = response.data.productUrl;
+                this.productName = response.data.name;
+            });
         });
         console.log(this.process);
-
     },
     mounted() {
         console.log(this.process.productName);
-
     },
     methods: {
 

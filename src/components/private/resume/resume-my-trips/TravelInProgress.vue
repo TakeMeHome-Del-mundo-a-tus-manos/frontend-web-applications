@@ -52,7 +52,7 @@ export default {
 
 <template>
   <div class="ml-5 md:ml-6 mb-4">
-    <label class="text-3xl md:text-4xl font-bold">Delivery History</label>
+    <label class="text-3xl md:text-4xl font-bold">Travel in progress</label>
   </div>
   <div class="grid">
     <div class="paginator-container col-5 md:col-12 md:ml-0">

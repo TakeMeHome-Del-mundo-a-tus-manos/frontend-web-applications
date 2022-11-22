@@ -78,10 +78,10 @@ export default {
             <div class="product-item-content ">
               <div class="grid flex align-content-between align-items-center">
                 <div>
-                  <img :src="slotProps.item.client.photoUrl" class="person-icon"/>
+                  <img :src="slotProps.item.user.photoUrl" class="person-icon"/>
                 </div>
                 <div class="ml-4">
-                  <div class="font-bold">{{ slotProps.item.client.fullName}}</div>
+                  <div class="font-bold">{{ slotProps.item.user.fullName}}</div>
                   <div class="text-sm text-left">Requested {{slotProps.item.requestDate.slice(0, 10)}}</div>
                 </div>
               </div>

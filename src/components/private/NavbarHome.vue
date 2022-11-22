@@ -68,10 +68,10 @@
                             notification.order.originCountry
                         }}</b></aside>
                         <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{
-                            notification.order.requestDate
+                            (notification.order.requestDate).slice(0, 10)
                         }}</b></aside>
                         <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{
-                            notification.order.deadlineDate
+                            (notification.order.deadlineDate).slice(0, 10)
                         }}</b></aside>
                         <div class="box-bottom-contract">
                           <aside class="sub-sold-by">Sold by</aside>
@@ -85,21 +85,20 @@
                     <aside class="subtitle-courier-data">Courier data</aside>
 
                     <div class="Box-dates-available-order" >
-                      <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
+                      <img class="Courier-data-Photo" alt="CourierPhoto" :src="notification.order.client.photoUrl">
                     </div>
-                    <aside class="name-courier-data">{{ this.name}}</aside>
+                    <aside class="name-courier-data">{{ notification.order.client.fullName}}</aside>
                   </div>
-                  <!--<div class="Box-dates-available-order2">
+                  <div class="Box-dates-available-order2">
                     <div class="box-client-data">
                       <aside class="subtitle-client-data">Client data</aside>
                       <img class="client-data-Photo" alt="ClientPhoto" :src="this.photo_src">
                       <aside class="name-client-data">{{ this.name}}</aside>
                     </div>
                   </div>
-                    -->
+                   
                   <div class="box-bottom-contract-information">
                     <div class="box-bottom-left-contract-information">
-                      <br><br><br>
                       <aside class="txt-order">Order ID:</aside>
                       <aside class="txt-amount">Amount:</aside>
                     </div>
@@ -167,7 +166,7 @@
         </div>
 
         <Button @click="OpenModalContractAccepted = true" class="btn-OpenNewModalContractAccepted">See</Button>
-        <div v-if="OpenModalContractAccepted" class="modalContractAccepted-bg" v-for="product in products.slice(2, 3)" :key="product.id">
+        <div v-if="OpenModalContractAccepted"  v-for="product in products" :key="product.id">
           <div class="modalContractAccepted" ref="modalContractAccepted" v-if="notification.order.id===product.order.id">
             <div class="title-m-c-a">
               <span style="text-align: center;">Your order has been accepted</span>
@@ -191,10 +190,10 @@
                             notification.order.originCountry
                         }}</b></aside>
                         <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{
-                            notification.order.requestDate
+                            (notification.order.requestDate).slice(0, 10)
                         }}</b></aside>
                         <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{
-                            notification.order.deadlineDate
+                            (notification.order.deadlineDate).slice(0, 10)
                         }}</b></aside>
                         <div class="box-bottom-contract">
                           <aside class="sub-sold-by">Sold by</aside>
@@ -206,8 +205,8 @@
                   </div>
                   <div class="box-courier-data">
                     <aside class="subtitle-courier-data">Courier data</aside>
-                    <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
-                    <aside class="name-courier-data">{{ this.name }}</aside>
+                    <img class="Courier-data-Photo" alt="CourierPhoto" :src="notification.order.client.photoUrl">
+                    <aside class="name-courier-data">{{ notification.order.client.fullName }}</aside>
                   </div>
                   <div class="Box-dates-available-order2" >
                     <div class="box-client-data">
@@ -248,7 +247,7 @@
         <div class="not-resume">
           <h3 class="not-resume-txt">Contract rejected!</h3>
           <Button @click="OpenModalContractRejected = true" class="btn-OpenNewModalContractRejected">See</Button>
-          <div v-if="OpenModalContractRejected" class="modalContractRejected-bg" v-for="product in products.slice(3, 4)" :key="product.id">
+          <div v-if="OpenModalContractRejected"  v-for="product in products" :key="product.id">
             <div class="modalContractRejected" ref="modalContractRejected" v-if="notification.order.id===product.order.id">
               <div class="title-m-c-r">
                 <span style="text-align: center">Your order has been rejected by</span>
@@ -258,7 +257,7 @@
               <div class="box-complete-rejected">
                 <div class="box-courier-data-by">
                   <aside class="subtitle-courier-data">Courier data</aside>
-                  <img class="Courier-data-Photo" alt="CourierPhoto" :src="this.photo_src">
+                  <img class="Courier-data-Photo" alt="CourierPhoto" :src="notification.order.client.photoUrl">
                   <aside class="name-courier-data">{{ this.name }}</aside>
                 </div>
 
@@ -278,10 +277,10 @@
                               notification.order.originCountry
                           }}</b></aside>
                           <aside class="date-container-txt">Agreement date <b class="date-container-txt-bold">{{
-                              notification.order.requestDate
+                              (notification.order.requestDate).slice(0,10)
                           }}</b></aside>
                           <aside class="date-container-txt">Delivery before <b class="date-container-txt-bold">{{
-                              notification.order.deadlineDate
+                              (notification.order.deadlineDate).slice(0, 10)
                           }}</b></aside>
                           <div class="box-bottom-contract">
                             <aside class="sub-sold-by">Sold by</aside>
@@ -721,7 +720,7 @@ i {
   width: 100vw;
   height: 100vh;
 
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
 
   display: flex;
   justify-content: center;

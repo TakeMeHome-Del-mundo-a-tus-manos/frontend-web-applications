@@ -9,14 +9,10 @@
 
         <div class="popular_stores p-4 shadow-0 border-round w-auto lg:w-40 Home ">
           <aside class="text3 font-medium line-height-3 ">Popular Stores</aside>
-          <!-- <div class="box3 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores.slice(0,2)" :key="store.id" >
-            <a :href="store.link" target="_blank"><img class="Walmart home-img" alt="Walmart" :src="store.image_url"></a>
+          <div class="box3 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores" :key="store.id" >
+            <a :href="store.link" target="_blank"><img class="Walmart home-img" alt="store.name" :src="store.image_url"></a>
           </div>
-          <div class="box4 p-4 shadow-0 border-round w-auto lg:w-20" v-for="store in popular_stores.slice(2,5)" :key="store.id" >
-            <a :href="store.link" target="_blank"><img class="Walmart1 home-img" alt="Walmart" :src="store.image_url"></a>
-          </div> -->
         </div>
-
       </div>
 
       <div class="card-2 p-4 shadow-0 border-round w-100 lg:w-20 Home inline-block">
@@ -210,9 +206,25 @@ export default {
       homeUserApiService: null,
       name: "",
       photo_src:"",
-      popular_stores:[],
-      recent_orders:[]
+      popular_stores:[
+        {
+          id: 1,
+          name: "Apple",
+          image_url: "https://localpower.ie/wp-content/uploads/2022/06/apple-logo.png",
+          link: "https://www.apple.com/"
+        },
+        {
+          id: 2,
+          name: "Amazon",
+          image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1200px-Amazon_logo.svg.png",
+          link: "https://www.amazon.com/"
+        }
+      ],
+      recent_orders:[],
+      
+      
     }
+
   },
   created(){
     this.name = localStorage.getItem("nombre");
@@ -235,6 +247,5 @@ export default {
       this.$router.push("/make-order")
     }
   }
-
 }
 </script>
