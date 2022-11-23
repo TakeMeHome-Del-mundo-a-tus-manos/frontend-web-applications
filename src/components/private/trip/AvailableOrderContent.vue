@@ -40,7 +40,7 @@ export default {
     this.orderService.getOrdersByStatus(1).then((response) => {
       this.availableOrders = response.data;
 
-      console.log(this.availableOrders);
+      //console.log(this.availableOrders);
       //getting users id
       for (let i = 0; i < this.availableOrders.length; i++) {
         this.myHash.set(this.availableOrders[i].userId, this.availableOrders[i].user);
@@ -57,7 +57,7 @@ export default {
   methods: {
     async changeOrderStatusToBooked(orderId) {
       const userId = localStorage.getItem("id");
-      const orderCode = this.randomString();
+      //const orderCode = this.randomString();
     
       this.orderStatusService.changeOrderStatus(orderId, [{
         "value": userId, "path": "/clientId", "op": "replace"
@@ -67,9 +67,9 @@ export default {
           "value": 3, "path": "/orderStatusId", "op": "replace"
         }]).then(() => {
           //reload this component
-          this.orderStatusService.changeOrderStatus(orderId, [{
-            "value": orderCode, "path": "/orderCode", "op": "replace"
-          }])
+          // this.orderStatusService.changeOrderStatus(orderId, [{
+          //   "value": orderCode, "path": "/orderCode", "op": "replace"
+          // }])
           this.$router.go();
 
 
@@ -81,7 +81,7 @@ export default {
 
     },
     randomString(){
-      var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+      var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
       var string_length = 5;
       var randomstring = '';
       for (var i=0; i<string_length; i++) {
@@ -115,8 +115,8 @@ export default {
                 <div class="col-6 flex align-items-center justify-content-center align-content-center flex-column">
                   <div class="product-image-container">
 
-                    <img :src="myHashProduct.get(slotProps.data.id).productUrl" class="person-product" />
-                    <img :src="myHashProduct.get(slotProps.data.id).store" class="person-store">
+                    <!-- <img :src="myHashProduct.get(slotProps.data.id).productUrl" :alt="myHashProduct.get(slotProps.data.id).productUrl" class="person-product" />
+                    <img :src="myHashProduct.get(slotProps.data.id).store" class="person-store"/> -->
                   </div>
                 </div>
                 <div class="col-6 text-left">

@@ -2,7 +2,7 @@ import http from './http/http-common';
 import axios from 'axios';
 
 export class UserApiService {
-  baseUrl = 'https://localhost:7120/api/v1'; //https://takemehome-api.herokuapp.com/api/v1';
+  baseUrl = 'https://takemehome-api.herokuapp.com/api/v1'; //https://localhost:7120/api/v1';
   getAll() {
     return http.get("/login");
   }

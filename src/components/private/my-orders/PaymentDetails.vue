@@ -128,6 +128,11 @@ export default {
             
             this.myOrdersApiService.changeOrderStatus(this.orderData.id, [{ 
                 "value": 4, "path": "/orderStatusId", "op": "replace" }]).then(() => {
+
+                    this.myOrdersApiService.changeOrderStatus(this.orderData.id, [{ 
+                        "value": parseInt(Math.random() * 101) , "path": "/currentProcess", "op": "replace" }]).then(() => {
+                            console.log("Changed to random current process");
+                        })
                 this.$router.push("/payment-completed");
             })
 
