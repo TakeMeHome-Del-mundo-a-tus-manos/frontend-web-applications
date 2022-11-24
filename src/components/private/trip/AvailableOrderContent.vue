@@ -115,8 +115,8 @@ export default {
                 <div class="col-6 flex align-items-center justify-content-center align-content-center flex-column">
                   <div class="product-image-container">
 
-                    <!-- <img :src="myHashProduct.get(slotProps.data.id).productUrl" :alt="myHashProduct.get(slotProps.data.id).productUrl" class="person-product" />
-                    <img :src="myHashProduct.get(slotProps.data.id).store" class="person-store"/> -->
+                    <img :src="myHashProduct.get(slotProps.data.id).productUrl" :alt="myHashProduct.get(slotProps.data.id).productUrl" class="person-product" />
+                    <img :src="myHashProduct.get(slotProps.data.id).store" class="person-store"/>
                   </div>
                 </div>
                 <div class="col-6 text-left">

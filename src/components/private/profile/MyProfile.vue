@@ -25,7 +25,7 @@
 	                    <TabPanel header="Personal Information">
 	                    	<br><br>
                             <div class="personalInf"> Full name<Button class="btn-name p-button-rounded" disabled="disabled" >{{ user.fullName }}</Button></div><br><br>
-                            <div class="personalInf">Age<Button class="btn-year p-button-rounded" disabled="disabled" >{{ user.dateOfBirth }} years</Button></div><br><br>
+                            <div class="personalInf">Age<Button class="btn-year p-button-rounded" disabled="disabled" >{{ (user.dateOfBirth).slice(0,2) }} years</Button></div><br><br>
                             <div class="personalInf">E-mail<Button class="btn-email p-button-rounded" disabled="disabled" >{{user.email}}</Button></div><br><br>
                             <div class="personalInf">Phone<Button class="btn-phone p-button-rounded" disabled="disabled" >{{user.phone}}</Button></div><br><br>
                             <div class="personalInf">Location<Button class="btn-location p-button-rounded" disabled="disabled" >{{user.country}}</Button></div><br><br>
